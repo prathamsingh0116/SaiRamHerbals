@@ -1,8 +1,9 @@
 require("dotenv").config();
 
+console.log("=== APP START ===");
+console.log("Node:", process.version);
 console.log("MONGO_URI:", process.env.MONGO_URI ? "FOUND" : "MISSING");
 console.log("SECRET:", process.env.SECRET ? "FOUND" : "MISSING");
-console.log("PORT:", process.env.PORT || 3000);
 
 
 // Core
