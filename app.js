@@ -1,5 +1,10 @@
 require("dotenv").config();
 
+console.log("MONGO_URI:", process.env.MONGO_URI ? "FOUND" : "MISSING");
+console.log("SECRET:", process.env.SECRET ? "FOUND" : "MISSING");
+console.log("PORT:", process.env.PORT || 3000);
+
+
 // Core
 const express = require("express");
 const path = require("path");
