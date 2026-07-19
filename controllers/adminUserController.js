@@ -3,7 +3,7 @@ const Order = require("../models/Order");
 const Review = require("../models/Review");
 const Wishlist = require("../models/Wishlist");
 const Cart = require("../models/Cart");
-const Address = require("../models/Address");
+const Address = require("../models/Address.js");
 
 // =========================
 // All Users
