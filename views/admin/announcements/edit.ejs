@@ -1,0 +1,10 @@
+<% layout("layouts/admin") %>
+
+<form action="/admin/announcements/<%= announcement._id %>?_method=PUT" method="POST">
+
+   <%- include("../../partials/_form", {
+    formTitle: "Edit Announcement",
+    announcement
+}) %>
+
+</form>

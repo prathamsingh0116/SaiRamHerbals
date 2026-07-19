@@ -1,0 +1,231 @@
+<aside class="admin-sidebar" id="adminSidebar">
+
+    <!-- =========================
+            LOGO
+    ========================== -->
+
+    <div class="admin-sidebar-logo">
+
+        <a href="/admin/dashboard">
+
+            <div class="admin-sidebar-logo-icon">
+
+                <img src="/images/Logo/1.png" alt="Logo">
+
+            </div>
+
+            <div class="admin-sidebar-logo-text">
+
+                <img src="/images/logo/2.png" alt="Description">
+
+                <span>Admin Panel</span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <!-- =========================
+            MAIN
+    ========================== -->
+
+    <div class="admin-sidebar-group">
+
+        <span class="admin-sidebar-title">
+
+            MAIN
+
+        </span>
+
+        <a href="/admin/dashboard"
+
+        class="admin-sidebar-link <%= currentPage==='dashboard' ? 'active':'' %>">
+
+            <i class='bx bxs-dashboard'></i>
+
+            Dashboard
+
+        </a>
+
+    </div>
+
+    <!-- =========================
+            CATALOG
+    ========================== -->
+
+    <div class="admin-sidebar-group">
+
+        <span class="admin-sidebar-title">
+
+            CATALOG
+
+        </span>
+
+        <a href="/admin/products"
+
+        class="admin-sidebar-link <%= currentPage==='products' ? 'active':'' %>">
+
+            <i class='bx bx-package'></i>
+
+            Products
+
+        </a>
+
+        <!-- <a href="/admin/categories"
+
+        class="admin-sidebar-link <%= currentPage==='categories' ? 'active':'' %>">
+
+            <i class='bx bx-category'></i>
+
+            Categories
+
+        </a> -->
+
+    </div>
+
+    <!-- =========================
+            SALES
+    ========================== -->
+
+    <div class="admin-sidebar-group">
+
+        <span class="admin-sidebar-title">
+
+            SALES
+
+        </span>
+
+        <a href="/admin/orders"
+
+        class="admin-sidebar-link <%= currentPage==='orders' ? 'active':'' %>">
+
+            <i class='bx bx-cart'></i>
+
+            Orders
+
+        </a>
+
+        <a href="/admin/coupons"
+
+        class="admin-sidebar-link <%= currentPage==='coupons' ? 'active':'' %>">
+
+            <i class='bx bx-purchase-tag'></i>
+
+            Coupons
+
+        </a>
+
+    </div>
+
+    <!-- =========================
+            CUSTOMERS
+    ========================== -->
+
+    <div class="admin-sidebar-group">
+
+        <span class="admin-sidebar-title">
+
+            CUSTOMERS
+
+        </span>
+
+        <a href="/admin/users"
+
+        class="admin-sidebar-link <%= currentPage==='users' ? 'active':'' %>">
+
+            <i class='bx bx-user'></i>
+
+            Users
+
+        </a>
+
+        <a href="/admin/reviews"
+
+        class="admin-sidebar-link <%= currentPage==='reviews' ? 'active':'' %>">
+
+            <i class='bx bx-star'></i>
+
+            Reviews
+
+        </a>
+
+    </div>
+
+    <!-- =========================
+            CONTENT
+    ========================== -->
+
+    <div class="admin-sidebar-group">
+
+        <span class="admin-sidebar-title">
+
+            CONTENT
+
+        </span>
+
+        <a href="/admin/announcements"
+
+        class="admin-sidebar-link <%= currentPage==='announcements' ? 'active':'' %>">
+
+            <i class='bx bx-bell'></i>
+
+            Announcements
+
+        </a>
+
+    </div>
+
+    <!-- =========================
+            SYSTEM
+    ========================== -->
+
+    <div class="admin-sidebar-group">
+
+        <span class="admin-sidebar-title">
+
+            SYSTEM
+
+        </span>
+
+        <a href="/admin/reports"
+
+        class="admin-sidebar-link <%= currentPage==='reports' ? 'active':'' %>">
+
+            <i class='bx bx-bar-chart-alt-2'></i>
+
+            Reports
+
+        </a>
+
+        <a href="/profile"
+
+        class="admin-sidebar-link <%= currentPage==='settings' ? 'active':'' %>">
+
+            <i class='bx bx-cog'></i>
+
+            Settings
+
+        </a>
+
+    </div>
+
+    <!-- =========================
+            FOOTER
+    ========================== -->
+
+    <div class="admin-sidebar-footer">
+
+        <a href="/logout"
+
+        class="admin-sidebar-link admin-sidebar-logout">
+
+            <i class='bx bx-log-out'></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+</aside>

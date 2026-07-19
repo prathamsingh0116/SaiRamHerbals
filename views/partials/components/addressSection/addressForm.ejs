@@ -1,0 +1,464 @@
+<form
+
+action="<%= typeof address !== 'undefined' && address
+? '/addresses/' + address._id + '?_method=PUT'
+: '/addresses' %>"
+
+method="POST"
+
+class="address-form">
+
+    <div class="form-header">
+
+        <div class="form-header-icon">
+
+            <i class='bx bx-map'></i>
+
+        </div>
+
+        <div>
+
+            <h2>
+
+                <%= address ? "Edit Address" : "Add New Address" %>
+
+            </h2>
+
+            <p>
+
+                Save your delivery address for a faster and smoother checkout experience.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="address-form-grid">
+
+        <!-- Full Name -->
+
+        <div class="form-group">
+
+            <label>
+
+                <i class='bx bx-user'></i>
+
+                Full Name
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="address[fullName]"
+
+                placeholder="Enter your full name"
+
+                required
+
+                value="<%= address?.fullName || '' %>"
+
+            >
+
+        </div>
+        <input
+    type="hidden"
+    name="redirect"
+    value="<%= redirect || '' %>">
+
+        <!-- Phone -->
+
+        <div class="form-group">
+
+            <label>
+
+                <i class='bx bx-phone'></i>
+
+                Phone Number
+
+            </label>
+
+            <input
+
+                type="tel"
+
+                name="address[phone]"
+
+                placeholder="+91 XXXXX XXXXX"
+
+                required
+
+                value="<%= address?.phone || '' %>"
+
+            >
+
+        </div>
+
+        <!-- Alternate Phone -->
+
+        <div class="form-group">
+
+            <label>
+
+                <i class='bx bx-phone-call'></i>
+
+                Alternate Phone
+
+            </label>
+
+            <input
+
+                type="tel"
+
+                name="address[alternatePhone]"
+
+                placeholder="Optional"
+
+                value="<%= address?.alternatePhone || '' %>"
+
+            >
+
+        </div>
+
+        <!-- Landmark -->
+
+        <div class="form-group">
+
+            <label>
+
+                <i class='bx bx-current-location'></i>
+
+                Landmark
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="address[landmark]"
+
+                placeholder="Nearby landmark"
+
+                value="<%= address?.landmark || '' %>"
+
+            >
+
+        </div>
+
+        <!-- Address Line 1 -->
+
+        <div class="form-group full-width">
+
+            <label>
+
+                <i class='bx bx-home'></i>
+
+                Address Line 1
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="address[addressLine1]"
+
+                placeholder="House No, Building, Apartment"
+
+                required
+
+                value="<%= address?.addressLine1 || '' %>"
+
+            >
+
+        </div>
+
+        <!-- Address Line 2 -->
+
+        <div class="form-group full-width">
+
+            <label>
+
+                <i class='bx bx-buildings'></i>
+
+                Address Line 2
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="address[addressLine2]"
+
+                placeholder="Street, Area (Optional)"
+
+                value="<%= address?.addressLine2 || '' %>"
+
+            >
+
+        </div>
+
+        <!-- City -->
+
+        <div class="form-group">
+
+            <label>
+
+                <i class='bx bx-buildings'></i>
+
+                City
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="address[city]"
+
+                placeholder="City"
+
+                required
+
+                value="<%= address?.city || '' %>"
+
+            >
+
+        </div>
+
+        <!-- State -->
+
+        <div class="form-group">
+
+            <label>
+
+                <i class='bx bx-map-pin'></i>
+
+                State
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="address[state]"
+
+                placeholder="State"
+
+                required
+
+                value="<%= address?.state || '' %>"
+
+            >
+
+        </div>
+
+        <!-- Country -->
+
+        <div class="form-group">
+
+            <label>
+
+                <i class='bx bx-world'></i>
+
+                Country
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="address[country]"
+
+                readonly
+
+                value="<%= address?.country || 'India' %>"
+
+            >
+
+        </div>
+
+                <!-- PIN Code -->
+
+        <div class="form-group">
+
+            <label>
+
+                <i class='bx bx-mail-send'></i>
+
+                PIN Code
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="address[pincode]"
+
+                placeholder="PIN Code"
+
+                maxlength="6"
+
+                required
+
+                value="<%= address?.pincode || '' %>"
+
+            >
+
+        </div>
+
+    </div>
+
+    <!-- Address Type -->
+
+    <div class="form-section">
+
+        <h3>
+
+            <i class='bx bx-map'></i>
+
+            Address Type
+
+        </h3>
+
+        <div class="address-type-grid">
+
+            <label class="address-type-card">
+
+                <input
+
+                    type="radio"
+
+                    name="address[addressType]"
+
+                    value="Home"
+
+                    <%= !address || address.addressType==="Home" ? "checked" : "" %>
+
+                >
+
+                <div>
+
+                    <i class='bx bx-home'></i>
+
+                    <span>Home</span>
+
+                </div>
+
+            </label>
+
+            <label class="address-type-card">
+
+                <input
+
+                    type="radio"
+
+                    name="address[addressType]"
+
+                    value="Office"
+
+                    <%= address?.addressType==="Office" ? "checked" : "" %>
+
+                >
+
+                <div>
+
+                    <i class='bx bx-briefcase'></i>
+
+                    <span>Office</span>
+
+                </div>
+
+            </label>
+
+            <label class="address-type-card">
+
+                <input
+
+                    type="radio"
+
+                    name="address[addressType]"
+
+                    value="Other"
+
+                    <%= address?.addressType==="Other" ? "checked" : "" %>
+
+                >
+
+                <div>
+
+                    <i class='bx bx-map-pin'></i>
+
+                    <span>Other</span>
+
+                </div>
+
+            </label>
+
+        </div>
+
+    </div>
+
+    <!-- Default Address -->
+
+    <div class="default-address-box">
+
+        <label class="switch">
+
+            <input
+
+                type="checkbox"
+
+                name="address[isDefault]"
+
+                <%= address?.isDefault ? "checked" : "" %>
+
+            >
+
+            <span class="slider"></span>
+
+        </label>
+
+        <div>
+
+            <h4>Make Default Address</h4>
+
+            <p>
+
+                This address will be selected automatically during checkout.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Buttons -->
+
+    <div class="form-buttons">
+        
+
+        <button
+
+            type="submit"
+
+            class="primary-btn"
+
+        >
+
+            <i class='bx bx-save'></i>
+
+            <%= address ? "Update Address" : "Save Address" %>
+
+        </button>
+
+    </div>
+
+</form>

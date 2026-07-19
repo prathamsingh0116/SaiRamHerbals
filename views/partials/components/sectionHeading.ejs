@@ -1,0 +1,19 @@
+<div class="section-heading">
+
+    <% if (typeof badge !== "undefined" && badge) { %>
+        <span class="section-badge">
+            <%= badge %>
+        </span>
+    <% } %>
+
+    <h2 class="section-title">
+        <%= title %>
+    </h2>
+
+    <% if (typeof description !== "undefined" && description) { %>
+        <p class="section-description">
+            <%= description %>
+        </p>
+    <% } %>
+
+</div>

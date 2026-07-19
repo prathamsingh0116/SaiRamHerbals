@@ -1,0 +1,51 @@
+<section class="admin-dashboard-stats-grid">
+
+    <%- include("statCard",{
+
+        label:"Products",
+
+        value:totalProducts,
+
+        subtitle:"Available Products",
+
+        icon:"bx bx-package"
+
+    }) %>
+
+    <%- include("statCard",{
+
+        label:"Users",
+
+        value:totalUsers,
+
+        subtitle:"Registered Users",
+
+        icon:"bx bx-user"
+
+    }) %>
+
+    <%- include("statCard",{
+
+        label:"Orders",
+
+        value:0,
+
+        subtitle:"Orders Received",
+
+        icon:"bx bx-cart"
+
+    }) %>
+
+    <%- include("statCard",{
+
+        label:"Announcements",
+
+        value:totalAnnouncements,
+
+        subtitle:"Active Announcements",
+
+        icon:"bx bx-bell"
+
+    }) %>
+
+</section>

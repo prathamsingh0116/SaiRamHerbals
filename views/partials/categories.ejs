@@ -1,0 +1,92 @@
+<%
+const categories = [
+    {
+        name:"Skin Care",
+        icon:"bx bxs-leaf",
+        slug:"skin-care"
+    },
+    {
+        name:"Hair Care",
+        icon:"bx bxs-spa",
+        slug:"hair-care"
+    },
+    {
+        name:"Personal Care",
+        icon:"bx bxs-droplet",
+        slug:"personal-care"
+    },
+    {
+        name:"Beauty",
+        icon:"bx bxs-star",
+        slug:"beauty"
+    },
+    {
+        name:"Pain Relief",
+        icon:"bx bxs-plus-medical",
+        slug:"pain-relief"
+    },
+    {
+        name:"Body Detox",
+        icon:"bx bxs-leaf",
+        slug:"body-detox"
+    },
+    {
+        name:"Diabetic Care",
+        icon:"bx bxs-heart",
+        slug:"diabetic-care"
+    },
+    {
+        name:"Immunity",
+        icon:"bx bxs-shield",
+        slug:"immunity"
+    },
+    {
+        name:"Weight Loss",
+        icon:"bx bx-run",
+        slug:"weight-loss"
+    },
+    {
+        name:"Sexual Wellness",
+        icon:"bx bx-health",
+        slug:"sexual-wellness"
+    }
+];
+%>
+
+<section class="categories">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>Explore Collection</span>
+
+            <h2>Shop by Categories</h2>
+
+            <p>
+                Discover our premium herbal products crafted for every wellness need.
+            </p>
+
+        </div>
+
+        <div class="category-grid">
+
+            <% categories.forEach(category=>{ %>
+
+                <a href="/products/category/<%= category.slug %>" class="category-card">
+
+                    <i class="<%= category.icon %>"></i>
+
+                    <h3><%= category.name %></h3>
+
+                    <span>Explore</span>
+
+                </a>
+
+            <% }) %>
+
+        </div>
+
+    </div>
+
+</section>

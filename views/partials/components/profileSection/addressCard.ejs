@@ -1,0 +1,170 @@
+<% if (defaultAddress) { %>
+
+<div class="address-card">
+
+    <div class="address-left">
+
+        <div class="address-icon">
+            <i class='bx bx-map-alt'></i>
+        </div>
+
+    </div>
+
+    <div class="address-right">
+
+        <div class="address-top">
+
+            <div>
+
+                <h3><%= defaultAddress.fullName %></h3>
+
+                <div class="address-phone">
+
+                    <i class='bx bx-phone'></i>
+
+                    <span><%= defaultAddress.phone %></span>
+
+                </div>
+
+            </div>
+
+            <div class="address-badges">
+
+                <% if(defaultAddress.isDefault){ %>
+
+                    <span class="default-badge">
+                        <i class='bx bxs-star'></i>
+                        Default
+                    </span>
+
+                <% } %>
+
+                <span class="address-type">
+
+                    <%= defaultAddress.addressType === "Home" ? "🏠 Home" : "🏢 Office" %>
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="address-body">
+
+            <p><%= defaultAddress.addressLine1 %></p>
+
+            <% if(defaultAddress.addressLine2){ %>
+
+                <p><%= defaultAddress.addressLine2 %></p>
+
+            <% } %>
+
+            <% if(defaultAddress.landmark){ %>
+
+                <p>
+
+                    <strong>Landmark :</strong>
+
+                    <%= defaultAddress.landmark %>
+
+                </p>
+
+            <% } %>
+
+        </div>
+
+        <div class="location-row">
+
+            <span>
+
+                <i class='bx bx-buildings'></i>
+
+                <%= defaultAddress.city %>
+
+            </span>
+
+            <span>
+
+                <i class='bx bx-map'></i>
+
+                <%= defaultAddress.state %>
+
+            </span>
+
+            <span>
+
+                <i class='bx bx-mail-send'></i>
+
+                <%= defaultAddress.pincode %>
+
+            </span>
+
+        </div>
+
+        <div class="country-row">
+
+            🌍 <%= defaultAddress.country %>
+
+        </div>
+
+        <% if(defaultAddress.alternatePhone){ %>
+
+        <div class="alternate-phone">
+
+            <i class='bx bx-phone-call'></i>
+
+            Alternate :
+
+            <%= defaultAddress.alternatePhone %>
+
+        </div>
+
+        <% } %>
+
+        <div class="address-actions">
+
+            <a href="/addresses" class="manage-btn">
+
+                <i class='bx bx-cog'></i>
+
+                Manage Addresses
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<% } else { %>
+
+<div class="empty-address">
+
+    <div class="empty-address-icon">
+
+        <i class='bx bx-map'></i>
+
+    </div>
+
+    <h3>No Default Address</h3>
+
+    <p>
+
+        You haven't added a delivery address yet.
+
+        Add your first address for faster checkout and quicker deliveries.
+
+    </p>
+
+    <a href="/addresses/new" class="add-address-btn">
+
+        <i class='bx bx-plus'></i>
+
+        Add Address
+
+    </a>
+
+</div>
+
+<% } %>

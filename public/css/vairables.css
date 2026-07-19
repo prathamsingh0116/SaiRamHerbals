@@ -1,0 +1,65 @@
+/* ======================================
+            COLOR SYSTEM
+====================================== */
+
+:root{
+
+    /* Primary */
+
+    --primary:#2E7D32;
+    --primary-light:#4CAF50;
+    --primary-dark:#1B5E20;
+
+    /* Secondary */
+
+    --secondary:#81C784;
+
+    /* Accent */
+
+    --accent:#D4AF37;
+
+    /* Background */
+
+    --bg:#F8FAF7;
+
+    --white:#FFFFFF;
+
+    /* Text */
+
+    --text:#1F2937;
+    --text-light:#6B7280;
+
+    /* Border */
+
+    --border:#E5E7EB;
+
+    /* Shadow */
+
+    --shadow-sm:0 4px 12px rgba(0,0,0,.05);
+
+    --shadow-md:0 10px 25px rgba(0,0,0,.08);
+
+    --shadow-lg:0 20px 45px rgba(0,0,0,.12);
+
+    /* Radius */
+
+    --radius-sm:8px;
+    --radius-md:14px;
+    --radius-lg:20px;
+    --radius-xl:30px;
+
+    /* Transition */
+
+    --transition:.35s ease;
+
+    /* Header */
+
+    --announcement-height:45px;
+
+    --navbar-height:80px;
+
+    /* Container */
+
+    --container:1400px;
+
+}

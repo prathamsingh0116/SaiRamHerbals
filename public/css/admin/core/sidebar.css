@@ -1,0 +1,335 @@
+/* ===================================================
+                ADMIN SIDEBAR V2
+=================================================== */
+
+.admin-sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:280px;
+
+    height:100vh;
+
+    background:#ffffff;
+
+    border-right:1px solid #e5e7eb;
+
+    display:flex;
+
+    flex-direction:column;
+
+    z-index:1000;
+
+    overflow-y:auto;
+
+    transition:.35s ease;
+
+    box-shadow:0 12px 35px rgba(15,23,42,.06);
+
+}
+
+/* ==========================
+        Scrollbar
+========================== */
+
+.admin-sidebar::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb{
+
+    background:#d1d5db;
+
+    border-radius:20px;
+
+}
+
+.admin-sidebar::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================
+        Logo
+========================== */
+
+.admin-sidebar-logo{
+
+    padding:22px 20px;
+
+    border-bottom:1px solid #eef2f7;
+
+}
+
+.admin-sidebar-logo a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    text-decoration:none;
+
+}
+
+.admin-sidebar-logo-icon{
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#2E7D32,#4CAF50);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:26px;
+
+    box-shadow:0 12px 20px rgba(46,125,50,.22);
+
+}
+
+.admin-sidebar-logo-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.admin-sidebar-logo-text h2{
+
+    margin:0;
+
+    color:#111827;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.admin-sidebar-logo-text span{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    color:#9ca3af;
+
+    text-transform:uppercase;
+
+}
+
+/* ==========================
+        Groups
+========================== */
+
+.admin-sidebar-group{
+
+    padding:18px 18px 0;
+
+}
+
+.admin-sidebar-title{
+
+    display:block;
+
+    padding:0 14px 10px;
+
+    color:#9ca3af;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+}
+
+/* ==========================
+        Links
+========================== */
+
+.admin-sidebar-link{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:100%;
+
+    height:52px;
+
+    padding:0 16px;
+
+    margin-bottom:6px;
+
+    border-radius:14px;
+
+    color:#4b5563;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.30s;
+
+}
+
+.admin-sidebar-link i{
+
+    width:22px;
+
+    font-size:22px;
+
+    text-align:center;
+
+    transition:.30s;
+
+}
+
+/* ==========================
+        Hover
+========================== */
+
+.admin-sidebar-link:hover{
+
+    background:#f0fdf4;
+
+    color:#2E7D32;
+
+    transform:translateX(4px);
+
+}
+
+.admin-sidebar-link:hover i{
+
+    transform:scale(1.12);
+
+}
+
+/* ==========================
+        Active
+========================== */
+
+.admin-sidebar-link.active{
+
+    background:linear-gradient(135deg,#2E7D32,#43A047);
+
+    color:#fff;
+
+    box-shadow:0 12px 24px rgba(46,125,50,.28);
+
+}
+
+.admin-sidebar-link.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-18px;
+
+    width:5px;
+
+    height:30px;
+
+    border-radius:20px;
+
+    background:#2E7D32;
+
+}
+
+.admin-sidebar-link.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+        Footer
+========================== */
+
+.admin-sidebar-footer{
+
+    margin-top:auto;
+
+    padding:20px;
+
+    border-top:1px solid #eef2f7;
+
+}
+
+.admin-sidebar-logout{
+
+    color:#dc2626;
+
+}
+
+.admin-sidebar-logout:hover{
+
+    background:#fef2f2;
+
+    color:#dc2626;
+
+}
+
+/*==================================================
+        MOBILE SIDEBAR
+==================================================*/
+
+@media (max-width:992px){
+
+    .admin-sidebar{
+
+        width:280px;
+
+        left:0;
+
+        transform:translateX(-100%);
+
+        transition:transform .35s ease;
+
+    }
+
+    .admin-sidebar.active{
+
+        transform:translateX(0);
+
+    }
+
+    .admin-layout-wrapper{
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+}

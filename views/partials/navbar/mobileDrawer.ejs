@@ -1,0 +1,334 @@
+<div class="mobile-overlay"></div>
+
+<aside class="mobile-drawer">
+
+    <!-- ===========================
+            Drawer Header
+    ============================ -->
+
+    <div class="mobile-header">
+
+        <a href="/" class="brand">
+
+            <div class="brand-icon">
+                <img src="/images/Logo/1.png" alt="Logo">                
+            </div>
+
+            <div class="brand-text">
+                <img src="/images/Logo/2.png" alt="Description">
+            </div>
+
+        </a>
+
+        <button
+            type="button"
+            class="drawer-close">
+
+            <i class='bx bx-x'></i>
+
+        </button>
+
+    </div>
+
+    <!-- ===========================
+            User Info
+    ============================ -->
+
+    <% if(currentUser){ %>
+
+    <%
+
+    const displayName =
+        currentUser.firstName ||
+        currentUser.fullName ||
+        currentUser.name ||
+        currentUser.username ||
+        "User";
+const captitalize = displayName[0].toUpperCase() + displayName.slice(1)
+
+    const initials = displayName
+        .trim()
+        .split(" ")
+        .map(word => word.charAt(0).toUpperCase())
+        .join("")
+        .substring(0,2);
+
+    %>
+
+    <div class="mobile-profile">
+
+        <div class="mobile-avatar">
+
+            <% if(currentUser.profileImage.url){ %>
+
+                    <img class="mobile-avatar" src="<%= currentUser.profileImage.url %>">
+
+                <% }else{ %>
+
+            <%= initials %>
+
+                <% } %>
+
+        </div>
+
+        <div>
+
+            <h3><%= captitalize %></h3>
+
+            <p>Welcome Back</p>
+
+        </div>
+
+    </div>
+
+    <% } %>
+
+    <!-- ===========================
+            Navigation
+    ============================ -->
+
+<ul class="mobile-nav">
+
+
+<% if (currentUser?.role === "admin") { %>
+    <li>
+
+            <a href="/admin/dashboard">
+        
+
+            <div class="nav-left">
+
+                <div class="nav-icon">
+
+                <i class='bx bx-grid-alt'></i>
+                    
+
+                </div>
+
+                <span>Dashboard</span>
+
+            </div>
+
+            <i class='bx bx-chevron-right nav-arrow'></i>
+
+        </a>
+
+    </li>
+
+    <% } %>
+
+   <ul class="mobile-nav">
+
+    <li>
+
+        <a href="/">
+
+            <div class="nav-left">
+
+                <div class="nav-icon">
+
+                    <i class='bx bx-home-alt'></i>
+
+                </div>
+
+                <span>Home</span>
+
+            </div>
+
+            <i class='bx bx-chevron-right nav-arrow'></i>
+
+        </a>
+
+    </li>
+
+    <li>
+
+        <a href="/products">
+
+            <div class="nav-left">
+
+                <div class="nav-icon">
+
+                    <i class='bx bx-shopping-bag'></i>
+
+                </div>
+
+                <span>Products</span>
+
+            </div>
+
+            <i class='bx bx-chevron-right nav-arrow'></i>
+
+        </a>
+
+    </li>
+    
+
+    <li class="mobile-category">
+
+        <button class="mobile-category-btn">
+
+            <div class="nav-left">
+
+                <div class="nav-icon">
+
+                    <i class='bx bx-category'></i>
+
+                </div>
+
+                <span>Categories</span>
+
+            </div>
+
+            <i class='bx bx-chevron-down nav-arrow'></i>
+            <i class='bx bx-chevron-up nav-arrow-up'></i>
+
+        </button>
+
+        <ul class="mobile-category-list">
+
+            <li><a href="/products?category=Skin Care">Skin Care</a></li>
+
+            <li><a href="/products?category=Hair Care">Hair Care</a></li>
+
+            <li><a href="/products?category=Personal Care">Personal Care</a></li>
+
+            <li><a href="/products?category=Beauty">Beauty</a></li>
+
+            <li><a href="/products?category=Pain Relief">Pain Relief</a></li>
+
+            <li><a href="/products?category=Body Detox">Body Detox</a></li>
+
+            <li><a href="/products?category=Diabetic Care">Diabetic Care</a></li>
+
+            <li><a href="/products?category=Immunity">Immunity</a></li>
+
+            <li><a href="/products?category=Weight Loss">Weight Loss</a></li>
+
+            <li><a href="/products?category=Sexual Wellness">Sexual Wellness</a></li>
+
+        </ul>
+
+    </li>
+
+    <li>
+
+        <a href="/about">
+
+            <div class="nav-left">
+
+                <div class="nav-icon">
+
+                    <i class='bx bx-info-circle'></i>
+
+                </div>
+
+                <span>About</span>
+
+            </div>
+
+            <i class='bx bx-chevron-right nav-arrow'></i>
+
+        </a>
+
+    </li>
+
+    <li>
+
+        <a href="/contact">
+
+            <div class="nav-left">
+
+                <div class="nav-icon">
+
+                    <i class='bx bx-phone'></i>
+
+                </div>
+
+                <span>Contact</span>
+
+            </div>
+
+            <i class='bx bx-chevron-right nav-arrow'></i>
+
+        </a>
+
+    </li>
+
+    <hr>
+
+    <% if(currentUser){ %>
+
+    <li>
+
+        <a href="/profile">
+
+            <div class="nav-left">
+
+                <div class="nav-icon">
+
+                    <i class='bx bx-user'></i>
+
+                </div>
+
+                <span>My Profile</span>
+
+            </div>
+
+            <i class='bx bx-chevron-right nav-arrow'></i>
+
+        </a>
+
+    </li>
+
+    <li>
+        <button onclick="return confirm('Are you sure you want to logout?')">
+        <a href="/logout">
+
+            <div class="nav-left">
+
+                <div class="nav-icon logout">
+
+                    <i class='bx bx-log-out'></i>
+
+                </div>
+
+                <span>Logout</span>
+
+            </div>
+
+            <i class='bx bx-chevron-right nav-arrow'></i>
+
+        </a>
+</button>
+    </li>
+
+    <% } else { %>
+
+    <li>
+
+        <a href="/login">
+
+            <div class="nav-left">
+
+                <div class="nav-icon">
+
+                    <i class='bx bx-log-in'></i>
+
+                </div>
+
+                <span>Login</span>
+
+            </div>
+
+            <i class='bx bx-chevron-right nav-arrow'></i>
+
+        </a>
+
+    </li>
+
+    <% } %>
+
+</ul>
+
+</aside>

@@ -1,0 +1,243 @@
+<% layout("layouts/admin") %>
+
+<div class="announcement-page">
+
+    <!-- ==========================
+            PAGE HEADER
+    =========================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1 class="page-title">
+
+                <i class='bx bxs-megaphone'></i>
+
+                Announcement Manager
+
+            </h1>
+
+            <p class="page-subtitle">
+
+                Manage all website announcements from one place.
+
+            </p>
+
+        </div>
+
+        <a href="/admin/announcements/new" class="primary-btn">
+
+            <i class='bx bx-plus'></i>
+
+            New Announcement
+
+        </a>
+
+    </div>
+
+    <!-- ==========================
+            STATS
+    =========================== -->
+
+    <div class="announcement-stats">
+
+        <div class="stat-card">
+
+            <span>Total</span>
+
+            <h2>
+
+                <%= announcements.length %>
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card active">
+
+            <span>Active</span>
+
+            <h2>
+
+                <%= announcements.filter(a=>a.isActive).length %>
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card inactive">
+
+            <span>Inactive</span>
+
+            <h2>
+
+                <%= announcements.filter(a=>!a.isActive).length %>
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+            TABLE
+    =========================== -->
+
+    <% if(announcements.length===0){ %>
+
+        <div class="empty-state">
+
+            <i class='bx bxs-megaphone'></i>
+
+            <h3>
+
+                No Announcements Yet
+
+            </h3>
+
+            <p>
+
+                Create your first announcement.
+
+            </p>
+
+            
+
+        </div>
+
+    <% }else{ %>
+
+    <div class="announcement-table-wrapper">
+
+        <table class="announcement-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Title</th>
+
+                    <th>Type</th>
+
+                    <th>Priority</th>
+
+                    <th>Status</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            <% announcements.forEach(a=>{ %>
+
+                <tr>
+
+                    <td>
+
+                        <div class="announcement-title">
+
+                            <strong>
+
+                                <%= a.title %>
+
+                            </strong>
+
+                            <small>
+
+                                <%= a.message %>
+
+                            </small>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        <span class="type-badge <%= a.type %>">
+
+                            <%= a.type %>
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="priority-badge">
+
+                            <%= a.priority %>
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <% if(a.isActive){ %>
+
+                            <span class="status active">
+
+                                Active
+
+                            </span>
+
+                        <% }else{ %>
+
+                            <span class="status inactive">
+
+                                Inactive
+
+                            </span>
+
+                        <% } %>
+
+                    </td>
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <a href="/admin/announcements/<%=a._id%>/edit"
+
+                               class="edit-btn">
+
+                                <i class='bx bx-edit'></i>
+
+                            </a>
+
+                            <form action="/admin/announcements/<%=a._id%>?_method=DELETE"
+
+                                  method="POST"
+
+                                  class="delete-form">
+
+                                <button class="delete-btn">
+
+                                    <i class='bx bx-trash'></i>
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            <% }) %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <% } %>
+
+</div>

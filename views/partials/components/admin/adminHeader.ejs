@@ -1,0 +1,155 @@
+<header class="admin-header-v2">
+
+    <!-- Left -->
+
+    <div class="admin-header-v2-left">
+
+        <button
+            class="admin-header-v2-menu-btn"
+            id="adminSidebarToggle">
+
+            <i class='bx bx-menu'></i>
+
+        </button>
+
+        <div class="admin-header-v2-breadcrumb">
+
+            <h2>
+
+                <!-- <%= title || "Dashboard" %> -->
+
+            </h2>
+
+            <p>
+
+                Admin Panel
+
+                <i class='bx bx-chevron-right'></i>
+
+                <span>
+
+                    <%= title || "Dashboard" %>
+
+                </span>
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Right -->
+
+    <div class="admin-header-v2-right">
+
+        <form class="admin-header-v2-search">
+
+            <i class='bx bx-search'></i>
+
+            <input
+
+                type="text"
+
+                placeholder="Search products, users, orders..."
+
+            >
+
+        </form>
+
+        <button class="admin-header-v2-icon">
+
+            <i class='bx bx-bell'></i>
+
+            <span class="admin-header-v2-notification"></span>
+
+        </button>
+
+        <button class="admin-header-v2-icon">
+
+            <i class='bx bx-moon'></i>
+
+        </button>
+
+        <div class="admin-header-v2-profile" id="adminProfile">
+
+            <div class="admin-header-v2-avatar">
+
+                <% if(currentUser.profileImage && currentUser.profileImage.url){ %>
+
+                    <img
+
+                        src="<%= currentUser.profileImage.url %>"
+
+                        alt="<%= currentUser.fullName %>"
+
+                    >
+
+                <% }else{ %>
+
+                    <span>
+
+                        <%= currentUser.fullName.charAt(0).toUpperCase() %>
+
+                    </span>
+
+                <% } %>
+
+            </div>
+
+            <div class="admin-header-v2-user">
+
+                <h4>
+
+                    <%= currentUser.fullName %>
+
+                </h4>
+
+                <span>
+
+                    Super Admin
+
+                </span>
+
+            </div>
+
+            <i class='bx bx-chevron-down'></i>
+
+            <div class="admin-header-v2-dropdown">
+
+                <a href="/profile">
+
+                    <i class='bx bx-user'></i>
+
+                    My Profile
+
+                </a>
+
+                <a href="/">
+
+                    <i class='bx bx-home'></i>
+
+                    Website
+
+                </a>
+
+                <hr>
+
+                <a
+
+                    href="/logout"
+
+                    class="admin-header-v2-logout">
+
+                    <i class='bx bx-log-out'></i>
+
+                    Logout
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>

@@ -1,0 +1,358 @@
+<% layout("/layouts/admin") %>
+
+
+
+<div class="admin-review-page">
+
+    <!--==========================
+            PAGE HEADER
+    ===========================-->
+
+    <div class="review-page-header">
+
+        <div>
+
+            <h1>
+
+                <i class='bx bxs-star'></i>
+
+                Review Management
+
+            </h1>
+
+            <p>
+
+                Manage customer reviews, ratings and feedback.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!--==========================
+            STATS
+    ===========================-->
+
+    <div class="review-stats">
+
+        <div class="review-stat-card green">
+
+            <i class='bx bx-message-square-dots'></i>
+
+            <div>
+
+                <span>Total Reviews</span>
+
+                <h2><%= stats.total %></h2>
+
+            </div>
+
+        </div>
+
+        <div class="review-stat-card yellow">
+
+            <i class='bx bxs-star'></i>
+
+            <div>
+
+                <span>Average Rating</span>
+
+                <h2><%= stats.average %></h2>
+
+            </div>
+
+        </div>
+
+        <div class="review-stat-card blue">
+
+            <i class='bx bx-check-circle'></i>
+
+            <div>
+
+                <span>Verified Reviews</span>
+
+                <h2><%= stats.verified %></h2>
+
+            </div>
+
+        </div>
+
+        <div class="review-stat-card red">
+
+            <i class='bx bx-angry'></i>
+
+            <div>
+
+                <span>1 Star Reviews</span>
+
+                <h2><%= stats.oneStar %></h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--==========================
+            SEARCH
+    ===========================-->
+
+    <div class="review-toolbar">
+    <div class="review-toolbar">
+
+    <form
+    action="/admin/reviews"
+    method="GET"
+    class="review-search">
+
+        <div class="search-box">
+
+            <i class='bx bx-search'></i>
+
+            <input
+            type="text"
+            name="search"
+            placeholder="Search by customer, product or review..."
+            value="<%= search || '' %>">
+
+        </div>
+
+        <button type="submit">
+
+            <i class='bx bx-search'></i>
+
+            Search
+
+        </button>
+
+    </form>
+
+    <div class="review-filters">
+
+    <select name="rating" onchange="this.form.submit()">
+
+        <option value="">All Ratings</option>
+
+        <option value="5" <%= rating=="5"?"selected":"" %>>
+
+            ★★★★★
+
+        </option>
+
+        <option value="4" <%= rating=="4"?"selected":"" %>>
+
+            ★★★★☆
+
+        </option>
+
+        <option value="3" <%= rating=="3"?"selected":"" %>>
+
+            ★★★☆☆
+
+        </option>
+
+        <option value="2" <%= rating=="2"?"selected":"" %>>
+
+            ★★☆☆☆
+
+        </option>
+
+        <option value="1" <%= rating=="1"?"selected":"" %>>
+
+            ★☆☆☆☆
+
+        </option>
+
+    </select>
+
+    <select name="verified" onchange="this.form.submit()">
+
+        <option value="">All Reviews</option>
+
+        <option value="true" <%= verified=="true"?"selected":"" %>>
+
+            Verified
+
+        </option>
+
+        <option value="false" <%= verified=="false"?"selected":"" %>>
+
+            Unverified
+
+        </option>
+
+    </select>
+
+</div>
+
+</div>
+
+    <!--==========================
+            REVIEW GRID
+    ===========================-->
+
+    <% if(reviews.length){ %>
+
+    <div class="review-grid">
+
+        <% reviews.forEach(review=>{ %>
+
+        <div class="admin-review-card">
+
+            <!-- TOP -->
+
+            <div class="review-user">
+
+                <div class="avatar">
+
+                    <%= review.user.fullName.charAt(0).toUpperCase() %>
+
+                </div>
+
+                <div>
+
+                    <h3>
+
+                        <%= review.user.fullName %>
+
+                    </h3>
+
+                    <small>
+
+                        <%= review.user.email %>
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <!-- Product -->
+
+            <div class="review-product">
+
+                <strong>
+
+                    Product
+
+                </strong>
+
+                <p>
+
+                    <%= review.product.name %>
+
+                </p>
+
+            </div>
+
+            <!-- Rating -->
+
+            <div class="review-rating">
+
+                <% for(let i=1;i<=5;i++){ %>
+
+                    <% if(i<=review.rating){ %>
+
+                        <i class='bx bxs-star'></i>
+
+                    <% }else{ %>
+
+                        <i class='bx bx-star'></i>
+
+                    <% } %>
+
+                <% } %>
+
+            </div>
+
+            <!-- Verified -->
+
+            <% if(review.isVerifiedPurchase){ %>
+
+            <span class="verified-review">
+
+                <i class='bx bx-check-circle'></i>
+
+                Verified Purchase
+
+            </span>
+
+            <% } %>
+
+            <!-- Comment -->
+
+            <div class="review-comment">
+
+                <%= review.comment %>
+
+            </div>
+
+            <!-- Footer -->
+
+            <div class="review-footer">
+
+                <small>
+
+                    <%= review.createdAt.toDateString() %>
+
+                </small>
+
+                <div class="review-actions">
+
+                    <a
+                    href="/products/<%= review.product.slug %>"
+                    target="_blank"
+                    class="view-review">
+
+                        <i class='bx bx-show'></i>
+
+                    </a>
+
+                    <form
+                    action="/admin/reviews/<%= review._id %>?_method=DELETE"
+                    method="POST"
+                    onsubmit="return confirm('Delete this review permanently?')">
+
+                        <button
+                        class="delete-review">
+
+                            <i class='bx bx-trash'></i>
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <% }) %>
+
+    </div>
+
+    <% } else { %>
+
+    <div class="empty-review">
+
+        <i class='bx bx-message-square-x'></i>
+
+        <h2>
+
+            No Reviews Found
+
+        </h2>
+
+        <p>
+
+            There are currently no customer reviews.
+
+        </p>
+
+    </div>
+
+    <% } %>
+
+</div>

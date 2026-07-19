@@ -1,0 +1,25 @@
+<% layout("layouts/main") %>
+
+<link rel="stylesheet" href="/css/website/profile.css">
+
+<main class="profile-page">
+
+    <div class="profile-content container">
+
+        <%- include("../../../partials/components/profileSection/profileHeader") %>
+
+        <%- include("../../../partials/components/profileSection/quickActions") %>
+
+        <%- include("../../../partials/components/profileSection/addressCard") %>
+
+        <%- include("../../../partials/components/profileSection/recentOrders") %>
+
+        <%- include("../../../partials/components/profileSection/securitySection") %>
+
+<%- include("../../../partials/components/profileSection/dangerZone") %>
+
+    </div>
+
+</main>
+
+<script src="/js/website/profile.js"></script>

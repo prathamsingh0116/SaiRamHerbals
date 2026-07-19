@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= typeof title !== "undefined" ? title : "Authentication | Sairam Herbals" %></title>
+
+    <link rel="icon" type="image/png" href="/images/Logo/6.png">
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Boxicons -->
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/product.css">
+
+
+
+</head>
+
+<body>
+
+    <%- body %>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+const success = "<%= success && success.length ? success[0] : '' %>";
+const error = "<%= error && error.length ? error[0] : '' %>";
+
+if (success) {
+    Swal.fire({
+        icon: "success",
+        title: success,
+        timer: 2000,
+        showConfirmButton: false,
+        toast: true,
+        position: "top"
+    });
+}
+
+if (error) {
+    Swal.fire({
+        icon: "error",
+        title: error,
+        timer: 2000,
+        showConfirmButton: false,
+        toast: true,
+        position: "top"
+    });
+}
+</script>
+
+<script src="/js/announcement.js"></script>
+<script src="/js/admin.js"></script>
+<script src="/js/auth.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<% layout("layouts/main") %>
+
+<div class="container" style="padding:80px 0;">
+
+  <% if(wishlist.length === 0){ %>
+
+<div class="empty-wishlist">
+
+    <div class="empty-icon">
+        <i class='bx bx-heart'></i>
+    </div>
+
+    <h2>My Wishlist</h2>
+
+    <p>Your wishlist is empty.</p>
+
+    <a href="/products" class="shop-btn">
+
+        <i class='bx bx-shopping-bag'></i>
+
+        Continue Shopping
+
+    </a>
+
+</div>
+
+<% } else { %>
+
+       <% wishlist.forEach(item => {
+
+const product = item.product;
+
+const finalPrice =
+product.price -
+(product.price * product.discount)/100;
+
+%>
+
+<div class="wishlist-card">
+
+    <div class="wishlist-image">
+
+        <img
+        src="<%= product.images[0]?.url || '/images/no-image.png' %>"
+        alt="<%= product.name %>">
+
+        <% if(product.discount>0){ %>
+
+        <span class="discount-badge">
+
+            -<%= product.discount %>%
+
+        </span>
+
+        <% } %>
+
+    </div>
+
+    <div class="wishlist-content">
+
+        <span class="wishlist-brand">
+
+            <%= product.brand %>
+
+        </span>
+
+        <h3>
+
+            <%= product.name %>
+
+        </h3>
+
+        <div class="wishlist-meta">
+
+            <span>
+
+                Category :
+                <strong><%= product.category %></strong>
+
+            </span>
+
+            <span>
+
+                SKU :
+                <strong><%= product.sku %></strong>
+
+            </span>
+
+        </div>
+
+        <div class="wishlist-price">
+
+            <h2>
+
+                ₹<%= finalPrice.toFixed(0) %>
+
+            </h2>
+
+            <% if(product.discount>0){ %>
+
+            <span class="old-price">
+
+                ₹<%= product.price %>
+
+            </span>
+
+            <% } %>
+
+        </div>
+
+        <div class="wishlist-buttons">
+
+            <a
+            href="/products/<%= product.slug %>"
+            class="view-btn">
+
+                <i class='bx bx-show'></i>
+
+                View Product
+
+            </a>
+
+            <form
+            action="/cart/add/<%= product.slug %>"
+            method="POST">
+
+                <input
+                type="hidden"
+                name="quantity"
+                value="1">
+
+                <button
+                type="submit"
+                class="cart-btn">
+
+                    <i class='bx bx-cart'></i>
+
+                    Add To Cart
+
+                </button>
+
+            </form>
+
+            <form
+            action="/wishlist/remove/<%= product.slug %>"
+            method="POST">
+
+                <button
+                type="submit"
+                class="remove-btn">
+
+                    <i class='bx bx-trash'></i>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<% }) %>
+
+    <% } %>
+
+</div>

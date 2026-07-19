@@ -1,0 +1,235 @@
+/* ===================================================
+                ADMIN LAYOUT V2
+=================================================== */
+
+:root{
+
+    --admin-sidebar-width:280px;
+
+    --admin-header-height:80px;
+
+    --admin-bg:#f8fafc;
+
+}
+
+/* ==========================
+        BODY
+========================== */
+
+body{
+
+    margin:0;
+
+    background:var(--admin-bg);
+
+    font-family:"Inter",sans-serif;
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================
+        Layout
+========================== */
+
+.admin-layout{
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:var(--admin-bg);
+
+}
+
+/* ==========================
+        Wrapper
+========================== */
+
+.admin-layout-wrapper{
+
+    margin-left:var(--admin-sidebar-width);
+
+    width:calc(100% - var(--admin-sidebar-width));
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    transition:.35s ease;
+
+}
+
+/* ==========================
+        Content
+========================== */
+
+.admin-layout-content{
+
+    flex:1;
+
+    padding:30px;
+
+}
+
+/* ==========================
+        Page Container
+========================== */
+
+.admin-page-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+        Section
+========================== */
+
+.admin-section{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 12px 30px rgba(15,23,42,.06);
+
+}
+
+/* ==========================
+        Grid
+========================== */
+
+.admin-grid-2{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+
+}
+
+.admin-grid-3{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+}
+
+.admin-grid-4{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+}
+
+/* ==========================
+        Responsive
+========================== */
+
+@media(max-width:1200px){
+
+.admin-grid-4{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:992px){
+
+.admin-layout-wrapper{
+
+margin-left:0;
+
+width:100%;
+
+}
+
+.admin-sidebar{
+
+transform:translateX(-100%);
+
+}
+
+.admin-sidebar.active{
+
+transform:translateX(0);
+
+}
+
+.admin-layout-content{
+
+padding:22px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.admin-grid-2,
+
+.admin-grid-3,
+
+.admin-grid-4{
+
+grid-template-columns:1fr;
+
+}
+
+.admin-layout-content{
+
+padding:18px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.admin-header-v2{
+
+padding:0 16px;
+
+}
+
+.admin-layout-content{
+
+padding:15px;
+
+}
+
+}
+
+.admin-sidebar-hidden .admin-sidebar{
+
+left:-280px;
+
+}
+
+.admin-sidebar-hidden .admin-layout-wrapper{
+
+margin-left:0;
+
+width:100%;
+
+}

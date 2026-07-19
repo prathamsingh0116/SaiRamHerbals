@@ -1,0 +1,107 @@
+<section class="admin-dashboard-products-section">
+
+    <div class="admin-dashboard-section-header">
+
+        <h3>Recent Products</h3>
+
+        <a href="/admin/products">
+
+            View All
+
+            <i class='bx bx-right-arrow-alt'></i>
+
+        </a>
+
+    </div>
+
+    <% if(recentProducts.length){ %>
+
+        <div class="admin-dashboard-products-grid">
+
+            <% recentProducts.forEach(product=>{ %>
+
+                <div class="admin-dashboard-product-card">
+
+                    <div class="admin-dashboard-product-image">
+
+                        <% if(product.images && product.images.length){ %>
+
+                            <img src="<%= product.images[0].url %>" alt="<%= product.name %>">
+
+                        <% }else{ %>
+
+                            <div class="admin-dashboard-no-image">
+
+                                <i class='bx bx-image'></i>
+
+                            </div>
+
+                        <% } %>
+
+                    </div>
+
+                    <div class="admin-dashboard-product-body">
+
+                        <h4>
+
+                            <%= product.name %>
+
+                        </h4>
+
+                        <span>
+
+                            <%= product.category %>
+
+                        </span>
+
+                        <div class="admin-dashboard-product-info">
+
+                            <strong>
+
+                                ₹<%= product.price %>
+
+                            </strong>
+
+                            <span>
+
+                                Stock :
+
+                                <%= product.stock %>
+
+                            </span>
+
+                        </div>
+
+                        <a
+
+                        href="/admin/products/<%= product._id %>/edit"
+
+                        class="admin-dashboard-edit-btn">
+
+                            Edit
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            <% }) %>
+
+        </div>
+
+    <% }else{ %>
+
+        <div class="admin-dashboard-empty">
+
+            <i class='bx bx-package'></i>
+
+            <h4>No Products Found</h4>
+
+            <p>Add your first product.</p>
+
+        </div>
+
+    <% } %>
+
+</section>

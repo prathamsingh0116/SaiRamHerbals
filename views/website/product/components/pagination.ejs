@@ -1,0 +1,59 @@
+<% if(totalPages > 1){ %>
+
+<nav class="pagination-wrapper">
+
+    <!-- Previous -->
+
+    <% if(currentPage > 1){ %>
+
+        <a
+        href="?page=<%= currentPage-1 %>"
+        class="pagination-btn">
+
+            <i class='bx bx-chevron-left'></i>
+
+            <span>Previous</span>
+
+        </a>
+
+    <% } %>
+
+    <!-- Page Numbers -->
+
+    <div class="pagination-pages">
+
+        <% for(let i=1;i<=totalPages;i++){ %>
+
+            <a
+
+            href="?page=<%= i %>"
+
+            class="page-number <%= currentPage===i ? 'active' : '' %>">
+
+                <%= i %>
+
+            </a>
+
+        <% } %>
+
+    </div>
+
+    <!-- Next -->
+
+    <% if(currentPage < totalPages){ %>
+
+        <a
+        href="?page=<%= currentPage+1 %>"
+        class="pagination-btn">
+
+            <span>Next</span>
+
+            <i class='bx bx-chevron-right'></i>
+
+        </a>
+
+    <% } %>
+
+</nav>
+
+<% } %>

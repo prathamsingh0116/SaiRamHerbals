@@ -1,0 +1,965 @@
+/* ===================================================
+                ADMIN SIDEBAR V2
+=================================================== */
+
+.admin-sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:280px;
+
+    height:100vh;
+
+    background:#ffffff;
+
+    border-right:1px solid #e5e7eb;
+
+    display:flex;
+
+    flex-direction:column;
+
+    z-index:1000;
+
+    overflow-y:auto;
+
+    transition:.35s ease;
+
+    box-shadow:0 12px 35px rgba(15,23,42,.06);
+
+}
+
+/* ==========================
+        Scrollbar
+========================== */
+
+.admin-sidebar::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb{
+
+    background:#d1d5db;
+
+    border-radius:20px;
+
+}
+
+.admin-sidebar::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================
+        Logo
+========================== */
+
+.admin-sidebar-logo{
+
+    padding:28px 24px;
+
+    border-bottom:1px solid #eef2f7;
+
+}
+
+.admin-sidebar-logo a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    text-decoration:none;
+
+}
+
+.admin-sidebar-logo-icon{
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#2E7D32,#4CAF50);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:26px;
+
+    box-shadow:0 12px 20px rgba(46,125,50,.22);
+
+}
+
+.admin-sidebar-logo-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.admin-sidebar-logo-text h2{
+
+    margin:0;
+
+    color:#111827;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.admin-sidebar-logo-text span{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    color:#9ca3af;
+
+    text-transform:uppercase;
+
+}
+
+/* ==========================
+        Groups
+========================== */
+
+.admin-sidebar-group{
+
+    padding:18px 18px 0;
+
+}
+
+.admin-sidebar-title{
+
+    display:block;
+
+    padding:0 14px 10px;
+
+    color:#9ca3af;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+}
+
+/* ==========================
+        Links
+========================== */
+
+.admin-sidebar-link{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:100%;
+
+    height:52px;
+
+    padding:0 16px;
+
+    margin-bottom:6px;
+
+    border-radius:14px;
+
+    color:#4b5563;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.30s;
+
+}
+
+.admin-sidebar-link i{
+
+    width:22px;
+
+    font-size:22px;
+
+    text-align:center;
+
+    transition:.30s;
+
+}
+
+/* ==========================
+        Hover
+========================== */
+
+.admin-sidebar-link:hover{
+
+    background:#f0fdf4;
+
+    color:#2E7D32;
+
+    transform:translateX(4px);
+
+}
+
+.admin-sidebar-link:hover i{
+
+    transform:scale(1.12);
+
+}
+
+/* ==========================
+        Active
+========================== */
+
+.admin-sidebar-link.active{
+
+    background:linear-gradient(135deg,#2E7D32,#43A047);
+
+    color:#fff;
+
+    box-shadow:0 12px 24px rgba(46,125,50,.28);
+
+}
+
+.admin-sidebar-link.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-18px;
+
+    width:5px;
+
+    height:30px;
+
+    border-radius:20px;
+
+    background:#2E7D32;
+
+}
+
+.admin-sidebar-link.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+        Footer
+========================== */
+
+.admin-sidebar-footer{
+
+    margin-top:auto;
+
+    padding:20px;
+
+    border-top:1px solid #eef2f7;
+
+}
+
+.admin-sidebar-logout{
+
+    color:#dc2626;
+
+}
+
+.admin-sidebar-logout:hover{
+
+    background:#fef2f2;
+
+    color:#dc2626;
+
+}
+
+
+
+
+/*==================================================
+            ADMIN DASHBOARD
+==================================================*/
+
+.admin-dashboard-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+/*=============================
+        Banner
+==============================*/
+
+.admin-dashboard-banner{
+
+    background:linear-gradient(135deg,#2E7D32,#43A047);
+
+    border-radius:24px;
+
+    padding:40px;
+
+    color:#fff;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.admin-dashboard-banner::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:280px;
+
+    height:280px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    right:-90px;
+
+    top:-90px;
+
+}
+
+.admin-dashboard-banner-content{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+.admin-dashboard-banner-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 16px;
+
+    border-radius:40px;
+
+    background:rgba(255,255,255,.16);
+
+    font-size:13px;
+
+}
+
+.admin-dashboard-banner-title{
+
+    margin-top:18px;
+
+    font-size:38px;
+
+    color:#fff;
+
+}
+
+.admin-dashboard-banner-description{
+
+    margin-top:14px;
+
+    max-width:620px;
+
+    color:rgba(255,255,255,.9);
+
+}
+
+.admin-dashboard-primary-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:#fff;
+
+    color:#2E7D32;
+
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.admin-dashboard-primary-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/*=============================
+        Stats
+==============================*/
+
+.admin-dashboard-stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+}
+
+.admin-dashboard-stat-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 10px 24px rgba(15,23,42,.05);
+
+    transition:.3s;
+
+}
+
+.admin-dashboard-stat-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.admin-dashboard-stat-label{
+
+    color:#6b7280;
+
+    font-size:14px;
+
+}
+
+.admin-dashboard-stat-card h2{
+
+    margin:10px 0;
+
+    font-size:34px;
+
+    color:#111827;
+
+}
+
+.admin-dashboard-stat-card small{
+
+    color:#9ca3af;
+
+}
+
+.admin-dashboard-stat-icon{
+
+    width:66px;
+
+    height:66px;
+
+    border-radius:18px;
+
+    background:#ecfdf5;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.admin-dashboard-stat-icon i{
+
+    font-size:30px;
+
+    color:#2E7D32;
+
+}
+
+@media(max-width:1200px){
+
+.admin-dashboard-stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.admin-dashboard-banner{
+
+padding:28px;
+
+}
+
+.admin-dashboard-banner-content{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.admin-dashboard-banner-title{
+
+font-size:30px;
+
+}
+
+.admin-dashboard-stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+
+
+/*=========================================
+        Recent Products
+=========================================*/
+
+.admin-dashboard-content-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+}
+
+.admin-dashboard-products-section{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:24px;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 10px 24px rgba(15,23,42,.05);
+
+}
+
+.admin-dashboard-section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:22px;
+
+}
+
+.admin-dashboard-section-header h3{
+
+    font-size:22px;
+
+}
+
+.admin-dashboard-section-header a{
+
+    color:#2E7D32;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    font-weight:600;
+
+}
+
+.admin-dashboard-products-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.admin-dashboard-product-card{
+
+    border:1px solid #e5e7eb;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.3s;
+
+    background:#fff;
+
+}
+
+.admin-dashboard-product-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 14px 30px rgba(15,23,42,.08);
+
+}
+
+.admin-dashboard-product-image{
+
+    height:180px;
+
+    background:#f8fafc;
+
+}
+
+.admin-dashboard-product-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.admin-dashboard-no-image{
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:45px;
+
+    color:#cbd5e1;
+
+}
+
+.admin-dashboard-product-body{
+
+    padding:18px;
+
+}
+
+.admin-dashboard-product-body h4{
+
+    margin-bottom:6px;
+
+}
+
+.admin-dashboard-product-body span{
+
+    color:#6b7280;
+
+    font-size:14px;
+
+}
+
+.admin-dashboard-product-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:16px 0;
+
+}
+
+.admin-dashboard-edit-btn{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    height:44px;
+
+    border-radius:12px;
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    font-weight:600;
+
+}
+
+.admin-dashboard-edit-btn:hover{
+
+    background:#256b2a;
+
+}
+
+.admin-dashboard-empty{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+}
+
+.admin-dashboard-empty i{
+
+    font-size:60px;
+
+    color:#d1d5db;
+
+}
+
+.admin-dashboard-empty h4{
+
+    margin-top:16px;
+
+}
+
+@media(max-width:992px){
+
+.admin-dashboard-content-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.admin-dashboard-products-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+/*=========================================
+        LOW STOCK
+=========================================*/
+
+.admin-dashboard-low-stock-section,
+.admin-dashboard-actions-section{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:24px;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 10px 24px rgba(15,23,42,.05);
+
+}
+
+.admin-dashboard-low-stock-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #eef2f7;
+
+}
+
+.admin-dashboard-low-stock-item:last-child{
+
+    border:none;
+
+}
+
+.admin-dashboard-low-stock-item h4{
+
+    font-size:15px;
+
+    margin-bottom:4px;
+
+}
+
+.admin-dashboard-low-stock-item span{
+
+    font-size:13px;
+
+    color:#6b7280;
+
+}
+
+.admin-dashboard-stock-badge{
+
+    min-width:44px;
+
+    height:36px;
+
+    border-radius:12px;
+
+    background:#fef2f2;
+
+    color:#dc2626;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+}
+
+/*=========================================
+        QUICK ACTIONS
+=========================================*/
+
+.admin-dashboard-actions-section{
+
+    margin-top:24px;
+
+}
+
+.admin-dashboard-actions-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+.admin-dashboard-action-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    height:120px;
+
+    border-radius:18px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    transition:.3s;
+
+}
+
+.admin-dashboard-action-card:hover{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    transform:translateY(-4px);
+
+}
+
+.admin-dashboard-action-card i{
+
+    font-size:34px;
+
+}
+
+.admin-dashboard-empty-small{
+
+    padding:40px 10px;
+
+    text-align:center;
+
+    color:#9ca3af;
+
+}
+
+@media(max-width:576px){
+
+.admin-dashboard-actions-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

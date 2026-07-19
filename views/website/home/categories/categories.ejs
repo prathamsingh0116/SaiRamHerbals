@@ -1,0 +1,78 @@
+<section class="category section">
+
+    <div class="container">
+
+        <%- include("../../../partials/components/sectionHeading",{
+
+badge:"Categories",
+
+title:"Shop By Category",
+
+description:"Find premium herbal products based on your wellness needs."
+
+}) %>
+
+    
+
+<div class="website-category-grid">
+
+<% categories.forEach(category=>{ %>
+
+<a
+href="/products?category=<%= category._id%>"
+class="website-category-card">
+
+<div class="website-category-image">
+
+  <% if(category.image && category.image.length && category.image[0].url){ %>
+
+    <img
+        src="<%= category.image[0].url %>"
+        alt="<%= category._id %>">
+
+<% } else { %>
+
+    <img
+        src="https://png.pngtree.com/png-clipart/20230917/original/pngtree-no-image-available-icon-flatvector-illustration-thumbnail-graphic-illustration-vector-png-image_12323920.png"
+        alt="<%= category._id %>">
+
+<% } %>
+<div class="website-category-overlay">
+
+<span>
+
+Explore Collection
+
+<i class='bx bx-right-arrow-alt'></i>
+
+</span>
+
+</div>
+
+</div>
+
+<div class="website-category-content">
+
+<h3>
+
+<%= category._id %>
+
+</h3>
+
+<p>
+
+<%= category.totalProducts %> Products Products
+
+</p>
+
+</div>
+
+</a>
+
+<% }) %>
+
+</div>
+
+   </div>
+
+</section>

@@ -1,0 +1,761 @@
+<% layout("layouts/admin") %>
+
+    <div class="admin-product-form-page">
+
+        <!-- =========================
+            PAGE HEADER
+    ========================== -->
+
+        <section class="admin-product-form-header">
+
+            <div>
+
+                <h1>
+
+                    Edit Product
+
+                </h1>
+
+                <p>
+
+                    Update product information.
+
+                </p>
+
+            </div>
+
+            <a href="/admin/products" class="admin-product-form-back-btn">
+
+                <i class='bx bx-arrow-back'></i>
+
+                Back
+
+            </a>
+
+        </section>
+
+        <!-- =========================
+            FORM
+    ========================== -->
+
+        <form action="/admin/products/<%= product._id %>?_method=PUT" method="POST" class="admin-product-form"
+            enctype="multipart/form-data" id="productForm">
+
+            <!-- ===================================
+                GENERAL INFORMATION
+        ==================================== -->
+
+            <section class="admin-product-form-card">
+
+                <div class="admin-product-form-card-title">
+
+                    <i class='bx bx-package'></i>
+
+                    <div>
+
+                        <h3>
+
+                            General Information
+
+                        </h3>
+
+                        <p>
+
+                            Edit product details.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="admin-product-form-grid">
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            Product Name
+
+                        </label>
+
+                        <input type="text" name="name" value="<%= product.name %>" required>
+
+                    </div>
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            Brand
+
+                        </label>
+
+                        <input type="text" name="brand" value="<%= product.brand %>">
+
+                    </div>
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            SKU
+
+                        </label>
+
+                        <input type="text" id="sku" name="sku" value="<%= product.sku %>" required>
+
+                        <small id="skuStatus"></small>
+
+                    </div>
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            Category
+
+                        </label>
+
+                        <select name="category">
+
+                            <option value="Skin Care" <%=product.category==="Skin Care" ? "selected" : "" %>>
+
+                                Skin Care
+
+                            </option>
+
+                            <option value="Hair Care" <%=product.category==="Hair Care" ? "selected" : "" %>>
+
+                                Hair Care
+
+                            </option>
+
+                            <option value="Personal Care" <%=product.category==="Personal Care" ? "selected" : "" %>>
+
+                                Personal Care
+
+                            </option>
+
+                            <option value="Beauty" <%=product.category==="Beauty" ? "selected" : "" %>>
+
+                                Beauty
+
+                            </option>
+
+                            <option value="Immunity" <%=product.category==="Immunity" ? "selected" : "" %>>
+
+                                Immunity
+
+                            </option>
+
+                            <option value="Pain Relief" <%=product.category==="Pain Relief" ? "selected" : "" %>>
+
+                                Pain Relief
+
+                            </option>
+
+                            <option value="Body Detox" <%=product.category==="Body Detox" ? "selected" : "" %>>
+
+                                Body Detox
+
+                            </option>
+
+                            <option value="Diabetic Care" <%=product.category==="Diabetic Care" ? "selected" : "" %>>
+
+                                Diabetic Care
+
+                            </option>
+
+                            <option value="Weight Loss" <%=product.category==="Weight Loss" ? "selected" : "" %>>
+
+                                Weight Loss
+
+                            </option>
+
+                            <option value="Sexual Wellness" <%=product.category==="Sexual Wellness" ? "selected" : "" %>
+                                >
+
+                                Sexual Wellness
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ===================================
+                PRICING
+        ==================================== -->
+
+            <section class="admin-product-form-card">
+
+                <div class="admin-product-form-card-title">
+
+                    <i class='bx bx-rupee'></i>
+
+                    <div>
+
+                        <h3>
+
+                            Pricing
+
+                        </h3>
+
+                    </div>
+
+                </div>
+
+                <div class="admin-product-form-grid">
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            Price
+
+                        </label>
+
+                        <input type="number" id="price" name="price" value="<%= product.price %>">
+
+                    </div>
+
+                    
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            Discount %
+
+                        </label>
+
+                        <input type="number" id="discount" name="discount" value="<%= product.discount %>">
+
+                    </div>
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            Final Price
+
+                        </label>
+
+                        <input type="text" id="finalPrice" readonly>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ===================================
+                INVENTORY
+        ==================================== -->
+
+            <section class="admin-product-form-card">
+
+    <div class="admin-product-form-card-title">
+
+        <i class='bx bx-box'></i>
+
+        <div>
+
+            <h3>Inventory</h3>
+
+        </div>
+
+    </div>
+
+    <div class="admin-product-form-grid">
+
+        <div class="admin-product-form-group">
+
+            <label>
+
+                Stock Quantity
+
+            </label>
+
+            <input
+                type="number"
+                name="stock"
+                min="0"
+                value="<%= product ? product.stock : 0 %>"
+                placeholder="Enter available stock"
+                required
+            >
+
+            <small>
+
+                Available quantity for sale.
+
+            </small>
+
+        </div>
+
+        <div class="admin-product-form-group">
+
+            <label>
+
+                Low Stock Alert
+
+            </label>
+
+            <input
+                type="number"
+                name="lowStockLimit"
+                min="1"
+                value="<%= product ? product.lowStockLimit : 10 %>"
+                placeholder="Alert limit"
+            >
+
+            <small>
+
+                Admin will be notified when stock goes below this quantity.
+
+            </small>
+
+        </div>
+
+        <div class="admin-product-form-checkbox-group">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    name="isFeatured">
+
+                Featured Product
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    checked
+                    name="isActive">
+
+                Active Product
+
+            </label>
+
+        </div>
+
+    </div>
+
+</section>
+            <!-- ===================================
+                DESCRIPTION
+        ==================================== -->
+
+            <section class="admin-product-form-card">
+
+                <div class="admin-product-form-card-title">
+
+                    <i class='bx bx-detail'></i>
+
+                    <div>
+
+                        <h3>
+
+                            Product Description
+
+                        </h3>
+
+                        <p>
+
+                            Detailed information about the product.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="admin-product-form-group">
+
+                    <label>
+
+                        Description
+
+                    </label>
+
+                    <textarea
+id="description"
+rows="8"
+name="description"><%= product.description %></textarea>
+
+                </div>
+
+            </section>
+
+            <!-- ===================================
+        PRODUCT GALLERY
+==================================== -->
+
+            <section class="admin-product-form-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+
+                            <i class='bx bx-images'></i>
+
+                            Product Gallery
+
+                        </h2>
+
+                        <p>
+
+                            Manage your product images (Minimum 1 • Maximum 5)
+
+                        </p>
+
+                    </div>
+
+                    <div class="image-counter">
+
+                        <%= product.images.length %>/5 Images
+
+                    </div>
+
+                </div>
+
+                <div class="gallery-wrapper">
+
+                    <!-- LEFT -->
+
+                    <div class="gallery-left">
+
+                        <h3>
+
+                            Current Images
+
+                        </h3>
+
+                        <div class="gallery-grid" id="galleryGrid">
+
+                            <% product.images.forEach((image,index)=>{ %>
+
+                                <div class="gallery-card">
+
+    <img src="<%= image.url %>" alt="">
+       
+
+
+
+
+    <div class="gallery-actions">
+
+      <button
+            type="button"
+            class="replace-image"
+            data-id="<%= product._id %>"
+            data-index="<%= index %>">
+
+            <i class='bx bx-refresh'></i>
+
+        </button>
+
+        <button
+            type="button"
+            class="delete-image"
+            data-id="<%= product._id %>"
+            data-index="<%= index %>">
+
+            <i class='bx bx-trash'></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+                                <% }) %>
+
+                                    <% if(product.images.length<5){ %>
+
+                                        <% } %>
+
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT -->
+
+                    <div class="gallery-right">
+
+                        <div class="upload-card">
+
+                            <i class='bx bx-cloud-upload'></i>
+
+                            <h3>
+
+                                Upload Product Images
+
+                            </h3>
+
+                            <p>
+
+                                Drag & Drop
+
+                                or click below.
+
+                            </p>
+
+                            <input
+    id="productImages"
+    type="file"
+    name="images"
+    multiple
+    accept="image/*"
+    hidden>
+
+<label for="productImages" class="choose-btn">
+
+    Choose Images
+
+</label>
+
+                            <small>
+
+                                PNG • JPG • WEBP
+
+                                Maximum 5 Images
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ===================================
+                PRODUCT INFO
+        ==================================== -->
+
+            <section class="admin-product-form-card">
+
+                <div class="admin-product-form-card-title">
+
+                    <i class='bx bx-info-circle'></i>
+
+                    <div>
+
+                        <h3>
+
+                            Product Information
+
+                        </h3>
+
+                    </div>
+
+                </div>
+
+                <div class="admin-product-form-grid">
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            Slug
+
+                        </label>
+
+                        <input type="text" readonly value="<%= product.slug %>">
+
+                    </div>
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            Created
+
+                        </label>
+
+                        <input type="text" readonly
+                            value="<%= product.createdAt ? product.createdAt.toDateString() : '' %>">
+
+                    </div>
+
+                    <div class="admin-product-form-group">
+
+                        <label>
+
+                            Last Updated
+
+                        </label>
+
+                        <input type="text" readonly
+                            value="<%= product.updatedAt ? product.updatedAt.toDateString() : '' %>">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ===================================
+                ACTION BUTTONS
+        ==================================== -->
+
+            <div class="admin-product-form-actions">
+
+                <a href="/admin/products" class="admin-product-form-cancel-btn">
+
+                    Cancel
+
+                </a>
+
+                <button type="submit" class="admin-product-form-save-btn">
+
+                    <i class='bx bx-save'></i>
+
+                    Update Product
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script>
+
+window.currentImages=<%= product.images.length %>;
+
+</script>
+
+
+
+<script src="https://cdn.tiny.cloud/1/plr4xjp2rfq032usv8hezcpm6x2tlgp656c5iayrthepchlb/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+
+tinymce.init({
+
+selector:"#description",
+
+height:550,
+
+branding:false,
+
+promotion:false,
+
+menubar:"file edit view insert format table tools help",
+
+plugins:[
+
+"advlist",
+
+"autolink",
+
+"lists",
+
+"link",
+
+"image",
+
+"charmap",
+
+"preview",
+
+"anchor",
+
+"searchreplace",
+
+"visualblocks",
+
+"code",
+
+"fullscreen",
+
+"insertdatetime",
+
+"media",
+
+"table",
+
+"wordcount"
+
+],
+
+toolbar:
+
+"undo redo | styles blocks fontfamily fontsize | bold italic underline strikethrough | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | table image media link | removeformat | code preview fullscreen",
+
+content_style:`
+
+body{
+
+font-family:Poppins,sans-serif;
+
+font-size:16px;
+
+line-height:1.8;
+
+padding:20px;
+
+}
+
+h1,h2,h3,h4{
+
+color:#15803d;
+
+margin-top:20px;
+
+}
+
+ul{
+
+list-style:disc;
+
+padding-left:25px;
+
+}
+
+ol{
+
+list-style:decimal;
+
+padding-left:25px;
+
+}
+
+table{
+
+border-collapse:collapse;
+
+width:100%;
+
+}
+
+table td,
+
+table th{
+
+border:1px solid #ddd;
+
+padding:10px;
+
+}
+
+`
+
+});
+
+</script>

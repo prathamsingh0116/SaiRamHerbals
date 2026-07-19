@@ -1,0 +1,277 @@
+<% layout("layouts/admin") %>
+
+<div class="admin-orders">
+
+<h1>Orders Management</h1>
+
+<div class="stats">
+
+<div class="card">
+<h2><%= totalOrders %></h2>
+<p>Total Orders</p>
+</div>
+
+<div class="card pending">
+<h2><%= pendingOrders %></h2>
+<p>Pending</p>
+</div>
+
+<div class="card shipped">
+<h2><%= shippedOrders %></h2>
+<p>Shipped</p>
+</div>
+
+<div class="card delivered">
+<h2><%= deliveredOrders %></h2>
+<p>Delivered</p>
+</div>
+
+<div class="card cancelled">
+<h2><%= cancelledOrders %></h2>
+<p>Cancelled</p>
+</div>
+
+</div>
+
+<table class="orders-table">
+
+<thead>
+
+<tr>
+
+<th>Order ID</th>
+
+<th>Customer</th>
+
+<th>Date</th>
+
+<th>Total</th>
+
+<th>Payment</th>
+
+<th>Status</th>
+<th>Action</th>
+
+<th></th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<% orders.forEach(order=>{ %>
+
+<tr>
+
+<td>
+
+#<%= order._id.toString().slice(-8).toUpperCase() %>
+
+</td>
+
+<td>
+
+<%= order.user?.fullName || "Guest" %>
+
+</td>
+
+<td>
+
+<%= order.createdAt.toDateString() %>
+
+</td>
+
+<td>
+
+₹<%= order.grandTotal.toFixed(2) %>
+
+</td>
+
+<td>
+
+<%= order.paymentMethod %>
+
+</td>
+
+<td>
+
+<span class="badge <%= order.orderStatus.toLowerCase() %>">
+
+<%= order.orderStatus %>
+
+</span>
+
+</td>
+
+<td>
+
+<div class="action-buttons">
+
+<a
+
+href="/admin/orders/<%= order._id %>"
+
+class="view-btn">
+
+View
+
+</a>
+
+<% if((order.paymentMethod === "COD" || order.paymentMethod === "RAZORPAY") && order.paymentStatus === "UNPAID"){ %>
+
+<form
+action="/admin/orders/<%= order._id %>/mark-paid?_method=PATCH"
+method="POST"
+class="mark-paid-form">
+
+<button
+type="submit"
+class="paid-btn">
+
+<i class='bx bx-check-circle'></i>
+
+<span>Mark Paid</span>
+
+</button>
+
+</form>
+
+<% } %>
+
+<% if(order.orderStatus==="Cancelled"){ %>
+
+<form
+action="/admin/orders/<%= order._id %>?_method=DELETE"
+method="POST"
+class="delete-order-form">
+
+<button
+type="submit"
+class="delete-btn">
+
+<i class='bx bx-trash'></i>
+
+
+
+</button>
+
+</form>
+
+<% } %>
+
+
+</div>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<script>
+
+document.querySelectorAll(".delete-order-form").forEach(form=>{
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+Swal.fire({
+
+title:"Delete Order?",
+
+html:`
+This action will permanently delete this order.<br><br>
+<b>This action cannot be undone.</b>
+`,
+
+icon:"warning",
+
+showCancelButton:true,
+
+confirmButtonColor:"#dc2626",
+
+cancelButtonColor:"#6b7280",
+
+confirmButtonText:"<i class='bx bx-trash'></i> Delete",
+
+cancelButtonText:"Cancel",
+
+reverseButtons:true
+
+}).then((result)=>{
+
+if(result.isConfirmed){
+
+form.submit();
+
+}
+
+});
+
+});
+
+});
+
+
+document.querySelectorAll(".mark-paid-form").forEach(form => {
+
+    form.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        Swal.fire({
+
+            title: "Mark Payment as Paid?",
+
+            html: `
+                This order was placed using
+                <strong>Cash on Delivery (COD)</strong>.
+                <br><br>
+                Have you received the payment from the customer?
+            `,
+
+            icon: "question",
+
+            showCancelButton: true,
+
+            confirmButtonColor: "#16a34a",
+
+            cancelButtonColor: "#6b7280",
+
+            confirmButtonText: `
+                <i class='bx bx-check-circle'></i>
+                Yes, Mark as Paid
+            `,
+
+            cancelButtonText: "Cancel",
+
+            reverseButtons: true,
+
+            focusCancel: true
+
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+
+                form.submit();
+
+                
+
+            }
+
+        });
+
+    });
+
+});
+
+</script>

@@ -1,0 +1,145 @@
+<% layout("layouts/main") %>
+
+<div class="orders-page">
+
+    <div class="orders-header">
+
+        <h1>
+
+            <i class='bx bx-package'></i>
+
+            My Orders
+
+        </h1>
+
+        <p>
+
+            Track and manage all your orders.
+
+        </p>
+
+    </div>
+
+    <% if(orders.length===0){ %>
+
+        <div class="empty-orders">
+
+            <i class='bx bx-package'></i>
+
+            <h2>No Orders Yet</h2>
+
+            <p>
+
+                You haven't placed any orders yet.
+
+            </p>
+
+            <a
+
+            href="/products"
+
+            class="shop-btn">
+
+                Start Shopping
+
+            </a>
+
+        </div>
+
+    <% }else{ %>
+
+    <div class="orders-grid">
+
+        <% orders.forEach(order=>{ %>
+
+        <div class="order-card">
+
+            <div class="order-top">
+
+                <div>
+
+                    <h3>
+
+                        Order #<%= order._id.toString().slice(-8).toUpperCase() %>
+
+                    </h3>
+
+                    <small>
+
+                        <%= order.createdAt.toDateString() %>
+
+                    </small>
+
+                </div>
+
+                <span class="status <%= order.orderStatus.toLowerCase() %>">
+
+                    <%= order.orderStatus %>
+
+                </span>
+
+            </div>
+
+            <div class="order-body">
+
+                <div>
+
+                    <strong>Total</strong>
+
+                    <p>
+
+                        ₹<%= order.grandTotal.toFixed(2) %>
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <strong>Payment</strong>
+
+                    <p>
+
+                        <%= order.paymentMethod %>
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <strong>Items</strong>
+
+                    <p>
+
+                        <%= order.items.length %>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="order-footer">
+
+                <a
+
+                href="/orders/<%= order._id %>"
+
+                class="view-order-btn">
+
+                    View Details
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <% }) %>
+
+    </div>
+
+    <% } %>
+
+</div>

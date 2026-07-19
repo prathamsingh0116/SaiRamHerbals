@@ -1,0 +1,758 @@
+<% layout("layouts/main") %>
+
+
+    <div class="checkout-container">
+
+    <div class="checkout-header">
+
+        <h1>
+
+            <i class='bx bx-credit-card'></i>
+
+            Secure Checkout
+
+        </h1>
+
+        <p>
+
+            Complete your order in a few easy steps.
+
+        </p>
+
+    </div>
+
+<form
+id="checkoutForm"
+action="/orders/place"
+method="POST">
+
+<div class="checkout-wrapper">
+
+<div class="checkout-left">
+
+<!-- ===========================
+ADDRESS
+=========================== -->
+
+<div class="checkout-card">
+
+<div class="card-title">
+
+<h2>
+
+<i class='bx bx-map'></i>
+
+Delivery Address
+
+</h2>
+
+<a
+
+href="/addresses/new?redirect=checkout"
+
+class="add-address-btn">
+
+<i class='bx bx-plus'></i>
+
+Add Address
+
+</a>
+
+</div>
+
+<% if(addresses.length){ %>
+
+<div class="address-grid">
+
+<% addresses.forEach((address,index)=>{ %>
+
+<label class="address-card">
+
+<input
+
+type="radio"
+
+name="address"
+
+value="<%= address._id %>"
+
+<%= index===0 ||
+
+(selectedAddress &&
+
+selectedAddress.toString()===address._id.toString())
+
+?
+
+"checked"
+
+:
+
+""
+
+%>
+
+required>
+
+<div class="address-content">
+
+<h3>
+
+<%= address.fullName %>
+
+</h3>
+
+<p>
+
+<%= address.address %>
+
+</p>
+
+<p>
+
+<%= address.city %>,
+
+<%= address.state %>
+
+</p>
+
+<p>
+
+PIN -
+
+<%= address.pincode %>
+
+</p>
+
+<strong>
+
+<i class='bx bx-phone'></i>
+
+<%= address.phone %>
+
+</strong>
+
+</div>
+
+</label>
+
+<% }) %>
+
+</div>
+
+<% }else{ %>
+
+<div class="no-address">
+
+<i class='bx bx-map'></i>
+
+<h3>
+
+No Address Found
+
+</h3>
+
+<p>
+
+Please add your delivery address.
+
+</p>
+
+<a
+
+href="/addresses/new?redirect=checkout"
+
+class="btn">
+
+Add Address
+
+</a>
+
+</div>
+
+<% } %>
+
+</div>
+
+<!-- ===========================
+ORDER ITEMS
+=========================== -->
+
+<div class="checkout-card">
+
+<div class="card-title">
+
+<h2>
+
+<i class='bx bx-package'></i>
+
+Your Order
+
+</h2>
+
+</div>
+
+<% cart.forEach(item=>{
+
+const product=item.product;
+
+const finalPrice=
+
+product.price-
+
+(product.price*(product.discount||0))/100;
+
+%>
+
+<div class="checkout-product">
+
+<div class="checkout-product-image">
+
+<img
+
+src="<%= product.images.length ? product.images[0].url : '/images/no-image.png' %>">
+
+</div>
+
+<div class="checkout-product-content">
+
+<h3>
+
+<%= product.name %>
+
+</h3>
+
+<p>
+
+Qty :
+
+<strong>
+
+<%= item.quantity %>
+
+</strong>
+
+</p>
+
+</div>
+
+<div class="checkout-product-price">
+
+₹<%= (finalPrice*item.quantity).toFixed(2) %>
+
+</div>
+
+</div>
+
+<% }) %>
+
+</div>
+
+<!-- PAYMENT METHOD STARTS HERE -->
+          
+
+              <!-- ===========================
+PAYMENT METHOD
+=========================== -->
+
+<div class="checkout-card">
+
+    <div class="card-title">
+
+        <h2>
+
+            <i class='bx bx-wallet'></i>
+
+            Payment Method
+
+        </h2>
+
+    </div>
+
+    <!-- Razorpay -->
+
+    <label class="payment-option">
+
+        <input
+            type="radio"
+            name="paymentMethod"
+            value="RAZORPAY">
+
+        <div>
+
+            <h3>
+
+                <i class='bx bx-credit-card'></i>
+
+                Razorpay
+
+            </h3>
+
+            <p>
+
+                UPI • Card • Net Banking • Wallet
+
+            </p>
+
+        </div>
+
+    </label>
+
+    <!-- COD -->
+
+    <label class="payment-option">
+
+        <input
+            type="radio"
+            name="paymentMethod"
+            value="COD"
+            checked>
+
+        <div>
+
+            <h3>
+
+                <i class='bx bx-money'></i>
+
+                Cash On Delivery
+
+            </h3>
+
+            <p>
+
+                ₹50 Convenience Charge
+
+            </p>
+
+        </div>
+
+    </label>
+
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div class="checkout-right">
+
+<div class="checkout-card summary-card">
+
+<h2>
+
+Order Summary
+
+</h2>
+
+<div class="summary-row">
+
+<span>
+
+Subtotal
+
+</span>
+
+<strong>
+
+₹<%= subtotal.toFixed(2) %>
+
+</strong>
+
+</div>
+
+<div class="summary-row">
+
+<span>
+
+Coupon Discount
+
+</span>
+
+<strong class="discount-text">
+
+- ₹<%= couponDiscount.toFixed(2) %>
+
+</strong>
+
+</div>
+
+<div class="summary-row">
+
+<span>
+
+Shipping
+
+</span>
+
+<strong>
+
+<%= shippingCharge===0 ? "FREE" : "₹25" %>
+
+</strong>
+
+</div>
+
+<div class="summary-row">
+
+<span>
+
+You Saved
+
+</span>
+
+<strong class="save-text">
+
+₹<%= totalSavings.toFixed(2) %>
+
+</strong>
+
+</div>
+
+<% if(appliedCoupon){ %>
+
+<div class="coupon-success">
+
+<i class='bx bxs-badge-check'></i>
+
+Coupon
+
+<strong>
+
+<%= appliedCoupon.code %>
+
+</strong>
+
+Applied
+
+</div>
+
+<% } %>
+
+<hr>
+
+<div class="summary-row">
+
+<span>
+
+COD Charge
+
+</span>
+
+<strong id="codCharge">
+
+₹50
+
+</strong>
+
+</div>
+
+<div class="grand-total">
+
+<span>
+
+Grand Total
+
+</span>
+
+<strong id="grandTotal">
+
+₹<%= (grandTotal+50).toFixed(2) %>
+
+</strong>
+
+</div>
+
+<input
+type="hidden"
+id="paymentMethodInput"
+value="COD">
+
+<button
+
+type="submit"
+
+class="place-order-btn"
+
+id="checkoutBtn">
+
+<i class='bx bx-lock-alt'></i>
+
+Place Order (+₹50)
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+    <script>
+
+        const radios = document.querySelectorAll('input[name="address"]');
+        const hidden = document.getElementById("selectedAddress");
+        const checkoutFormm = document.getElementById("checkoutForm");
+
+        // Selected address ko hidden input me set karega
+        function updateSelectedAddress() {
+
+            const selected = document.querySelector(
+                'input[name="address"]:checked'
+            );
+
+            if (selected) {
+
+                hidden.value = selected.value;
+
+            } else {
+
+                hidden.value = "";
+
+            }
+
+        }
+
+        // Page load hote hi address set karo
+        updateSelectedAddress();
+
+        // Address change hone par update karo
+        radios.forEach(radio => {
+
+            radio.addEventListener("change", updateSelectedAddress);
+
+        });
+
+        // Form submit hone se just pehle bhi update karo
+        checkoutFormm.addEventListener("submit", function () {
+
+            updateSelectedAddress();
+
+            console.log("Selected Address :", hidden.value);
+
+        });
+</script>
+
+<script>
+
+const checkoutForm = document.getElementById("checkoutForm");
+
+const paymentRadios = document.querySelectorAll(
+'input[name="paymentMethod"]'
+);
+
+const paymentHidden =
+document.getElementById("paymentMethodInput");
+
+const codCharge =
+document.getElementById("codCharge");
+
+const grandTotal =
+document.getElementById("grandTotal");
+
+const baseTotal = <%= grandTotal %>;
+
+// -------------------------
+// Payment Method Change
+// -------------------------
+
+paymentRadios.forEach(radio=>{
+
+radio.addEventListener("change",()=>{
+
+paymentHidden.value=radio.value;
+
+if(radio.value==="COD"){
+
+codCharge.innerHTML="₹50";
+
+grandTotal.innerHTML=
+"₹"+(baseTotal+50).toFixed(2);
+
+document.getElementById("checkoutBtn").innerHTML=
+
+"<i class='bx bx-lock-alt'></i> Place Order (+₹50)";
+
+}else{
+
+codCharge.innerHTML="₹0";
+
+grandTotal.innerHTML=
+"₹"+baseTotal.toFixed(2);
+
+document.getElementById("checkoutBtn").innerHTML=
+
+"<i class='bx bx-credit-card'></i> Proceed To Pay";
+
+}
+
+});
+
+});
+
+// -------------------------
+// Checkout Submit
+// -------------------------
+
+checkoutForm.addEventListener(
+
+"submit",
+
+async function(e){
+
+const paymentMethod=
+paymentHidden.value;
+
+const selectedAddress=
+
+document.querySelector(
+'input[name="address"]:checked'
+);
+
+if(!selectedAddress){
+
+e.preventDefault();
+
+alert("Please select address.");
+
+return;
+
+}
+
+// ----------------------
+// COD
+// ----------------------
+
+if(paymentMethod==="COD"){
+
+return;
+
+}
+
+// ----------------------
+// Razorpay
+// ----------------------
+
+e.preventDefault();
+
+const response=
+
+await fetch("/payment/create-order",{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify({
+
+address:selectedAddress.value
+
+})
+
+});
+
+const data=
+
+await response.json();
+
+if(!data.success){
+
+alert(data.message);
+
+return;
+
+}
+
+window.pendingOrderId=data.orderId;
+
+const options={
+
+key:"<%= razorpayKey %>",
+
+amount:data.order.amount,
+
+currency:data.order.currency,
+
+name:"SaiRam Herbals",
+
+description:"Order Payment",
+
+order_id:data.order.id,
+
+handler:async function(response){
+
+const verify=
+
+await fetch("/payment/verify",{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify({
+
+orderId:window.pendingOrderId,
+
+razorpay_order_id:
+
+response.razorpay_order_id,
+
+razorpay_payment_id:
+
+response.razorpay_payment_id,
+
+razorpay_signature:
+
+response.razorpay_signature
+
+})
+
+});
+
+const result=
+
+await verify.json();
+
+if(result.success){
+
+window.location=result.redirect;
+
+}else{
+
+alert(result.message);
+
+}
+
+},
+
+theme:{
+
+color:"#2e7d32"
+
+}
+
+};
+
+const rzp=
+
+new Razorpay(options);
+
+rzp.open();
+
+});
+
+</script>

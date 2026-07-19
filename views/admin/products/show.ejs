@@ -1,0 +1,317 @@
+<% layout("layouts/admin") %>
+
+    <div class="admin-product-show-page">
+
+        <!-- =========================
+            PAGE HEADER
+    ========================== -->
+
+        <section class="admin-product-show-header">
+
+            <div>
+
+                <h1>Product Details</h1>
+
+                <p>View complete information about this product.</p>
+
+            </div>
+
+            <div class="admin-product-show-header-actions">
+
+                <a href="/admin/products" class="admin-product-show-back-btn">
+
+                    <i class='bx bx-arrow-back'></i>
+
+                    Back
+
+                </a>
+
+                <a href="/admin/products/<%= product._id %>/edit" class="admin-product-show-edit-btn">
+
+                    <i class='bx bx-edit'></i>
+
+                    Edit
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+            MAIN GRID
+    ========================== -->
+
+        <div class="admin-product-show-grid">
+
+            <!-- =========================
+                IMAGE CARD
+        ========================== -->
+
+            <section class="admin-product-show-image-card">
+
+                <% if(product.images && product.images.length){ %>
+
+                    <img src="<%= product.images[0].url %>" alt="<%= product.name %>">
+
+                    <% } else { %>
+
+                        <div class="admin-product-show-no-image">
+
+                            <i class='bx bx-image'></i>
+
+                            <span>No Image</span>
+
+                        </div>
+
+                        <% } %>
+
+            </section>
+
+            <!-- =========================
+                DETAILS CARD
+        ========================== -->
+
+            <section class="admin-product-show-details-card">
+
+                <h2>
+
+                    <%= product.name %>
+
+                </h2>
+
+                <div class="admin-product-show-badges">
+
+                    <% if(product.isActive){ %>
+
+                        <span class="admin-product-show-active">
+
+                            Active
+
+                        </span>
+
+                        <% } else { %>
+
+                            <span class="admin-product-show-inactive">
+
+                                Inactive
+
+                            </span>
+
+                            <% } %>
+
+                                <% if(product.featured || product.isFeatured){ %>
+
+                                    <span class="admin-product-show-featured">
+
+                                        Featured
+
+                                    </span>
+
+                                    <% } %>
+
+                </div>
+
+                <div class="admin-product-show-info-grid">
+
+                    <div>
+
+                        <label>Brand</label>
+
+                        <p>
+                            <%= product.brand %>
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <label>Category</label>
+
+                        <p>
+                            <%= product.category %>
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <label>SKU</label>
+
+                        <p>
+                            <%= product.sku %>
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <label>Stock</label>
+
+                        <p>
+                            <%= product.stock %>
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <label>Price</label>
+
+                        <p>₹<%= product.price %>
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <label>Discount</label>
+
+                        <p>
+                            <%= product.discount %>%
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <label>Final Price</label>
+
+                        <p>
+
+                            ₹<%= product.price - ((product.price * product.discount)/100) %>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- =========================
+                    DESCRIPTION
+            ========================== -->
+
+                <div class="admin-product-show-description">
+
+                    <h3>
+
+                        Description
+
+                    </h3>
+
+                    <div class="product-description-content">
+    <%- product.description %>
+</div>
+
+                </div>
+
+                <!-- =========================
+                    PRODUCT META
+            ========================== -->
+
+                <div class="admin-product-show-meta">
+
+                    <div class="admin-product-show-meta-item">
+
+                        <label>
+
+                            Created On
+
+                        </label>
+
+                        <span>
+
+                            <%= product.createdAt ? product.createdAt.toDateString() : "-" %>
+
+                        </span>
+
+                    </div>
+
+                    <div class="admin-product-show-meta-item">
+
+                        <label>
+
+                            Last Updated
+
+                        </label>
+
+                        <span>
+
+                            <%= product.updatedAt ? product.updatedAt.toDateString() : "-" %>
+
+                        </span>
+
+                    </div>
+
+                    <div class="admin-product-show-meta-item">
+
+                        <label>
+
+                            Slug
+
+                        </label>
+
+                        <span>
+
+                            <%= product.slug %>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- =========================
+                    ACTIONS
+            ========================== -->
+
+                <div class="admin-product-show-actions">
+
+                    <a href="/admin/products/<%= product._id %>/edit" class="admin-product-show-edit-btn-large">
+
+                        <i class='bx bx-edit'></i>
+
+                        Edit Product
+
+                    </a>
+
+                    <%
+const isWishlisted =
+wishlistIds.includes(product._id.toString());
+%>
+
+<form
+action="/wishlist/toggle/<%= product.slug %>"
+method="POST">
+
+<button
+type="submit"
+class="btn-secondary admin-product-show-edit-btn-large <%= isWishlisted ? 'active' : '' %>">
+
+<i class='bx <%= isWishlisted ? "bxs-heart" : "bx-heart" %>'></i>
+
+<%= isWishlisted ? "Wishlisted" : "Add To Wishlist" %>
+
+</button>
+
+</form>
+
+                        <form action="/admin/products/<%= product._id %>?_method=DELETE" method="POST">
+
+                            <button type="submit" class="admin-product-show-delete-btn">
+
+                                <i class='bx bx-trash'></i>
+
+                                Delete Product
+
+                            </button>
+
+                        </form>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>

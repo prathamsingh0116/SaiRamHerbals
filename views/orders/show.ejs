@@ -1,0 +1,507 @@
+<% layout("layouts/main") %>
+
+<div class="order-details-page">
+
+    <a href="/orders" class="back-btn">
+        <i class='bx bx-arrow-back'></i>
+        Back to My Orders
+    </a>
+
+    <!-- Header -->
+
+    <div class="order-header">
+
+        <div>
+
+            <h1>
+
+                Order #<%= order._id.toString().slice(-8).toUpperCase() %>
+
+            </h1>
+
+            <p>
+
+                <%= order.createdAt.toDateString() %>
+
+            </p>
+
+        </div>
+
+        <span class="status <%= order.orderStatus.toLowerCase() %>">
+
+            <%= order.orderStatus %>
+
+        </span>
+
+    </div>
+
+    <!-- Address -->
+
+    <div class="detail-card">
+
+        <h2>
+
+            <i class='bx bx-map'></i>
+
+            Delivery Address
+
+        </h2>
+
+        <p><strong><%= order.address.fullName %></strong></p>
+
+        <p><%= order.address.address %></p>
+
+        <p>
+
+            <%= order.address.city %>,
+
+            <%= order.address.state %>
+
+        </p>
+
+        <p>
+
+            PIN - <%= order.address.pincode %>
+
+        </p>
+
+        <p>
+
+            📞 <%= order.address.phone %>
+
+        </p>
+
+    </div>
+
+    <!-- Products -->
+
+    <div class="detail-card">
+
+        <h2>
+
+            <i class='bx bx-package'></i>
+
+            Ordered Products
+
+        </h2>
+
+        <% order.items.forEach(item=>{ %>
+
+        <div class="ordered-product">
+
+            <img
+
+            src="<%= item.image %>"
+
+            alt="<%= item.name %>">
+
+            <div>
+
+                <h3>
+
+                    <%= item.name %>
+
+                </h3>
+
+                <p>
+
+                    Qty :
+
+                    <%= item.quantity %>
+
+                </p>
+
+            </div>
+
+            <strong>
+
+                ₹<%= (item.price * item.quantity).toFixed(2) %>
+
+            </strong>
+
+        </div>
+
+        <% }) %>
+
+    </div>
+
+    <!-- Summary -->
+
+    <div class="detail-card">
+
+        <h2>
+
+            Order Summary
+
+        </h2>
+
+        <div class="summary-row">
+
+            <span>Subtotal</span>
+
+            <strong>
+
+                ₹<%= order.subtotal.toFixed(2) %>
+
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Coupon</span>
+
+            <strong>
+
+                -₹<%= order.couponDiscount.toFixed(2) %>
+
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Shipping</span>
+
+            <strong>
+
+                <%= order.shippingCharge===0 ? "FREE" : "₹"+order.shippingCharge %>
+
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>You Saved</span>
+
+            <strong class="save">
+
+                ₹<%= order.totalSavings.toFixed(2) %>
+
+            </strong>
+
+        </div>
+
+        <hr>
+
+        <div class="grand-total">
+
+            <span>
+
+                Grand Total
+
+            </span>
+
+            <strong>
+
+                ₹<%= order.grandTotal.toFixed(2) %>
+
+            </strong>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+        ORDER TIMELINE
+========================== -->
+
+<div class="detail-card">
+
+    <h2>
+
+        <i class='bx bx-git-branch'></i>
+
+        Order Timeline
+
+    </h2>
+
+    <div class="timeline">
+
+        <!-- Order Placed -->
+
+        <div class="timeline-item active">
+
+            <div class="dot"></div>
+
+            <div>
+
+                <h4>Order Placed</h4>
+
+                <p>
+
+                    <%= order.statusHistory.placedAt.toLocaleString("en-IN") %>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Confirmed -->
+
+        <div class="timeline-item <%= order.statusHistory.confirmedAt ? 'active' : (order.statusHistory.cancelledAt ? 'cancelled-step' : '') %>">
+
+            <div class="dot"></div>
+
+            <div>
+
+                <h4>Confirmed</h4>
+
+                <p>
+
+                    <% if(order.statusHistory.confirmedAt){ %>
+
+                        <%= order.statusHistory.confirmedAt.toLocaleString("en-IN") %>
+
+                    <% }else if(order.statusHistory.cancelledAt){ %>
+
+                        Not Completed
+
+                    <% }else{ %>
+
+                        Waiting...
+
+                    <% } %>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Packed -->
+
+        <div class="timeline-item <%= order.statusHistory.packedAt ? 'active' : (order.statusHistory.cancelledAt ? 'cancelled-step' : '') %>">
+
+            <div class="dot"></div>
+
+            <div>
+
+                <h4>Packed</h4>
+
+                <p>
+
+                    <% if(order.statusHistory.packedAt){ %>
+
+                        <%= order.statusHistory.packedAt.toLocaleString("en-IN") %>
+
+                    <% }else if(order.statusHistory.cancelledAt){ %>
+
+                        Not Completed
+
+                    <% }else{ %>
+
+                        Waiting...
+
+                    <% } %>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Shipped -->
+
+        <div class="timeline-item <%= order.statusHistory.shippedAt ? 'active' : (order.statusHistory.cancelledAt ? 'cancelled-step' : '') %>">
+
+            <div class="dot"></div>
+
+            <div>
+
+                <h4>Shipped</h4>
+
+                <p>
+
+                    <% if(order.statusHistory.shippedAt){ %>
+
+                        <%= order.statusHistory.shippedAt.toLocaleString("en-IN") %>
+
+                    <% }else if(order.statusHistory.cancelledAt){ %>
+
+                        Not Completed
+
+                    <% }else{ %>
+
+                        Waiting...
+
+                    <% } %>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Delivered -->
+
+        <div class="timeline-item <%= order.statusHistory.deliveredAt ? 'active' : (order.statusHistory.cancelledAt ? 'cancelled-step' : '') %>">
+
+            <div class="dot"></div>
+
+            <div>
+
+                <h4>Delivered</h4>
+
+                <p>
+
+                    <% if(order.statusHistory.deliveredAt){ %>
+
+                        <%= order.statusHistory.deliveredAt.toLocaleString("en-IN") %>
+
+                    <% }else if(order.statusHistory.cancelledAt){ %>
+
+                        Not Completed
+
+                    <% }else{ %>
+
+                        Waiting...
+
+                    <% } %>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Cancelled -->
+
+        <% if(order.statusHistory.cancelledAt){ %>
+
+        <div class="timeline-item cancelled active">
+
+            <div class="dot cancel-dot"></div>
+
+            <div>
+
+                <h4>Order Cancelled</h4>
+
+                <p>
+
+                    <%= order.statusHistory.cancelledAt.toLocaleString("en-IN") %>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <% } %>
+
+    </div>
+
+</div>
+ 
+
+    <!-- Payment -->
+
+    <div class="detail-card">
+
+        <h2>
+
+            Payment
+
+        </h2>
+
+        <p>
+
+            Method :
+
+            <strong>
+
+                <%= order.paymentMethod %>
+
+            </strong>
+
+        </p>
+
+        <p>
+
+            Status :
+
+            <strong>
+
+                <%= order.paymentStatus %>
+
+            </strong>
+
+        </p>
+
+    </div>
+
+    <form
+id="cancelOrderForm"
+action="/orders/<%= order._id %>/cancel?_method=PATCH"
+method="POST">
+
+<input
+type="hidden"
+name="cancelReason"
+id="cancelReason">
+
+</form>
+
+    <% if(["Pending","Confirmed"].includes(order.orderStatus)){ %>
+
+<button
+type="button"
+class="cancel-order-btn">
+
+<i class='bx bx-x-circle'></i>
+
+Cancel Order
+
+</button>
+
+<% } %>
+
+</div>
+
+<script>
+    document.querySelector(".cancel-order-btn")?.addEventListener("click",()=>{
+
+Swal.fire({
+
+title:"Cancel Order?",
+
+text:"Please tell us why you want to cancel this order.",
+
+input:"select",
+
+inputOptions:{
+
+"Changed my mind":"Changed my mind",
+
+"Ordered by mistake":"Ordered by mistake",
+
+"Found a better price":"Found a better price",
+
+"Delivery taking too long":"Delivery taking too long",
+
+"Other":"Other"
+
+},
+
+showCancelButton:true,
+
+confirmButtonColor:"#dc2626",
+
+confirmButtonText:"Cancel Order"
+
+}).then(result=>{
+
+if(result.isConfirmed){
+
+document.getElementById("cancelReason").value=result.value;
+
+document.getElementById("cancelOrderForm").submit();
+
+}
+
+});
+
+});
+</script>

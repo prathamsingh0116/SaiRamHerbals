@@ -1,0 +1,151 @@
+<div class="user-card">
+
+    <div class="card-top">
+
+        <div class="user-avatar">
+
+            <% if(user.profileImage && user.profileImage.url){ %>
+
+                <img src="<%= user.profileImage.url %>" alt="<%= user.fullName %>">
+
+            <% } else { %>
+
+                <span><%= user.fullName.charAt(0).toUpperCase() %></span>
+
+            <% } %>
+
+        </div>
+
+        <div class="user-details">
+
+            <h3><%= user.fullName %></h3>
+
+            <p>
+                <i class='bx bx-envelope'></i>
+                <%= user.email %>
+            </p>
+
+            <p>
+                <i class='bx bx-phone'></i>
+                <%= user.phone || "Not Added" %>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="badge-row">
+
+        <span class="role-badge <%= user.role==="admin" ? "admin" : "customer" %>">
+
+            <i class='bx <%= user.role==="admin" ? "bxs-shield" : "bx-user" %>'></i>
+
+            <%= user.displayRole %>
+
+        </span>
+
+        <span class="status-badge <%= user.isBlocked ? "blocked" : "active" %>">
+
+            <i class='bx <%= user.isBlocked ? "bx-block" : "bx-check-circle" %>'></i>
+
+            <%= user.isBlocked ? "Blocked" : "Active" %>
+
+        </span>
+
+    </div>
+
+    <div class="user-stats-grid">
+
+        <div>
+
+            <span>Joined</span>
+
+            <strong>
+
+                <%= user.createdAt.toDateString() %>
+
+            </strong>
+
+        </div>
+
+        <div>
+
+            <span>Last Login</span>
+
+            <strong>
+
+                <%= user.lastLogin ? user.lastLogin.toDateString() : "Never" %>
+
+            </strong>
+
+        </div>
+
+        <div>
+
+            <span>Orders</span>
+
+            <strong>
+
+                <%= user.ordersCount || 0 %>
+
+            </strong>
+
+        </div>
+
+        <div>
+
+            <span>Reviews</span>
+
+            <strong>
+
+                <%= user.reviewsCount || 0 %>
+
+            </strong>
+
+        </div>
+
+    </div>
+
+    <div class="user-actions">
+
+        <% if(currentUser._id.toString() !== user._id.toString()){ %>
+
+<form
+action="/admin/users/<%= user._id %>?_method=DELETE"
+method="POST"
+onsubmit="return confirm('Do you really want to permanently delete this user? This action cannot be undone.')">
+
+    <button
+    type="submit"
+    class="delete-btn">
+
+        <i class='bx bx-trash'></i>
+
+        Delete User
+
+    </button>
+
+</form>
+
+<% } %>
+
+        <form
+        action="/admin/users/<%= user._id %>/toggle-block?_method=PUT"
+        method="POST"
+        onsubmit="return confirm('Are you sure you want to <%= user.isBlocked ? "unblock" : "block" %> this user?')">
+
+            <button
+            type="submit"
+            class="block-btn <%= user.isBlocked ? 'unblock' : 'block' %>">
+
+                <i class='bx <%= user.isBlocked ? "bx-check-circle" : "bx-block" %>'></i>
+
+                <%= user.isBlocked ? "Unblock" : "Block" %>
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>

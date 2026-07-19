@@ -1,0 +1,333 @@
+<div class="announcement-form">
+
+    <!-- Header -->
+
+    <div class="form-header">
+
+        <div>
+
+            <h1>
+
+                <i class='bx bxs-megaphone'></i>
+
+                <%= formTitle %>
+
+            </h1>
+
+            <p>
+
+                Create and manage website announcements.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- General -->
+
+    <div class="form-card">
+
+        <h3>General Information</h3>
+
+        <div class="form-grid">
+
+            <div class="form-group full">
+
+                <label>Announcement Title</label>
+
+                <input
+                    type="text"
+                    name="title"
+                    required
+                    value="<%= announcement?.title || '' %>"
+                    id="title">
+            </div>
+
+            <div class="form-group full">
+
+                <label>Message</label>
+
+                <textarea
+                    rows="4"
+                    name="message"
+                    required
+                    id="message"><%= announcement?.message || '' %></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Settings -->
+
+    <div class="form-card">
+
+        <h3>Announcement Settings</h3>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>Type</label>
+
+                <select name="type" id="type">
+
+                    <option value="offer">Offer</option>
+
+                    <option value="shipping">Shipping</option>
+
+                    <option value="coupon">Coupon</option>
+
+                    <option value="festival">Festival</option>
+
+                    <option value="news">News</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Priority</label>
+
+                <input
+                    type="number"
+                    name="priority"
+                    min="1"
+                    max="10"
+                    value="<%= announcement?.priority || 1 %>">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Coupon Code</label>
+
+                <input
+                    type="text"
+                    name="coupon"
+                    value="<%= announcement?.coupon || '' %>">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Button Text</label>
+
+                <input
+                    type="text"
+                    name="buttonText"
+                    value="<%= announcement?.buttonText || '' %>">
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ======================================
+            Appearance
+    ======================================= -->
+
+    <div class="form-card">
+
+        <h3>Appearance</h3>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>Background Color</label>
+
+                <input
+                    type="color"
+                    name="backgroundColor"
+                    id="backgroundColor"
+                    value="<%= announcement?.backgroundColor || '#2E7D32' %>">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Text Color</label>
+
+                <input
+                    type="color"
+                    name="textColor"
+                    id="textColor"
+                    value="<%= announcement?.textColor || '#FFFFFF' %>">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================
+            Schedule
+    ======================================= -->
+
+    <div class="form-card">
+
+        <h3>Schedule</h3>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>Start Date</label>
+
+                <input
+                    type="date"
+                    name="startDate"
+                    value="<%= announcement?.startDate ? announcement.startDate.toISOString().split('T')[0] : '' %>">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>End Date</label>
+
+                <input
+                    type="date"
+                    name="endDate"
+                    value="<%= announcement?.endDate ? announcement.endDate.toISOString().split('T')[0] : '' %>">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================
+            Redirect
+    ======================================= -->
+
+    <div class="form-card">
+
+        <h3>Redirect</h3>
+
+        <div class="form-grid">
+
+            <div class="form-group full">
+
+                <label>Redirect URL</label>
+
+                <input
+                    type="text"
+                    name="link"
+                    placeholder="/products"
+                    value="<%= announcement?.link || '' %>">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================
+            Options
+    ======================================= -->
+
+    <div class="form-card">
+
+        <h3>Options</h3>
+
+        <div class="toggle-group">
+
+            <label class="toggle-item">
+
+                <input
+                    type="checkbox"
+                    name="clickable"
+                    <%= announcement?.clickable ? "checked" : "" %>>
+
+                <span>Clickable Banner</span>
+
+            </label>
+
+            <label class="toggle-item">
+
+                <input
+                    type="checkbox"
+                    name="isActive"
+                    <%= announcement ? (announcement.isActive ? "checked" : "") : "checked" %>>
+
+                <span>Active Announcement</span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================
+            Live Preview
+    ======================================= -->
+
+    <div class="form-card">
+
+        <h3>Live Preview</h3>
+
+        <div id="announcementPreview" class="announcement-preview">
+
+            <strong id="previewTitle">
+
+                Announcement Title
+
+            </strong>
+
+            <p id="previewMessage">
+
+                Announcement message preview...
+
+            </p>
+
+            <button
+                type="button"
+                id="previewButton">
+
+                Shop Now
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================
+            Buttons
+    ======================================= -->
+
+    <div class="form-actions">
+
+        <a
+            href="/admin/announcements"
+            class="secondary-btn">
+
+            Cancel
+
+        </a>
+
+        <button
+            type="submit"
+            class="primary-btn">
+
+            <i class='bx bx-save'></i>
+
+            Save Announcement
+
+        </button>
+
+    </div>
+
+</div>

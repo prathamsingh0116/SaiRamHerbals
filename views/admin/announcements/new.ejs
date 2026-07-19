@@ -1,0 +1,10 @@
+<% layout("layouts/admin") %>
+
+<form action="/admin/announcements" method="POST">
+
+    <%- include("../../partials/_form", {
+    formTitle: "Create Announcement",
+    announcement: null
+}) %>
+
+</form>

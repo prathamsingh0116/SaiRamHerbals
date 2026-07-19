@@ -1,0 +1,168 @@
+<section class="profile-section">
+
+    <div class="section-header">
+
+        <div>
+
+            <h3>Recent Orders</h3>
+
+            <p>Your latest purchases</p>
+
+        </div>
+
+        <a href="/orders" class="edit-info-btn">
+
+            <i class='bx bx-package'></i>
+
+            View All
+
+        </a>
+
+    </div>
+
+    <!-- Order Card -->
+
+    <div class="orders-list">
+
+<% if(recentOrders.length){ %>
+
+<% recentOrders.forEach(order=>{ 
+
+const firstItem = order.items[0];
+
+%>
+
+<div class="order-card">
+
+    <div class="order-image">
+
+        <img
+        src="<%= firstItem.product.images[0]?.url || '/images/no-image.png' %>"
+        alt="<%= firstItem.product.name %>">
+
+    </div>
+
+    <div class="order-info">
+
+        <h4>
+
+            <%= firstItem.product.name %>
+
+        </h4>
+
+        <p class="order-id">
+
+            Order :
+            #<%= order._id.toString().slice(-8).toUpperCase() %>
+
+        </p>
+
+        <p class="order-date">
+
+            <%= order.createdAt.toDateString() %>
+
+        </p>
+
+    </div>
+
+    <div class="order-status">
+
+    <span class="status-label">
+
+        Order Status
+
+    </span>
+
+    <span class="status-badge <%= order.orderStatus.toLowerCase().replace(/\s+/g,'-') %>">
+
+        <% if(order.orderStatus==="Pending"){ %>
+
+            <i class='bx bx-time-five'></i>
+
+        <% } else if(order.orderStatus==="Processing"){ %>
+
+            <i class='bx bx-loader-circle'></i>
+
+        <% } else if(order.orderStatus==="Shipped"){ %>
+
+            <i class='bx bx-package'></i>
+
+        <% } else if(order.orderStatus==="Out for Delivery"){ %>
+
+            <i class='bx bx-map'></i>
+
+        <% } else if(order.orderStatus==="Delivered"){ %>
+
+            <i class='bx bx-check-circle'></i>
+
+        <% } else if(order.orderStatus==="Cancelled"){ %>
+
+            <i class='bx bx-x-circle'></i>
+
+        <% } else if(order.orderStatus==="Returned"){ %>
+
+            <i class='bx bx-undo'></i>
+
+        <% } else { %>
+
+            <i class='bx bx-info-circle'></i>
+
+        <% } %>
+
+        <%= order.orderStatus %>
+
+    </span>
+
+</div>
+
+    <div class="order-price">
+
+        ₹<%= order. grandTotal %>
+
+    </div>
+
+    <div class="order-action">
+
+        <a href="/orders/<%= order._id %>">
+
+            View
+
+        </a>
+
+    </div>
+
+</div>
+
+<% }) %>
+
+<% }else{ %>
+
+<div class="empty-orders">
+
+    <i class='bx bx-package'></i>
+
+    <h3>
+
+        No Orders Yet
+
+    </h3>
+
+    <p>
+
+        Start shopping to see your orders here.
+
+    </p>
+
+    <a href="/products">
+
+        Shop Now
+
+    </a>
+
+</div>
+
+<% } %>
+
+</div>
+
+</section>

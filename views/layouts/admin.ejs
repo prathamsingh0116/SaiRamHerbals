@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= title || "Admin Panel" %></title>
+
+    <link rel="icon" type="image/png" href="/images/Logo/6.png">
+
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Core -->
+    <link rel="stylesheet" href="/css/admin/core/base.css">
+
+    <!-- Admin -->
+    <link rel="stylesheet" href="/css/admin/core/layout.css">
+    <link rel="stylesheet" href="/css/admin/core/sidebar.css">
+    <link rel="stylesheet" href="/css/admin/core/header.css">
+    <link rel="stylesheet" href="/css/announcement.css">
+
+    <% if(pageCSS){ %>
+        <link rel="stylesheet" href="/css/admin/pages/<%= pageCSS %>.css">
+    <% } %>
+
+    <% if(productCSS){ %>
+        <link rel="stylesheet" href="/css/admin/pages/products/<%= productCSS %>.css">
+    <% } %>
+
+    <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.min.css">
+
+</head>
+
+<body>
+<div
+    class="admin-sidebar-overlay"
+    id="adminSidebarOverlay">
+</div>
+<div class="admin-layout">
+
+    <!-- Sidebar -->
+
+        <%- include("../partials/components/admin/adminSidebar") %>
+
+    <!-- Right Side -->
+
+    <div class="admin-layout-wrapper">
+
+        <!-- Header -->
+
+        <%- include("../partials/components/admin/adminHeader") %>
+        
+
+        <!-- Dynamic Page -->
+
+        <main class="admin-layout-content">
+
+            <%- body %>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+const successMessage=<%- JSON.stringify(success?.[0]||null) %>;
+
+const errorMessage=<%- JSON.stringify(error?.[0]||null) %>;
+
+if(successMessage){
+
+Swal.fire({
+
+icon:"success",
+
+title:"Success",
+
+text:successMessage,
+
+timer:2000,
+
+showConfirmButton:false
+
+});
+
+}
+
+if(errorMessage){
+
+Swal.fire({
+
+icon:"error",
+
+title:"Error",
+
+text:errorMessage,
+
+confirmButtonColor:"#dc2626"
+
+});
+
+}
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="/js/admin/adminReports.js"></script>
+
+<script src="/js/admin.js"></script>
+
+<% if(currentPage==="announcements"){ %>
+
+<script src="/js/announcement.js"></script>
+
+<% } %>
+<script src="/js/admin/dashbaord.js"></script>
+
+<% if(pageJS){ %>
+        <script src="/js/admin/<%= pageJS %>.js"></script>
+    <% } %>
+
+<script src="https://unpkg.com/cropperjs/dist/cropper.min.js"></script>
+
+
+</body>
+
+</html>

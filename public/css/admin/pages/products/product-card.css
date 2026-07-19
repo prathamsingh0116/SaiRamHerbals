@@ -1,0 +1,255 @@
+/*==================================================
+            PRODUCT SHOW PAGE
+==================================================*/
+
+.admin-product-show-page{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.admin-product-show-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.admin-product-show-header h1{
+    font-size:34px;
+    color:#111827;
+}
+
+.admin-product-show-header p{
+    color:#6B7280;
+    margin-top:6px;
+}
+
+.admin-product-show-header-actions{
+    display:flex;
+    gap:15px;
+}
+
+.admin-product-show-back-btn,
+.admin-product-show-edit-btn,
+.admin-product-show-edit-btn-large,
+.admin-product-show-delete-btn{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 22px;
+    border-radius:14px;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+    border:none;
+    cursor:pointer;
+}
+
+.admin-product-show-back-btn{
+    background:#F3F4F6;
+    color:#374151;
+}
+
+.admin-product-show-edit-btn,
+.admin-product-show-edit-btn-large{
+    background:#16A34A;
+    color:#fff;
+}
+
+.admin-product-show-delete-btn{
+    background:#DC2626;
+    color:#fff;
+}
+
+.admin-product-show-grid{
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:35px;
+}
+
+.admin-product-show-image-card{
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid #E5E7EB;
+    box-shadow:0 10px 25px rgba(15,23,42,.05);
+    position:sticky;
+    top:100px;
+    height:420px;
+}
+
+.admin-product-show-image-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.admin-product-show-no-image{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:#94A3B8;
+    gap:12px;
+}
+
+.admin-product-show-no-image i{
+    font-size:70px;
+}
+
+.admin-product-show-details-card{
+    background:#fff;
+    border:1px solid #E5E7EB;
+    border-radius:22px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(15,23,42,.05);
+}
+
+.admin-product-show-details-card h2{
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.admin-product-show-badges{
+    display:flex;
+    gap:12px;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+}
+
+.admin-product-show-active,
+.admin-product-show-featured,
+.admin-product-show-inactive{
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.admin-product-show-active{
+    background:#DCFCE7;
+    color:#15803D;
+}
+
+.admin-product-show-featured{
+    background:#FEF3C7;
+    color:#B45309;
+}
+
+.admin-product-show-inactive{
+    background:#FEE2E2;
+    color:#DC2626;
+}
+
+.admin-product-show-info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    margin-bottom:30px;
+}
+
+.admin-product-show-info-grid label{
+    display:block;
+    color:#6B7280;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.admin-product-show-info-grid p{
+    font-weight:600;
+    color:#111827;
+}
+
+.admin-product-show-description{
+    margin-bottom:30px;
+}
+
+.admin-product-show-description h3{
+    margin-bottom:10px;
+}
+
+.admin-product-show-description p{
+    color:#4B5563;
+    line-height:1.8;
+}
+
+.admin-product-show-meta{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:35px;
+}
+
+.admin-product-show-meta-item{
+    background:#F9FAFB;
+    padding:18px;
+    border-radius:16px;
+}
+
+.admin-product-show-meta-item label{
+    display:block;
+    color:#6B7280;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.admin-product-show-actions{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+@media(max-width:992px){
+
+.admin-product-show-grid{
+grid-template-columns:1fr;
+}
+
+.admin-product-show-image-card{
+position:static;
+height:350px;
+}
+
+.admin-product-show-meta{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.admin-product-show-header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.admin-product-show-header-actions{
+width:100%;
+}
+
+.admin-product-show-back-btn,
+.admin-product-show-edit-btn{
+flex:1;
+justify-content:center;
+}
+
+.admin-product-show-info-grid{
+grid-template-columns:1fr;
+}
+
+.admin-product-show-actions{
+flex-direction:column;
+}
+
+.admin-product-show-edit-btn-large,
+.admin-product-show-delete-btn{
+width:100%;
+justify-content:center;
+}
+
+}

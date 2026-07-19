@@ -1,0 +1,127 @@
+<% if(announcements && announcements.length){ %>
+<div class="announcement-bar">
+
+    <div class="swiper announcementSwiper">
+
+        <div class="swiper-wrapper">
+
+            <% announcements.forEach(item=>{ %>
+
+            <div class="swiper-slide">
+                <div
+                class="announcement-item"
+                style="
+                    background:<%= item.backgroundColor %>;
+                    color:<%= item.textColor %>;
+                ">
+
+                    <div class="announcement-left">
+
+                        <%
+let icon = "bx bxs-megaphone";
+
+switch(item.type){
+
+case "offer":
+icon = "bx bxs-offer";
+break;
+
+case "sale":
+icon = "bx bxs-hot";
+break;
+
+case "coupon":
+icon = "bx bxs-purchase-tag";
+break;
+
+case "shipping":
+icon = "bx bxs-truck";
+break;
+
+case "new":
+icon = "bx bxs-star";
+break;
+
+case "festival":
+icon = "bx bxs-party";
+break;
+
+case "stock":
+icon = "bx bxs-package";
+break;
+
+case "info":
+icon = "bx bxs-info-circle";
+break;
+
+}
+%>
+
+<i class="<%= icon %>"></i>
+                <strong> <%= item.title %></strong>
+
+                        <span>
+
+                            <%= item.message %>
+
+                        </span>
+
+                    </div>
+
+                    <div class="announcement-right">
+                        <% if(item.coupon){ %>
+
+<div class="coupon-code">
+
+    <i class='bx bx-purchase-tag'></i>
+
+    <span><%= item.coupon %></span>
+
+    <button
+    type="button"
+    class="copy-coupon"
+    data-coupon="<%= item.coupon %>">
+
+        <i class='bx bx-copy'></i>
+
+    </button>
+
+</div>
+
+ <% if(item.buttonText && item.link){ %>
+
+<a
+href="<%= item.link %>"
+class="announcement-btn">
+
+    <%= item.buttonText %>
+
+    <i class='bx bx-right-arrow-alt'></i>
+
+</a>
+
+<% } %>
+
+<% } %>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <% }) %>
+
+        </div>
+
+        <div class="swiper-pagination announcement-pagination"></div>
+
+    </div>
+
+
+</div>
+
+<% } %>
+
+
+
+

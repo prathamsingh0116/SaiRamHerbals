@@ -1,0 +1,85 @@
+<div class="profile-card">
+
+    <div class="profile-card-top">
+
+    <div class="profile-avatar">
+
+    <img
+        id="profilePreview"
+        src="<%= user.profileImage?.url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.fullName) + '&background=2E7D32&color=fff' %>"
+        alt="<%= user.fullName %>"
+    >
+
+</div>
+
+        <div class="profile-info">
+
+            <h2><%= user.fullName %></h2>
+
+            <p><%= user.email %></p>
+
+        </div>
+
+    </div>
+
+    <div class="profile-role">
+
+        <i class='bx bx-check-circle'></i>
+
+        <span>
+
+            <%= user.role === "admin" ? "Administrator" : "Customer Account" %>
+
+        </span>
+
+    </div>
+
+     <div class="profile-meta">
+
+    <a href="/addresses" class="meta-item">
+
+        <i class='bx bx-map'></i>
+
+        <span>Addresses</span>
+
+        <strong><%= addressCount %></strong>
+
+        <small>View All</small>
+
+    </a>
+
+    <a href="/orders" class="meta-item">
+
+        <i class='bx bx-package'></i>
+
+        <span>Orders</span>
+
+        <strong><%= orderCount %></strong>
+
+        <small>View Orders</small>
+
+    </a>
+
+    <a href="/wishlist" class="meta-item">
+
+        <i class='bx bx-heart'></i>
+
+        <span>Wishlist</span>
+
+        <strong><%= wishlistCount %></strong>
+
+        <small>View Wishlist</small>
+
+    </a>
+
+</div>
+
+    <a href="/profile/edit" class="edit-profile-btn">
+
+        <i class='bx bx-edit'></i>
+
+        Edit Profile
+
+    </a>
+
+</div>

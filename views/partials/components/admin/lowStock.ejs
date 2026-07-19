@@ -1,0 +1,43 @@
+<section class="admin-dashboard-low-stock-section">
+
+    <div class="admin-dashboard-section-header">
+
+        <h3>Low Stock Products</h3>
+
+    </div>
+
+    <% if(lowStockProducts.length){ %>
+
+        <% lowStockProducts.forEach(product=>{ %>
+
+            <div class="admin-dashboard-low-stock-item">
+
+                <div>
+
+                    <h4><%= product.name %></h4>
+
+                    <span><%= product.category %></span>
+
+                </div>
+
+                <div class="admin-dashboard-stock-badge">
+
+                    <%= product.stock %>
+
+                </div>
+
+            </div>
+
+        <% }) %>
+
+    <% }else{ %>
+
+        <div class="admin-dashboard-empty-small">
+
+            🎉 No Low Stock Products
+
+        </div>
+
+    <% } %>
+
+</section>

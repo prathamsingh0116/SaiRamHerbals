@@ -1,0 +1,31 @@
+<div class="toolbar">
+
+    <span class="toolbar-tag">
+
+        🌿 Premium Ayurvedic Collection
+
+    </span>
+
+    <h1>
+
+        <%= selectedCategory || "Our Herbal Products" %>
+
+    </h1>
+
+    <p>
+
+        <% if(selectedCategory){ %>
+
+            Explore our carefully selected
+            <strong><%= selectedCategory %></strong>
+            products made with authentic Ayurvedic ingredients and modern quality standards.
+
+        <% }else{ %>
+
+            Discover our complete collection of natural herbal products crafted for healthier living, trusted quality and everyday wellness.
+
+        <% } %>
+
+    </p>
+
+</div>

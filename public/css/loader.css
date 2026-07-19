@@ -1,0 +1,578 @@
+/* ===========================================
+            SaiRam Herbals Loader
+=========================================== */
+
+:root{
+
+    --primary:#2e7d32;
+
+    --secondary:#4caf50;
+
+    --light:#81c784;
+
+    --white:#fff;
+
+    --text:#2f3e46;
+
+}
+
+#page-loader{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100vh;
+
+    background:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    z-index:999999;
+
+    transition:all .8s ease;
+
+}
+
+#page-loader.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+.loader-bg{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at top left,#dff7df,transparent 35%),
+
+    radial-gradient(circle at bottom right,#d9ffe2,transparent 35%),
+
+    #fff;
+
+}
+
+/* ========================= */
+
+.loader-card{
+
+    position:relative;
+
+    width:420px;
+
+    max-width:92%;
+
+    padding:45px 35px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.65);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+
+    0 20px 60px rgba(0,0,0,.08),
+
+    inset 0 1px rgba(255,255,255,.7);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+/* ========================= */
+
+.logo-glow{
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(76,175,80,.35),
+
+    transparent 70%);
+
+    animation:glowPulse 2.5s infinite;
+
+}
+
+/* ========================= */
+
+.loader-logo{
+
+    position:relative;
+
+    width:120px;
+
+    z-index:2;
+
+    animation:logoZoom 2.5s ease forwards;
+
+    user-select:none;
+
+}
+
+/* ========================= */
+
+.loader-card h2{
+
+    margin-top:28px;
+
+    color:var(--primary);
+
+    font-size:32px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+}
+
+.loader-card p{
+
+    margin-top:8px;
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+/* ========================= */
+
+@keyframes logoZoom{
+
+0%{
+
+transform:scale(.2);
+
+opacity:0;
+
+filter:blur(10px);
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+60%{
+
+transform:scale(1);
+
+filter:blur(0);
+
+}
+
+80%{
+
+transform:scale(1.12);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+@keyframes glowPulse{
+
+0%{
+
+transform:scale(.8);
+
+opacity:.2;
+
+}
+
+50%{
+
+transform:scale(1.2);
+
+opacity:.55;
+
+}
+
+100%{
+
+transform:scale(.8);
+
+opacity:.2;
+
+}
+}
+
+/*=========================================
+        Premium Loading Bar
+=========================================*/
+
+.loading-bar{
+
+    position:relative;
+
+    width:100%;
+
+    height:10px;
+
+    margin-top:35px;
+
+    border-radius:50px;
+
+    background:#edf5ee;
+
+    overflow:hidden;
+
+    box-shadow:
+    inset 0 2px 5px rgba(0,0,0,.05);
+
+}
+
+.loading-fill{
+
+    position:relative;
+
+    width:0;
+
+    height:100%;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+    90deg,
+    #1b5e20,
+    #43a047,
+    #81c784,
+    #43a047,
+    #1b5e20);
+
+    background-size:300%;
+
+    animation:
+
+    loadingFill 2.5s linear forwards,
+
+    gradientMove 1s linear infinite;
+
+}
+
+/* Shine */
+
+.loading-fill::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-30%;
+
+    width:30%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+
+    90deg,
+
+    transparent,
+
+    rgba(255,255,255,.9),
+
+    transparent);
+
+    animation:
+
+    shineMove .8s linear infinite;
+
+}
+
+/* ======================== */
+
+.loading-text{
+
+    margin-top:18px;
+
+    color:#2e7d32;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    animation:textBlink 1.2s infinite;
+
+}
+
+
+/*=========================================
+        Animations
+=========================================*/
+
+@keyframes loadingFill{
+
+0%{
+
+width:0%;
+
+}
+
+100%{
+
+width:100%;
+
+}
+
+}
+
+@keyframes gradientMove{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+@keyframes shineMove{
+
+0%{
+
+left:-40%;
+
+}
+
+100%{
+
+left:120%;
+
+}
+
+}
+
+@keyframes textBlink{
+
+0%{
+
+opacity:.3;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+100%{
+
+opacity:.3;
+
+}
+
+}
+
+/*=========================================
+        Floating Leaves
+=========================================*/
+
+#page-loader::before,
+
+#page-loader::after{
+
+content:"🌿";
+
+position:absolute;
+
+font-size:45px;
+
+opacity:.07;
+
+animation:leafFloat 6s linear infinite;
+
+}
+
+#page-loader::before{
+
+left:8%;
+
+bottom:-50px;
+
+animation-delay:0s;
+
+}
+
+#page-loader::after{
+
+right:8%;
+
+bottom:-80px;
+
+animation-delay:2s;
+
+}
+
+@keyframes leafFloat{
+
+0%{
+
+transform:
+
+translateY(0)
+
+rotate(0deg);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:.08;
+
+}
+
+80%{
+
+opacity:.08;
+
+}
+
+100%{
+
+transform:
+
+translateY(-120vh)
+
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/*=========================================
+        Responsive
+=========================================*/
+
+@media(max-width:768px){
+
+.loader-card{
+
+padding:35px 20px;
+
+border-radius:22px;
+
+}
+
+.loader-logo{
+
+width:90px;
+
+}
+
+.loader-card h2{
+
+font-size:24px;
+
+}
+
+.loader-card p{
+
+font-size:14px;
+
+}
+
+.loading-bar{
+
+height:8px;
+
+margin-top:28px;
+
+}
+
+.loading-text{
+
+font-size:14px;
+
+}
+
+.logo-glow{
+
+width:160px;
+
+height:160px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.loader-logo{
+
+width:75px;
+
+}
+
+.loader-card{
+
+padding:28px 18px;
+
+}
+
+.loader-card h2{
+
+font-size:21px;
+
+}
+
+.loader-card p{
+
+font-size:13px;
+
+}
+
+}

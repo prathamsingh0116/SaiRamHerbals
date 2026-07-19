@@ -1,0 +1,78 @@
+<%
+const products = [
+{
+name:"Vitamin C Face Serum",
+image:"/images/products/serum.webp",
+mrp:999,
+price:799,
+rating:4.8,
+discount:20
+},
+{
+name:"Hair Growth Oil",
+image:"/images/products/hair-oil.webp",
+mrp:599,
+price:449,
+rating:4.7,
+discount:25
+},
+{
+name:"Aloe Vera Gel",
+image:"/images/products/aloe.webp",
+mrp:299,
+price:249,
+rating:4.9,
+discount:17
+},
+{
+name:"Pain Relief Cream",
+image:"/images/products/pain.webp",
+mrp:499,
+price:399,
+rating:4.6,
+discount:20
+}
+];
+%>
+
+<section class="featured-products">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>Best Sellers</span>
+
+<h2>Featured Products</h2>
+
+<p>
+Handpicked Ayurvedic products loved by thousands of customers.
+</p>
+
+</div>
+
+<div class="filter-buttons">
+
+<button class="active">All</button>
+
+<button>Skin Care</button>
+
+<button>Hair Care</button>
+
+<button>Immunity</button>
+
+</div>
+
+<div class="product-grid">
+
+<% products.forEach(product=>{ %>
+
+<%- include("../partials/productCard",{product}) %>
+
+<% }) %>
+
+</div>
+
+</div>
+
+</section>

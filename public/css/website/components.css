@@ -1,0 +1,162 @@
+
+@import "variable.css";
+
+/*=========================================
+        SECTION HEADING
+=========================================*/
+
+.section-heading{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.section-badge{
+
+    display:inline-block;
+
+    padding:8px 20px;
+
+    border-radius:50px;
+
+    background:#EAF7EA;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+    font-size:14px;
+
+}
+
+.section-heading h2{
+
+    font-size:42px;
+
+    color:var(--text-dark);
+
+    margin-bottom:18px;
+
+    font-weight:700;
+
+}
+
+.section-heading p{
+
+    max-width:650px;
+
+    margin:auto;
+
+    color:var(--text-light);
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+
+@media(max-width:768px){
+
+.section-heading h2{
+
+font-size:32px;
+
+}
+
+.section-heading p{
+
+font-size:15px;
+
+}
+
+}
+
+/*=========================================
+                BUTTON
+=========================================*/
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:15px 30px;
+
+    border-radius:50px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+/*=========================
+        PRIMARY
+=========================*/
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-3px);
+
+}
+
+/*=========================
+        SECONDARY
+=========================*/
+
+.btn-secondary{
+
+    border:2px solid var(--primary);
+
+    color:var(--primary);
+
+    background:#fff;
+
+}
+
+.btn-secondary:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/*=========================
+        LIGHT
+=========================*/
+
+.btn-light{
+
+    background:#F3F7F4;
+
+    color:var(--text-dark);
+
+}
+
+.btn-light:hover{
+
+    background:#E8F5E9;
+
+}

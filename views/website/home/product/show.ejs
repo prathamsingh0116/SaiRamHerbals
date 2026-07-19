@@ -1,0 +1,531 @@
+<head>
+    <link rel="stylesheet" href="/css/website/review.css">
+</head>
+<% layout("layouts/main") %>
+
+<section class="product-details section">
+
+<div class="container">
+
+<div class="product-details-grid">
+
+<!--==========================
+        IMAGE
+===========================-->
+
+<%- include("../../../partials/components/userProduct/gallery", {
+    product: product
+}) %>
+
+<!--==========================
+        CONTENT
+===========================-->
+<div class="product-content">
+
+    <span class="product-category">
+        <%= product.category %>
+    </span>
+
+    <h1>
+        <%= product.name %>
+    </h1>
+
+    <div class="product-rating">
+
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star-half'></i>
+
+        <span>
+
+            <%= averageRating %> ⭐
+
+            (<%= reviewCount %> Reviews)
+
+        </span>
+
+    </div>
+
+<%
+
+const finalPrice =
+product.price -
+(product.price*product.discount)/100;
+
+%>
+
+    <div class="product-price">
+
+        <h2>
+
+            ₹<%= finalPrice.toFixed(0) %>
+
+        </h2>
+
+        <% if(product.discount>0){ %>
+
+            <span>
+
+                ₹<%= product.price %>
+
+            </span>
+
+            <label>
+
+                <%= product.discount %>% OFF
+
+            </label>
+
+        <% } %>
+
+    </div>
+
+<div class="product-short-info">
+
+<div>
+
+<strong>
+
+Brand
+
+</strong>
+
+<p>
+
+<%= product.brand %>
+
+</p>
+
+</div>
+
+<div>
+
+<strong>
+
+SKU
+
+</strong>
+
+<p>
+
+<%= product.sku %>
+
+</p>
+
+</div>
+
+</div>
+
+<!-- Inventory -->
+
+<div class="stock-status">
+
+<% if(product.stock===0){ %>
+
+<span class="out-stock">
+
+<i class='bx bx-x-circle'></i>
+
+Out Of Stock
+
+</span>
+
+<% }else if(product.stock<=product.lowStockLimit){ %>
+
+<span class="low-stock">
+
+<i class='bx bx-error-circle'></i>
+
+Hurry! Only <%= product.stock %> Left
+
+</span>
+
+<% }else{ %>
+
+<span class="in-stock">
+
+<i class='bx bx-check-circle'></i>
+
+In Stock
+
+</span>
+
+<small>
+
+<%= product.stock %> Available
+
+</small>
+
+<% } %>
+
+</div>
+
+<div class="product-action-card">
+
+<div class="product-buttons">
+
+    <!-- Add To Cart -->
+    <form action="/cart/add/<%= product.slug %>" method="POST">
+
+        <input
+            type="hidden"
+            name="quantity"
+            value="1">
+
+        <% if(product.stock > 0){ %>
+
+            <button
+                type="submit"
+                class="btn-primary">
+
+                <i class='bx bx-cart'></i>
+
+                Add To Cart
+
+            </button>
+
+        <% } else { %>
+
+            <button
+                type="button"
+                class="btn-primary out-stock-btn"
+                disabled>
+
+                <i class='bx bx-block'></i>
+
+                Out Of Stock
+
+            </button>
+
+        <% } %>
+
+    </form>
+
+    <!-- Buy Now -->
+    <form action="/cart/buy-now/<%= product._id %>" method="POST">
+
+        <input
+            type="hidden"
+            name="quantity"
+            value="1">
+
+        <% if(product.stock > 0){ %>
+
+            <button
+                type="submit"
+                class="btn-buy-now">
+
+                <i class='bx bx-bolt-circle'></i>
+
+                Buy Now
+
+            </button>
+
+        <% } else { %>
+
+            <button
+                type="button"
+                class="btn-buy-now out-stock-btn"
+                disabled>
+
+                <i class='bx bx-block'></i>
+
+                Out Of Stock
+
+            </button>
+
+        <% } %>
+
+    </form>
+
+    <!-- Wishlist -->
+
+    <%
+    const wishlisted =
+    wishlistIds.includes(product._id.toString());
+    %>
+
+    <form
+        action="/wishlist/toggle/<%= product.slug %>"
+        method="POST">
+
+        <button
+            type="submit"
+            class="btn-secondary <%= wishlisted ? 'active' : '' %>">
+
+            <i class='bx <%= wishlisted ? 'bxs-heart' : 'bx-heart' %>'></i>
+
+            <%= wishlisted ? "Wishlisted" : "Wishlist" %>
+
+        </button>
+
+    </form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==========================
+        REVIEWS
+========================== -->
+
+<section class="review-section">
+
+<div class="review-header">
+
+<div>
+
+<h2>
+
+Customer Reviews
+
+</h2>
+
+<p>
+
+Share your experience with this product
+
+</p>
+
+</div>
+
+</div>
+
+<div class="review-wrapper">
+
+<div class="review-summary">
+
+<h1>
+
+<%= averageRating %>
+
+</h1>
+
+<p>
+
+Based on <%= reviewCount %> Reviews
+
+</p>
+
+</div>
+
+<div class="review-form-card">
+
+<h3>
+
+Write a Review
+
+</h3>
+
+<form
+action="/products/<%= product.slug %>/reviews"
+method="POST">
+
+<div class="rating-select">
+
+<label>
+
+Your Rating
+
+</label>
+
+<select
+
+name="rating"
+
+required>
+
+<option value="">Choose Rating</option>
+
+<option value="5">★★★★★ Excellent</option>
+
+<option value="4">★★★★☆ Good</option>
+
+<option value="3">★★★☆☆ Average</option>
+
+<option value="2">★★☆☆☆ Poor</option>
+
+<option value="1">★☆☆☆☆ Bad</option>
+
+</select>
+
+</div>
+
+<div class="review-comment">
+
+<label>
+
+Your Review
+
+</label>
+
+<textarea
+
+name="comment"
+
+rows="5"
+
+placeholder="Write your experience..."
+
+required>
+
+</textarea>
+
+</div>
+
+<button
+
+class="submit-review-btn"
+
+type="submit">
+
+<i class='bx bx-send'></i>
+
+Submit Review
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<div class="reviews-list">
+
+<% if(product.reviews && product.reviews.length){ %>
+
+<% product.reviews.forEach(review=>{ %>
+
+<div class="review-card">
+
+<div class="review-top">
+
+<div class="review-user">
+
+<div class="review-avatar">
+
+<%= review.user.fullName.charAt(0).toUpperCase() %>
+
+</div>
+
+<div>
+
+<div class="review-name">
+
+<%= review.user.fullName %>
+
+</div>
+
+<div class="review-date">
+
+<%= review.createdAt.toDateString() %>
+
+</div>
+
+</div>
+
+</div>
+
+<span>
+
+<%= review.createdAt.toDateString() %>
+
+</span>
+
+</div>
+
+<div class="review-stars">
+
+<%= "⭐".repeat(review.rating) %>
+
+</div>
+
+<% if(review.isVerifiedPurchase){ %>
+
+<span class="verified-badge">
+
+✔ Verified Purchase
+
+</span>
+
+<% } %>
+
+<p>
+
+<%= review.comment %>
+
+</p>
+
+<% if(currentUser){ %>
+
+<div class="review-actions">
+
+    <% if(review.user._id.toString() === currentUser._id.toString()){ %>
+
+        <!-- <a
+        href="/products/<%= product.slug %>/reviews/<%= review._id %>/edit"
+        class="review-edit">
+
+            <i class='bx bx-edit'></i>
+
+            Edit
+
+        </a> -->
+
+    <% } %>
+
+    <% if(
+        review.user._id.toString()===currentUser._id.toString()
+        ||
+        currentUser.role==="admin"
+    ){ %>
+
+    <form
+    action="/products/<%= product.slug %>/reviews/<%= review._id %>?_method=DELETE"
+    method="POST"
+    onsubmit="return confirm('Delete this review?')">
+
+        <button
+        type="submit"
+        class="review-delete">
+
+            <i class='bx bx-trash'></i>
+
+            Delete
+
+        </button>
+
+    </form>
+
+    <% } %>
+
+</div>
+
+<% } %>
+
+</div>
+
+<% }) %>
+
+<% }else{ %>
+
+<div class="no-review">
+
+No reviews yet.
+
+Be the first to review this product.
+
+</div>
+
+<% } %>
+
+</div>
+
+</section>

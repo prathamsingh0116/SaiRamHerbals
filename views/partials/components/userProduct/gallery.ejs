@@ -1,0 +1,46 @@
+<div class="product-gallery">
+
+   <div class="product-main-image">
+
+    <% if(product.images && product.images.length){ %>
+
+        <img
+            id="mainProductImage"
+            src="<%= product.images[0].url %>"
+            alt="<%= product.name %>">
+
+    <% } else { %>
+
+        <img
+            id="mainProductImage"
+            src="/images/no-image.png"
+            alt="No Image">
+
+    <% } %>
+
+    <div id="imageLens"></div>
+
+</div>
+
+    <% if(product.images && product.images.length){ %>
+
+    <div class="product-thumbnail-wrapper">
+
+    <% product.images.forEach((image,index)=>{ %>
+
+        <div class="product-thumbnail <%= index===0 ? 'active-thumb':'' %>">
+
+            <img
+                src="<%= image.url %>"
+                alt="<%= product.name %>"
+                data-image="<%= image.url %>">
+
+        </div>
+
+    <% }) %>
+
+</div>
+
+    <% } %>
+
+</div>

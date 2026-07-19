@@ -1,0 +1,50 @@
+<section class="users-wrapper">
+
+    <% if(users.length){ %>
+
+        <div class="users-header">
+
+            <div>
+
+                <h2>
+
+                    Registered Users
+
+                </h2>
+
+                <p>
+
+                    Total Users :
+                    <strong><%= users.length %></strong>
+
+                </p>
+
+            </div>
+
+            <div class="users-view">
+
+                <i class='bx bx-grid-alt'></i>
+
+                Card View
+
+            </div>
+
+        </div>
+
+        <div class="user-grid">
+
+            <% users.forEach(user=>{ %>
+
+                <%- include("./userCard",{user}) %>
+
+            <% }) %>
+
+        </div>
+
+    <% }else{ %>
+
+        <%- include("./emptyUsers") %>
+
+    <% } %>
+
+</section>

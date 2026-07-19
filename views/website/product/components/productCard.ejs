@@ -1,0 +1,201 @@
+<%
+
+const finalPrice =
+product.price -
+(product.price*product.discount)/100;
+
+%>
+
+
+<div class="product-card">
+
+    <% if(product.discount>0){ %>
+
+        <span class="discount-badge">
+
+            -<%= product.discount %>%
+
+        </span>
+
+    <% } %>
+
+    <!-- Wishlist -->
+
+    <form
+
+    action="/wishlist/toggle/<%= product.slug %>"
+
+    method="POST"
+
+    class="wishlist-form">
+
+        <button
+
+        class="wishlist-btn">
+
+            <% if(wishlistIds.includes(product._id.toString())){ %>
+
+                <i class='bx bxs-heart'></i>
+
+            <% }else{ %>
+
+                <i class='bx bx-heart'></i>
+
+            <% } %>
+
+        </button>
+
+    </form>
+
+    <!-- Image -->
+
+    <a
+
+    href="/products/<%= product.slug %>"
+
+    class="product-image">
+
+        <img
+
+        src="<%= product.images[0]?.url %>"
+
+        alt="<%= product.name %>">
+
+    </a>
+
+    <!-- Body -->
+
+    <div class="product-body">
+
+        <span class="category-pill">
+
+            <%= product.category %>
+
+        </span>
+
+        <h3>
+
+            <%= product.name %>
+
+        </h3>
+
+        <p>
+
+            <%= product.brand %>
+
+        </p>
+
+        <!-- <div class="rating">
+
+            ⭐⭐⭐⭐⭐
+
+        </div> -->
+
+        <div class="price-box">
+
+            <span class="price">
+
+                ₹<%= finalPrice %>
+
+            </span>
+
+<% if(product.discount>0){ %>
+            
+
+                <del>
+
+                    ₹<%= product.price %>
+
+                </del>
+
+            <% } %>
+
+        </div>
+
+        <div class="stock-status">
+
+    <% if(product.stock === 0){ %>
+
+        <span class="out-stock">
+
+            <i class='bx bx-x-circle'></i>
+
+            Out of Stock
+
+        </span>
+
+    <% } else if(product.stock <= product.lowStockLimit){ %>
+
+        <span class="low-stock">
+
+            <i class='bx bx-error-circle'></i>
+
+            Only <%= product.stock %> Left
+
+        </span>
+
+    <% } else { %>
+
+        <span class="in-stock">
+
+            <i class='bx bx-check-circle'></i>
+
+            In Stock
+
+        </span>
+
+    <% } %>
+
+</div>
+
+        <div class="card-buttons">
+
+            <a
+
+            href="/products/<%= product.slug %>"
+
+            class="view-btn">
+
+                <i class='bx bx-show'></i>
+
+                View
+
+            </a>
+
+            <form
+action="/cart/add/<%= product.slug %>"
+method="POST">
+
+<% if(product.stock > 0){ %>
+
+    <button class="cart-btn">
+
+        <i class='bx bx-cart'></i>
+
+        Add
+
+    </button>
+
+<% }else{ %>
+
+    <button
+        class="cart-btn out-stock-btn"
+        disabled>
+
+        <i class='bx bx-block'></i>
+
+        Out of Stock
+
+    </button>
+
+<% } %>
+
+</form>
+
+        </div>
+
+    </div>
+
+    
+
+</div>

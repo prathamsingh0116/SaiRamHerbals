@@ -1,0 +1,126 @@
+<section class="profile-section">
+
+    <div class="section-header">
+
+        <div>
+
+            <h3>Personal Information</h3>
+            <p>Your account details</p>
+
+        </div>
+
+        <a href="/profile/edit" class="edit-info-btn">
+
+            <i class='bx bx-edit'></i>
+
+            Edit
+
+        </a>
+
+    </div>
+
+    <div class="info-card">
+
+        <div class="info-grid">
+
+            <div class="info-item">
+
+                <label>Full Name</label>
+
+                <span>
+
+                    <%= `${currentUser.firstName || ""} ${currentUser.lastName || ""}`.trim() || currentUser.username %>
+
+                </span>
+
+            </div>
+
+            <div class="info-item">
+
+                <label>Username</label>
+
+                <span>
+
+                    <%= currentUser.username %>
+
+                </span>
+
+            </div>
+
+            <div class="info-item">
+
+                <label>Email</label>
+
+                <span>
+
+                    <%= currentUser.email %>
+
+                </span>
+
+            </div>
+
+            <div class="info-item">
+
+                <label>Phone Number</label>
+
+                <span>
+
+                    <%= currentUser.phone || "Not Added" %>
+
+                </span>
+
+            </div>
+
+            <div class="info-item">
+
+                <label>Gender</label>
+
+                <span>
+
+                    <%= currentUser.gender || "Not Selected" %>
+
+                </span>
+
+            </div>
+
+            <div class="info-item">
+
+                <label>Date of Birth</label>
+
+                <span>
+
+                    <%= currentUser.dob || "Not Added" %>
+
+                </span>
+
+            </div>
+
+            <div class="info-item">
+
+                <label>Member Since</label>
+
+                <span>
+
+                    <%= currentUser.createdAt.toDateString() %>
+
+                </span>
+
+            </div>
+
+            <div class="info-item">
+
+                <label>Role</label>
+
+                <span class="role-badge">
+
+                    Customer
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

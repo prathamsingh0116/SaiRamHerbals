@@ -1,0 +1,113 @@
+<div class="dashboard-header">
+
+    <div class="dashboard-title">
+
+        <h1>
+
+            <i class='bx bx-group'></i>
+
+            User Management
+
+        </h1>
+
+        <p>
+
+            Manage customers, admins and blocked users from one dashboard.
+
+        </p>
+
+    </div>
+
+    <div class="dashboard-badge">
+
+        <i class='bx bx-data'></i>
+
+        Live Statistics
+
+    </div>
+
+</div>
+
+<div class="user-stats">
+
+    <div class="stat-card green">
+
+        <div class="stat-icon">
+
+            <i class='bx bx-group'></i>
+
+        </div>
+
+        <div class="stat-content">
+
+            <span>Total Users</span>
+
+            <h2><%= stats.total %></h2>
+
+            <small>Registered Accounts</small>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card blue">
+
+        <div class="stat-icon">
+
+            <i class='bx bx-user'></i>
+
+        </div>
+
+        <div class="stat-content">
+
+            <span>Customers</span>
+
+            <h2><%= stats.customers %></h2>
+
+            <small>Active Customers</small>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card orange">
+
+        <div class="stat-icon">
+
+            <i class='bx bxs-shield'></i>
+
+        </div>
+
+        <div class="stat-content">
+
+            <span>Admins</span>
+
+            <h2><%= stats.admins %></h2>
+
+            <small>System Managers</small>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card red">
+
+        <div class="stat-icon">
+
+            <i class='bx bx-block'></i>
+
+        </div>
+
+        <div class="stat-content">
+
+            <span>Blocked</span>
+
+            <h2><%= stats.blocked %></h2>
+
+            <small>Restricted Accounts</small>
+
+        </div>
+
+    </div>
+
+</div>

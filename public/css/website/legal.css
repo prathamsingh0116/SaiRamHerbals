@@ -1,0 +1,1459 @@
+/*==================================================
+            LEGAL PAGES
+==================================================*/
+
+:root{
+
+--primary:#2e7d32;
+--primary-dark:#1b5e20;
+--secondary:#66bb6a;
+--light:#f8faf8;
+--white:#ffffff;
+--border:#e7e7e7;
+--text:#1f2937;
+--muted:#6b7280;
+--shadow:0 15px 45px rgba(0,0,0,.08);
+
+}
+
+body{
+
+background:#f6f8f9;
+
+}
+
+/*==================================
+        HERO
+==================================*/
+
+.legal-hero{
+
+padding:90px 0 70px;
+
+background:
+linear-gradient(
+135deg,
+#effaf1,
+#ffffff
+);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.legal-hero::before{
+
+content:"";
+
+position:absolute;
+
+width:420px;
+
+height:420px;
+
+background:#b7f3c1;
+
+border-radius:50%;
+
+top:-180px;
+
+right:-120px;
+
+opacity:.35;
+
+}
+
+.legal-hero::after{
+
+content:"";
+
+position:absolute;
+
+width:260px;
+
+height:260px;
+
+background:#d8ffe0;
+
+border-radius:50%;
+
+bottom:-120px;
+
+left:-100px;
+
+opacity:.45;
+
+}
+
+.legal-hero .container{
+
+position:relative;
+
+z-index:2;
+
+}
+
+.legal-breadcrumb{
+
+display:flex;
+
+gap:10px;
+
+align-items:center;
+
+margin-bottom:25px;
+
+font-size:15px;
+
+}
+
+.legal-breadcrumb a{
+
+text-decoration:none;
+
+color:var(--primary);
+
+font-weight:600;
+
+}
+
+.legal-breadcrumb span{
+
+color:#888;
+
+}
+
+.legal-hero h1{
+
+font-size:48px;
+
+font-weight:800;
+
+color:var(--text);
+
+margin-bottom:18px;
+
+}
+
+.legal-hero p{
+
+max-width:760px;
+
+font-size:18px;
+
+line-height:1.8;
+
+color:var(--muted);
+
+}
+
+/*==================================
+        SEARCH
+==================================*/
+
+.legal-search{
+
+margin-top:40px;
+
+position:relative;
+
+max-width:650px;
+
+}
+
+.legal-search input{
+
+width:100%;
+
+height:62px;
+
+border-radius:60px;
+
+border:2px solid transparent;
+
+padding:0 65px 0 28px;
+
+font-size:16px;
+
+background:#fff;
+
+box-shadow:var(--shadow);
+
+transition:.35s;
+
+}
+
+.legal-search input:focus{
+
+outline:none;
+
+border-color:var(--primary);
+
+}
+
+.legal-search i{
+
+position:absolute;
+
+right:24px;
+
+top:50%;
+
+transform:translateY(-50%);
+
+font-size:24px;
+
+color:var(--primary);
+
+}
+
+/*==================================
+        FAQ
+==================================*/
+
+.faq-section{
+
+padding:70px 0;
+
+}
+
+.faq-wrapper{
+
+display:flex;
+
+flex-direction:column;
+
+gap:22px;
+
+}
+
+.faq-item{
+
+background:#fff;
+
+border-radius:18px;
+
+box-shadow:0 10px 35px rgba(0,0,0,.05);
+
+overflow:hidden;
+
+transition:.35s;
+
+border:1px solid #edf1ed;
+
+}
+
+.faq-item:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.faq-question{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:24px 30px;
+
+cursor:pointer;
+
+}
+
+.faq-question h3{
+
+font-size:19px;
+
+font-weight:700;
+
+color:var(--text);
+
+margin:0;
+
+}
+
+.faq-question i{
+
+font-size:28px;
+
+color:var(--primary);
+
+transition:.35s;
+
+}
+
+.faq-answer{
+
+display:none;
+
+padding:0 30px 28px;
+
+}
+
+.faq-answer p{
+
+font-size:16px;
+
+line-height:1.9;
+
+color:var(--muted);
+
+margin:0;
+
+}
+
+.faq-item.active .faq-answer{
+
+display:block;
+
+animation:fadeDown .35s ease;
+
+}
+
+.faq-item.active .faq-question i{
+
+transform:rotate(45deg);
+
+}
+
+/*==================================
+        CONTACT CARD
+==================================*/
+
+.legal-contact{
+
+padding:70px 0 100px;
+
+}
+
+.legal-contact-card{
+
+background:linear-gradient(
+135deg,
+#2e7d32,
+#43a047
+);
+
+padding:60px;
+
+border-radius:25px;
+
+text-align:center;
+
+color:#fff;
+
+box-shadow:0 25px 60px rgba(46,125,50,.25);
+
+}
+
+.legal-contact-card i{
+
+font-size:70px;
+
+margin-bottom:20px;
+
+}
+
+.legal-contact-card h2{
+
+font-size:34px;
+
+margin-bottom:15px;
+
+}
+
+.legal-contact-card p{
+
+font-size:17px;
+
+max-width:650px;
+
+margin:0 auto 30px;
+
+line-height:1.8;
+
+}
+
+.contact-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:15px 40px;
+
+background:#fff;
+
+color:#2e7d32;
+
+font-weight:700;
+
+text-decoration:none;
+
+border-radius:50px;
+
+transition:.35s;
+
+}
+
+.contact-btn:hover{
+
+transform:translateY(-4px);
+
+background:#f8f8f8;
+
+}
+
+/*==================================
+        ANIMATION
+==================================*/
+
+@keyframes fadeDown{
+
+from{
+
+opacity:0;
+
+transform:translateY(-12px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/*==================================
+        HOVER EFFECTS
+==================================*/
+
+.faq-item{
+
+position:relative;
+
+}
+
+.faq-item::before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+width:5px;
+
+height:100%;
+
+background:var(--primary);
+
+transform:scaleY(0);
+
+transform-origin:top;
+
+transition:.35s;
+
+}
+
+.faq-item:hover::before,
+
+.faq-item.active::before{
+
+transform:scaleY(1);
+
+}
+
+.faq-question:hover{
+
+background:#fafdfb;
+
+}
+
+.faq-item.active{
+
+border-color:#b7dfc0;
+
+}
+
+/*==================================
+        SCROLLBAR
+==================================*/
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#2e7d32;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#edf5ef;
+
+}
+
+/*==================================
+        SECTION TITLE
+==================================*/
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:60px;
+
+}
+
+.section-title h2{
+
+font-size:42px;
+
+margin-bottom:15px;
+
+color:var(--text);
+
+}
+
+.section-title p{
+
+max-width:700px;
+
+margin:auto;
+
+line-height:1.8;
+
+color:var(--muted);
+
+}
+
+/*==================================
+        GLASS CARD
+==================================*/
+
+.glass-card{
+
+background:rgba(255,255,255,.7);
+
+backdrop-filter:blur(14px);
+
+border:1px solid rgba(255,255,255,.5);
+
+box-shadow:0 10px 40px rgba(0,0,0,.08);
+
+border-radius:20px;
+
+}
+
+/*==================================
+        TABLET
+==================================*/
+
+@media(max-width:992px){
+
+.legal-hero{
+
+padding:70px 0;
+
+}
+
+.legal-hero h1{
+
+font-size:38px;
+
+}
+
+.legal-hero p{
+
+font-size:16px;
+
+}
+
+.legal-contact-card{
+
+padding:45px;
+
+}
+
+.section-title h2{
+
+font-size:34px;
+
+}
+
+}
+
+/*==================================
+        MOBILE
+==================================*/
+
+@media(max-width:768px){
+
+.legal-hero{
+
+padding:60px 0;
+
+}
+
+.legal-breadcrumb{
+
+font-size:13px;
+
+flex-wrap:wrap;
+
+}
+
+.legal-hero h1{
+
+font-size:30px;
+
+line-height:1.3;
+
+}
+
+.legal-hero p{
+
+font-size:15px;
+
+}
+
+.legal-search{
+
+margin-top:25px;
+
+}
+
+.legal-search input{
+
+height:55px;
+
+padding:0 55px 0 20px;
+
+font-size:15px;
+
+}
+
+.legal-search i{
+
+font-size:20px;
+
+right:18px;
+
+}
+
+.faq-question{
+
+padding:20px;
+
+}
+
+.faq-question h3{
+
+font-size:17px;
+
+padding-right:15px;
+
+}
+
+.faq-answer{
+
+padding:0 20px 22px;
+
+}
+
+.faq-answer p{
+
+font-size:15px;
+
+}
+
+.legal-contact{
+
+padding:50px 0 70px;
+
+}
+
+.legal-contact-card{
+
+padding:35px 25px;
+
+border-radius:18px;
+
+}
+
+.legal-contact-card i{
+
+font-size:55px;
+
+}
+
+.legal-contact-card h2{
+
+font-size:28px;
+
+}
+
+.contact-btn{
+
+width:100%;
+
+}
+
+}
+
+/*==================================
+        SMALL MOBILE
+==================================*/
+
+@media(max-width:480px){
+
+.legal-hero{
+
+padding:50px 0;
+
+}
+
+.legal-hero h1{
+
+font-size:26px;
+
+}
+
+.legal-hero p{
+
+font-size:14px;
+
+}
+
+.faq-question{
+
+padding:18px;
+
+}
+
+.faq-question h3{
+
+font-size:16px;
+
+}
+
+.faq-question i{
+
+font-size:24px;
+
+}
+
+.faq-answer{
+
+padding:0 18px 20px;
+
+}
+
+.faq-answer p{
+
+font-size:14px;
+
+}
+
+.legal-contact-card{
+
+padding:28px 20px;
+
+}
+
+.legal-contact-card h2{
+
+font-size:24px;
+
+}
+
+.legal-contact-card p{
+
+font-size:14px;
+
+}
+
+.contact-btn{
+
+padding:14px 20px;
+
+font-size:14px;
+
+}
+
+}
+
+
+/* =====================================
+   SHIPPING / PRIVACY / TERMS / REFUND
+======================================*/
+
+.policy-card{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:30px;
+
+margin-bottom:25px;
+
+box-shadow:0 8px 30px rgba(0,0,0,.06);
+
+transition:.35s;
+
+}
+
+.policy-card:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 18px 40px rgba(0,0,0,.10);
+
+}
+
+.policy-card h2{
+
+font-size:28px;
+
+margin-bottom:18px;
+
+color:var(--primary);
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.policy-card p{
+
+font-size:16px;
+
+line-height:1.9;
+
+color:#555;
+
+margin-bottom:12px;
+
+}
+
+.policy-card ul{
+
+padding-left:25px;
+
+margin-top:10px;
+
+}
+
+.policy-card ul li{
+
+margin-bottom:10px;
+
+line-height:1.8;
+
+}
+
+.policy-highlight{
+
+background:#ecfff0;
+
+border-left:5px solid var(--primary);
+
+padding:18px;
+
+border-radius:12px;
+
+margin-top:20px;
+
+}
+
+.policy-highlight strong{
+
+display:block;
+
+margin-bottom:8px;
+
+color:var(--primary);
+
+}
+
+/*==============================
+        TABLET
+===============================*/
+
+@media(max-width:992px){
+
+.policy-card{
+
+padding:25px;
+
+}
+
+.policy-card h2{
+
+font-size:24px;
+
+}
+
+}
+
+/*==============================
+        MOBILE
+===============================*/
+
+@media(max-width:768px){
+
+.policy-card{
+
+padding:20px;
+
+border-radius:16px;
+
+}
+
+.policy-card h2{
+
+font-size:21px;
+
+line-height:1.4;
+
+}
+
+.policy-card p{
+
+font-size:15px;
+
+}
+
+.policy-card ul{
+
+padding-left:20px;
+
+}
+
+.policy-highlight{
+
+padding:15px;
+
+}
+
+}
+
+/*==============================
+      SMALL MOBILE
+===============================*/
+
+@media(max-width:480px){
+
+.policy-card{
+
+padding:18px;
+
+}
+
+.policy-card h2{
+
+font-size:19px;
+
+}
+
+.policy-card p{
+
+font-size:14px;
+
+line-height:1.8;
+
+}
+
+.policy-card ul li{
+
+font-size:14px;
+
+}
+
+.policy-highlight{
+
+font-size:14px;
+
+}
+
+}
+
+/*==========================================
+        REFUND PAGE
+==========================================*/
+
+.policy-card{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.policy-card::after{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:4px;
+
+background:linear-gradient(
+90deg,
+#2e7d32,
+#43a047
+);
+
+}
+
+.policy-card h2{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:18px;
+
+font-size:26px;
+
+color:#1f2937;
+
+}
+
+.policy-card h2 i{
+
+font-size:30px;
+
+color:#2e7d32;
+
+}
+
+.policy-card ul{
+
+margin-top:18px;
+
+padding-left:28px;
+
+}
+
+.policy-card ul li{
+
+margin-bottom:12px;
+
+line-height:1.8;
+
+font-size:15px;
+
+color:#555;
+
+}
+
+.policy-card p{
+
+font-size:16px;
+
+line-height:1.9;
+
+color:#555;
+
+}
+
+.policy-highlight{
+
+margin-top:20px;
+
+padding:18px;
+
+background:#f4fff6;
+
+border-left:5px solid #2e7d32;
+
+border-radius:10px;
+
+}
+
+.policy-highlight strong{
+
+display:block;
+
+margin-bottom:8px;
+
+color:#2e7d32;
+
+font-size:16px;
+
+}
+
+.policy-highlight p{
+
+margin:0;
+
+}
+
+/*==========================================
+        REFUND TIMELINE
+==========================================*/
+
+.refund-timeline{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:20px;
+
+margin-top:35px;
+
+}
+
+.timeline-card{
+
+background:#fff;
+
+padding:25px;
+
+border-radius:16px;
+
+text-align:center;
+
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+transition:.35s;
+
+}
+
+.timeline-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.timeline-card i{
+
+font-size:40px;
+
+color:#2e7d32;
+
+margin-bottom:15px;
+
+}
+
+.timeline-card h4{
+
+margin-bottom:10px;
+
+font-size:18px;
+
+}
+
+.timeline-card p{
+
+font-size:14px;
+
+color:#666;
+
+}
+
+/*==========================================
+        RESPONSIVE
+==========================================*/
+
+@media(max-width:992px){
+
+.refund-timeline{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.policy-card{
+
+padding:22px;
+
+}
+
+.policy-card h2{
+
+font-size:22px;
+
+}
+
+.policy-card h2 i{
+
+font-size:26px;
+
+}
+
+.policy-card p,
+
+.policy-card li{
+
+font-size:15px;
+
+}
+
+.refund-timeline{
+
+grid-template-columns:1fr;
+
+}
+
+.timeline-card{
+
+padding:20px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.policy-card{
+
+padding:18px;
+
+}
+
+.policy-card h2{
+
+font-size:19px;
+
+}
+
+.policy-card p,
+
+.policy-card li{
+
+font-size:14px;
+
+line-height:1.8;
+
+}
+
+.timeline-card i{
+
+font-size:34px;
+
+}
+
+.timeline-card h4{
+
+font-size:16px;
+
+}
+
+}
+
+
+.reading-progress{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+height:4px;
+
+width:0;
+
+background:linear-gradient(90deg,#16a34a,#22c55e);
+
+z-index:9999;
+
+transition:width .15s;
+
+}
+
+/*==================================
+        LEGAL CONTACT CARD
+==================================*/
+
+.legal-contact{
+
+padding:70px 0 100px;
+
+}
+
+.legal-contact-card{
+
+background:linear-gradient(135deg,#2e7d32,#43a047);
+
+padding:60px;
+
+border-radius:24px;
+
+text-align:center;
+
+box-shadow:0 25px 60px rgba(46,125,50,.25);
+
+color:#fff !important;
+
+}
+
+.legal-contact-card i{
+
+font-size:70px;
+
+margin-bottom:20px;
+
+color:#ffffff !important;
+
+}
+
+.legal-contact-card h2{
+
+font-size:34px;
+
+margin-bottom:18px;
+
+font-weight:700;
+
+color:#ffffff !important;
+
+}
+
+.legal-contact-card p{
+
+max-width:750px;
+
+margin:0 auto 30px;
+
+font-size:18px;
+
+line-height:1.9;
+
+font-weight:400;
+
+color:#ffffff !important;
+
+opacity:1 !important;
+
+}
+
+.legal-contact-card a{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:15px 35px;
+
+background:#ffffff;
+
+color:#2e7d32 !important;
+
+font-weight:700;
+
+border-radius:50px;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.legal-contact-card a:hover{
+
+background:#f4f4f4;
+
+transform:translateY(-4px);
+
+}
+
+.legal-contact-card *{
+
+color:#ffffff;
+
+}
+
+.legal-contact-card a,
+.legal-contact-card a *{
+
+color:#2e7d32 !important;
+
+}
+
+/*==================================
+        MOBILE
+==================================*/
+
+@media(max-width:768px){
+
+.legal-contact{
+
+padding:50px 0 70px;
+
+}
+
+.legal-contact-card{
+
+padding:35px 25px;
+
+}
+
+.legal-contact-card h2{
+
+font-size:26px;
+
+}
+
+.legal-contact-card p{
+
+font-size:15px;
+
+}
+
+.legal-contact-card i{
+
+font-size:50px;
+
+}
+
+.legal-contact-card a{
+
+width:100%;
+
+}
+
+}

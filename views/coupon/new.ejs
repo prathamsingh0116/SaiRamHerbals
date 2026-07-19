@@ -1,0 +1,174 @@
+<% layout("layouts/admin") %>
+
+<section class="coupon-form-page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>Create Coupon</h1>
+
+            <p>Create discount coupons for your customers.</p>
+
+        </div>
+
+        <a href="/admin/coupons" class="back-btn">
+
+            <i class='bx bx-arrow-back'></i>
+
+            Back
+
+        </a>
+
+    </div>
+
+    <form
+        action="/admin/coupons"
+        method="POST"
+        class="coupon-form">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>Coupon Name</label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Welcome Offer"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Coupon Code</label>
+
+                <input
+                    type="text"
+                    name="code"
+                    placeholder="WELCOME10"
+                    style="text-transform:uppercase"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Discount Type</label>
+
+                <select name="discountType">
+
+                    <option value="percentage">
+
+                        Percentage
+
+                    </option>
+
+                    <option value="fixed">
+
+                        Fixed Amount
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Discount Value</label>
+
+                <input
+                    type="number"
+                    name="discountValue"
+                    placeholder="10"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Minimum Order</label>
+
+                <input
+                    type="number"
+                    name="minimumOrder"
+                    >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Maximum Discount</label>
+
+                <input
+                    type="number"
+                    name="maximumDiscount"
+                    >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Usage Limit</label>
+
+                <input
+                    type="number"
+                    name="usageLimit"
+                    value="1">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Expiry Date</label>
+
+                <input
+                    type="date"
+                    name="expiryDate"
+                    required>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Description</label>
+
+            <textarea
+                rows="5"
+                name="description"
+                placeholder="Coupon description..."></textarea>
+
+        </div>
+
+        <div class="checkbox">
+
+            <input
+                type="checkbox"
+                name="isActive"
+                checked>
+
+            <label>
+
+                Coupon Active
+
+            </label>
+
+        </div>
+
+        <button
+            class="save-btn">
+
+            <i class='bx bx-save'></i>
+
+            Save Coupon
+
+        </button>
+
+    </form>
+
+</section>

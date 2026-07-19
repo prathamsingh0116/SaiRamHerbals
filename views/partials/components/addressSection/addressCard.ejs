@@ -1,0 +1,190 @@
+<div class="address-card <%= address.isDefault ? 'default-address' : '' %>">
+
+    <div class="address-card-header">
+
+        <div class="address-type-wrapper">
+
+            <span class="address-type">
+
+                <% if(address.addressType==="Home"){ %>
+
+                    🏠 Home
+
+                <% }else if(address.addressType==="Office"){ %>
+
+                    🏢 Office
+
+                <% }else{ %>
+
+                    📍 Other
+
+                <% } %>
+
+            </span>
+
+            <% if(address.isDefault){ %>
+
+                <span class="default-badge">
+
+                    <i class='bx bxs-star'></i>
+
+                    Default
+
+                </span>
+
+            <% } %>
+
+        </div>
+
+        <div class="address-actions">
+
+            <a
+
+                href="/addresses/<%= address._id %>/edit"
+
+                class="action-btn edit-btn"
+
+            >
+
+                <i class='bx bx-edit'></i>
+
+            </a>
+
+            <form
+
+                action="/addresses/<%= address._id %>?_method=DELETE"
+
+                method="POST"
+
+                class="delete-form"
+
+            >
+
+                <button
+
+                    type="submit"
+
+                    class="action-btn delete-btn"
+
+                >
+
+                    <i class='bx bx-trash'></i>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="address-user">
+
+        <h3>
+
+            <%= address.fullName %>
+
+        </h3>
+
+        <span>
+
+            <i class='bx bx-phone'></i>
+
+            <%= address.phone %>
+
+        </span>
+
+    </div>
+
+    <div class="address-body">
+
+        <p>
+
+            <%= address.addressLine1 %>
+
+        </p>
+
+        <% if(address.addressLine2){ %>
+
+        <p>
+
+            <%= address.addressLine2 %>
+
+        </p>
+
+        <% } %>
+
+        <% if(address.landmark){ %>
+
+        <p>
+
+            Landmark :
+
+            <%= address.landmark %>
+
+        </p>
+
+        <% } %>
+
+        <p>
+
+            <%= address.city %>,
+
+            <%= address.state %>
+
+            -
+
+            <%= address.pincode %>
+
+        </p>
+
+        <p>
+
+            <%= address.country %>
+
+        </p>
+
+    </div>
+
+    <div class="address-footer">
+
+      <!-- <button
+    type="button"
+    class="secondary-btn"
+>
+
+    <i class='bx bx-check-circle'></i>
+
+    Deliver Here
+
+</button> -->
+
+        <% if(!address.isDefault){ %>
+
+        <form
+
+            action="/addresses/<%= address._id %>/default?_method=PUT"
+
+            method="POST"
+
+        >
+
+            <button
+
+                class="primary-btn"
+
+                type="submit"
+
+            >
+
+                Set Default
+
+            </button>
+
+        </form>
+
+        <% } %>
+
+    </div>
+
+</div>

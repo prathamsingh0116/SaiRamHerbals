@@ -1,0 +1,456 @@
+<% layout("layouts/auth") %>
+
+<section class="auth-page">
+
+    <!--==========================
+            LEFT PANEL
+    ===========================-->
+
+    <div class="auth-left">
+
+        <div class="auth-overlay"></div>
+
+        <div class="auth-content">
+
+            <div class="brand-chip">
+
+                <i class='bx bxs-leaf'></i>
+
+                Trusted Ayurvedic Brand
+
+            </div>
+
+            <h1>
+
+                Nature's Healing
+
+                <span>
+
+                    Powered By Ayurveda
+
+                </span>
+
+            </h1>
+
+            <p>
+
+                Discover premium Ayurvedic wellness products
+                carefully crafted from natural herbs to support
+                healthier skin, stronger immunity, better hair,
+                and a healthier lifestyle.
+
+            </p>
+
+            <div class="auth-features">
+
+                <div class="feature-item">
+
+                    <i class='bx bx-check-circle'></i>
+
+                    <span>
+
+                        100% Natural Ingredients
+
+                    </span>
+
+                </div>
+
+                <div class="feature-item">
+
+                    <i class='bx bx-check-circle'></i>
+
+                    <span>
+
+                        GMP Certified Products
+
+                    </span>
+
+                </div>
+
+                <div class="feature-item">
+
+                    <i class='bx bx-check-circle'></i>
+
+                    <span>
+
+                        Trusted By 50,000+ Customers
+
+                    </span>
+
+                </div>
+
+                <div class="feature-item">
+
+                    <i class='bx bx-check-circle'></i>
+
+                    <span>
+
+                        Secure Payments & Fast Delivery
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <img
+
+                src="images/Banner.png"
+
+                alt="SaiRam Herbals">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="back-home">
+
+    <a href="/">
+
+        <i class='bx bx-arrow-back'></i>
+
+        Back to Home
+
+    </a>
+
+</div>
+
+
+    <!--==========================
+            RIGHT PANEL
+    ===========================-->
+
+    <div class="auth-right">
+
+        <div class="login-card">
+
+            <a href="/" class="brand-logo">
+
+                <i class='bx bxs-leaf'></i>
+
+                SaiRam Herbals
+
+            </a>
+
+            <h2>
+
+                Welcome Back 👋
+
+            </h2>
+
+            <p>
+
+                Sign in to continue your wellness journey.
+
+            </p>
+
+            <form
+
+            action="/login"
+
+            method="POST"
+
+            id="loginForm"
+
+            novalidate>
+
+                <!-- Email -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Email Address
+
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class='bx bx-envelope'></i>
+
+                        <input
+
+                        type="email"
+
+                        name="email"
+
+                        id="email"
+
+                        placeholder="Enter your email"
+
+                        autocomplete="email"
+
+                        required>
+
+                    </div>
+
+                    <small class="error-text"></small>
+
+                </div>
+
+                <!-- Password -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Password
+
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class='bx bx-lock-alt'></i>
+
+                        <input
+
+                        type="password"
+
+                        id="password"
+
+                        name="password"
+
+                        placeholder="Enter your password"
+
+                        autocomplete="current-password"
+
+                        required>
+
+                        <span
+
+                        class="toggle-password"
+
+                        data-target="password">
+
+                            <i class='bx bx-show'></i>
+
+                        </span>
+
+                    </div>
+
+                    <small
+
+                    class="caps-lock-warning">
+
+                        ⚠ Caps Lock is ON
+
+                    </small>
+
+                    <small class="error-text"></small>
+
+                </div>
+
+                <div class="login-options">
+
+                    <label class="remember-check">
+
+                        <input
+
+                        type="checkbox"
+
+                        name="remember">
+
+                        <span>
+
+                            Keep me signed in
+
+                        </span>
+
+                    </label>
+
+                    <a href="/forgot-password">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+                                <!-- LOGIN BUTTON -->
+
+                <button
+
+                type="submit"
+
+                class="login-btn"
+
+                id="loginBtn">
+
+                    <i class='bx bx-lock-alt'></i>
+
+                    <span>
+
+                        Secure Login
+
+                    </span>
+
+                </button>
+
+            </form>
+
+
+
+            <!-- Divider -->
+
+            <div class="divider">
+
+                <span>
+
+                    OR CONTINUE WITH
+
+                </span>
+
+            </div>
+
+
+
+            <!-- Google Login -->
+
+            <a href="/auth/google" class="google-btn">
+
+                <img
+
+                src="https://www.svgrepo.com/show/475656/google-color.svg"
+
+                alt="Google">
+
+                Continue securely with Google
+
+          </a>
+
+
+
+            <!-- Security Notice -->
+
+            <div class="security-box">
+
+                <div class="security-item">
+
+                    <i class='bx bx-shield-quarter'></i>
+
+                    <div>
+
+                        <h4>
+
+                            Secure Authentication
+
+                        </h4>
+
+                        <p>
+
+                            Your account is protected with encrypted login security.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Terms -->
+
+            <div class="auth-policy">
+
+                By continuing you agree to our
+
+                <a href="/terms-and-conditions">
+
+                    Terms of Service
+
+                </a>
+
+                ,
+
+                <a href="/privacy-policy">
+
+                    Privacy Policy
+
+                </a>
+
+                and
+
+                <a href="/refund-policy">
+
+                    Refund Policy
+
+                </a>.
+
+            </div>
+
+
+
+            <!-- Register -->
+
+            <div class="register-box">
+
+                <span>
+
+                    New to SaiRam Herbals?
+
+                </span>
+
+                <a href="/register">
+
+                    Create Account
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Trust -->
+
+            <div class="trust-footer">
+
+                <div>
+
+                    <i class='bx bx-lock-alt'></i>
+
+                    SSL Secured
+
+                </div>
+
+                <div>
+
+                    <i class='bx bx-check-shield'></i>
+
+                    Encrypted Authentication
+
+                </div>
+
+                <div>
+
+                    <i class='bx bx-certification'></i>
+
+                    Trusted Platform
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Floating Background -->
+
+    <div class="shape shape-1"></div>
+
+    <div class="shape shape-2"></div>
+
+    <div class="shape shape-3"></div>
+
+    <div class="shape shape-4"></div>
+
+</section>

@@ -1,0 +1,141 @@
+<% if(!currentUser){ %>
+
+<a href="/login" class="navbar-login-btn">
+
+    <i class='bx bx-user'></i>
+
+    <span>Login</span>
+
+</a>
+
+<% } else { %>
+
+<%
+const displayName =
+    currentUser.firstName ||
+    currentUser.fullName ||
+    currentUser.name ||
+    currentUser.username ||
+    "User";
+const captitalize = displayName[0].toUpperCase() + displayName.slice(1)
+
+const initials = displayName
+    .trim()
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase())
+    .join("")
+    .substring(0,2);
+
+const isAdmin = currentUser.role === "admin";
+%>
+
+<div class="desktop-user">
+
+    <button
+        type="button"
+        class="desktop-user-btn"
+    >
+
+        <div class="desktop-avatar">
+
+            <% if(currentUser.profileImage && currentUser.profileImage.url){ %>
+
+                    <img id="profilePreview" class="desktop-avatar" src="<%= currentUser.profileImage.url %>">
+
+                <% }else{ %>
+
+            <%= initials %>
+
+                <% } %>
+
+
+        </div>
+
+        <span class="desktop-name">
+
+            <%= captitalize %>
+
+        </span>
+
+        <i class='bx bx-chevron-down'></i>
+
+    </button>
+
+    <div class="desktop-user-menu">
+
+        <div class="user-header">
+
+            <div class="desktop-avatar large">
+
+                 <% if(currentUser.profileImage && currentUser.profileImage.url){ %>
+
+                    <img id="profilePreview" class="desktop-avatar large" src="<%= currentUser.profileImage.url %>">
+
+                <% }else{ %>
+
+            <%= initials %>
+
+                <% } %>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    <%= displayName %>
+
+                </h4>
+
+                <small>
+
+                    <%= isAdmin ? "Administrator" : "Customer" %>
+
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="user-links">
+
+            <a href="/profile">
+
+                <i class='bx bx-user'></i>
+
+                My Profile
+
+            </a>
+
+            <% if(isAdmin){ %>
+
+            <a href="/admin/dashboard">
+
+                <i class='bx bx-grid-alt'></i>
+
+                Dashboard
+
+            </a>
+
+            <% } %>
+            <button
+    type="submit"
+    onclick="return confirm('Are you sure you want to logout?')"
+>
+
+            <a href="/logout" class="desktop-login id="logoutBtn">
+
+                <i class='bx bx-log-out'></i>
+
+                Logout
+
+            </a>
+</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<% } %>

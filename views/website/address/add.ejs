@@ -1,0 +1,35 @@
+<% layout("layouts/main") %>
+
+<link rel="stylesheet" href="/css/website/address.css">
+
+<main class="address-page">
+
+    <div class="container">
+
+        <div class="address-page-header">
+
+            <div>
+
+                <h1>Add New Address</h1>
+
+                <p>Add a delivery address for faster checkout.</p>
+
+            </div>
+
+            <a href="/addresses" class="secondary-btn">
+
+                <i class='bx bx-arrow-back'></i>
+
+                Back
+
+            </a>
+
+        </div>
+
+        <%- include("../../partials/components/addressSection/addressForm") %>
+
+    </div>
+
+</main>
+
+<script src="/js/website/address.js"></script>

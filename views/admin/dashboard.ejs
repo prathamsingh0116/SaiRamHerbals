@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Admin Dashboard</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/announcement.css">
+    
+
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <%- include("./adminSidebar") %>
+
+    <div class="main-wrapper">
+
+        <%- include("./adminHeader") %>
+
+        <main class="main-content">
+
+            <!-- ===========================
+        PAGE HEADER
+============================ -->
+
+<div class="page-header">
+
+    <div>
+
+        <h1>Dashboard 👋</h1>
+
+        <p>Welcome back, <%= currentUser.name %></p>
+
+    </div>
+
+    <div class="page-actions">
+
+        <a href="/admin/products/new" class="primary-btn">
+
+            <i class='bx bx-plus'></i>
+
+            Add Product
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+        STATS
+============================ -->
+
+<div class="stats-grid">
+
+    <div class="stat-card products">
+
+        <div>
+
+            <p>Total Products</p>
+
+            <h2><%= totalProducts %></h2>
+
+            <span>+12% this month</span>
+
+        </div>
+
+        <div class="stat-icon">
+
+            <i class='bx bx-package'></i>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card users">
+
+        <div>
+
+            <p>Total Users</p>
+
+            <h2><%= totalUsers %></h2>
+
+            <span>+5 New Today</span>
+
+        </div>
+
+        <div class="stat-icon">
+
+            <i class='bx bx-user'></i>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card orders">
+
+        <div>
+
+            <p>Total Orders</p>
+
+            <h2>0</h2>
+
+            <span>No Orders Yet</span>
+
+        </div>
+
+        <div class="stat-icon">
+
+            <i class='bx bx-cart'></i>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card announce">
+
+        <div>
+
+            <p>Announcements</p>
+
+            <h2><%= totalAnnouncements %></h2>
+
+            <span>Currently Active</span>
+
+        </div>
+
+        <div class="stat-icon">
+
+            <i class='bx bx-bell' ></i>
+
+        </div>
+
+    </div>
+
+</div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script src="/js/admin.js"></script>
+
+</body>
+
+</html>

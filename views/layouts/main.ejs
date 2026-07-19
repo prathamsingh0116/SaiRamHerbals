@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ======================================
+                    META
+    ======================================= -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+
+    <title>
+        <%= typeof title !== "undefined"
+            ? title
+            : "SaiRam Herbals" %>
+    </title>
+
+    <meta
+        name="description"
+        content="<%= typeof metaDescription !== 'undefined'
+            ? metaDescription
+            : 'Premium Ayurvedic Herbal Products' %>">
+
+    <meta
+        name="theme-color"
+        content="#2E7D32">
+    <link rel="icon" type="image/png" href="/images/Logo/6.png">
+
+    <!-- ======================================
+                    GOOGLE FONT
+    ======================================= -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- ======================================
+                    BOXICONS
+    ======================================= -->
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet">
+
+    <!-- ======================================
+                GLOBAL CSS
+    ======================================= -->
+
+    <link rel="stylesheet" href="/css/website/reset.css">
+    
+    <link rel="stylesheet" href="/css/website/variables.css">
+
+    <link rel="stylesheet" href="/css/website/animations.css">
+
+    <link rel="stylesheet" href="/css/website/base.css">
+    <link rel="stylesheet" href="/css/website/category.css">
+
+    <link rel="stylesheet" href="/css/website/announcement.css">
+
+    <link rel="stylesheet" href="/css/website/navbar.css">
+
+    <link rel="stylesheet" href="/css/website/footer.css">
+    <link rel="stylesheet" href="/css/whyChoose.css">
+    <link rel="stylesheet" href="/css/website/components.css">
+    <link rel="stylesheet" href="/css/website/featured.css">
+    <link rel="stylesheet" href="/css/website/home.css">
+    <link rel="stylesheet" href="/css/loader.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css"
+/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <% if(typeof pageCSS !== "undefined" && pageCSS){ %>
+
+        <link rel="stylesheet"
+              href="/css/website/<%= pageCSS %>.css">
+
+    <% } %>
+
+</head>
+
+<body>
+
+    <!-- Loader -->
+        <%- include("../partials/loader") %>
+    <!-- Announcement -->
+
+    <!-- <%- include("../partials/announcement") %> -->
+
+    
+
+    <!-- Navbar -->
+
+    <%- include("../partials/navbar/navbar") %>
+
+    <!-- Main -->
+
+    <main class="website-main">
+
+        <div class="reading-progress"></div>
+        <%- body %>
+
+    </main>
+
+    <!-- Footer -->
+
+    <%- include("../partials/footer/index") %>
+
+    <!-- Back To Top -->
+
+    <% if(false){ %>
+
+        <%- include("../partials/backToTop") %>
+
+    <% } %>
+
+    <!-- ======================================
+                GLOBAL JS
+    ======================================= -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+const success = "<%= success && success.length ? success[0] : '' %>";
+const error = "<%= error && error.length ? error[0] : '' %>";
+
+if (success) {
+    Swal.fire({
+        icon: "success",
+        title: success,
+        timer: 2000,
+        showConfirmButton: false,
+        toast: true,
+        position: "top"
+    });
+}
+
+if (error) {
+    Swal.fire({
+        icon: "error",
+        title: error,
+        timer: 2000,
+        showConfirmButton: false,
+        toast: true,
+        position: "top"
+    });
+}
+</script>
+
+
+    <script src="/js/loader.js"></script>
+    <script src="/js/website/navbar.js"></script>
+    <script src="/js/website/components/imageCropper.js"></script>
+
+<script src="/js/website/profile.js"></script>
+    
+
+    <% if(typeof pageJS !== "undefined" && pageJS){ %>
+
+        <script src="/js/website/<%= pageJS %>.js"></script>
+
+    <% } %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/js/website/hero.js"></script>
+<script src="/js/website/announcement.js"></script>
+
+</body>
+
+</html>

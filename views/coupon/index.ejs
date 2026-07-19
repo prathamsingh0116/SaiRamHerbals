@@ -1,0 +1,196 @@
+<% layout("layouts/admin") %>
+
+<section class="coupon-page">
+
+    <div class="coupon-header">
+
+        <div>
+
+            <h1>
+
+                Coupon Management
+
+            </h1>
+
+            <p>
+
+                Create and manage discount coupons for your customers.
+
+            </p>
+
+        </div>
+
+        <a
+        href="/admin/coupons/new"
+        class="add-coupon-btn">
+
+            <i class='bx bx-plus'></i>
+
+            Create Coupon
+
+        </a>
+
+    </div>
+
+    <% if(coupons.length){ %>
+
+    <div class="coupon-table">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Name</th>
+
+                    <th>Code</th>
+
+                    <th>Discount</th>
+
+                    <th>Minimum</th>
+
+                    <th>Expiry</th>
+
+                    <th>Status</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            <% coupons.forEach(coupon=>{ %>
+
+                <tr>
+
+                    <td>
+
+                        <strong>
+
+                            <%= coupon.name %>
+
+                        </strong>
+
+                    </td>
+
+                    <td>
+
+                        <span class="coupon-code">
+
+                            <%= coupon.code %>
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <% if(coupon.discountType==="percentage"){ %>
+
+                            <%= coupon.discountValue %>%
+
+                        <% }else{ %>
+
+                            ₹<%= coupon.discountValue %>
+
+                        <% } %>
+
+                    </td>
+
+                    <td>
+
+                        ₹<%= coupon.minimumOrder %>
+
+                    </td>
+
+                    <td>
+
+                        <%= coupon.expiryDate.toDateString() %>
+
+                    </td>
+
+                    <td>
+
+                        <% if(coupon.isActive){ %>
+
+                            <span class="status active">
+
+                                Active
+
+                            </span>
+
+                        <% }else{ %>
+
+                            <span class="status inactive">
+
+                                Inactive
+
+                            </span>
+
+                        <% } %>
+
+                    </td>
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <a
+                            href="/admin/coupons/<%= coupon._id %>/edit">
+
+                                <i class='bx bx-edit'></i>
+
+                            </a>
+
+                            <form
+                            action="/admin/coupons/<%= coupon._id %>?_method=DELETE"
+                            method="POST">
+
+                                <button>
+
+                                    <i class='bx bx-trash'></i>
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            <% }) %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <% }else{ %>
+
+    <div class="empty-coupon">
+
+        <i class='bx bx-purchase-tag'></i>
+
+        <h2>
+
+            No Coupons Found
+
+        </h2>
+
+        <p>
+
+            Create your first discount coupon.
+
+        </p>
+
+    </div>
+
+    <% } %>
+
+</section>

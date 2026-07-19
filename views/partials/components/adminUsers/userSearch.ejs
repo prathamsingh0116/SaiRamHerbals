@@ -1,0 +1,62 @@
+<div class="user-toolbar">
+
+    <div class="toolbar-left">
+
+        <h2>
+
+            <i class='bx bx-group'></i>
+
+            User Management
+
+        </h2>
+
+        <p>
+
+            Search, manage and monitor all registered users.
+
+        </p>
+
+    </div>
+
+    <form
+    action="/admin/users"
+    method="GET"
+    class="admin-search-box">
+
+        <div class="search-input">
+
+            <i class='bx bx-search'></i>
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search by name, email or phone..."
+                value="<%= typeof search !== 'undefined' ? search : '' %>">
+
+        </div>
+
+        <% if(typeof search !== "undefined" && search){ %>
+
+            <a
+            href="/admin/users"
+            class="clear-search">
+
+                <i class='bx bx-x'></i>
+
+            </a>
+
+        <% } %>
+
+        <button
+        type="submit"
+        class="search-btn">
+
+            <i class='bx bx-search'></i>
+
+            Search
+
+        </button>
+
+    </form>
+
+</div>

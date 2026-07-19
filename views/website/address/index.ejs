@@ -1,0 +1,44 @@
+<% layout("layouts/main") %>
+
+
+<main class="address-page">
+
+    <div class="container">  
+
+        <div class="address-page-header">
+
+    <div class="address-header-content">
+
+        <div class="address-icon">
+            <i class='bx bxs-map'></i>
+        </div>
+
+        <div class="address-title">
+            <h1>My Addresses</h1>
+            <p>
+                Manage your delivery addresses for faster and hassle-free checkout.
+            </p>
+        </div>
+
+    </div>
+
+    <a href="/addresses/new" class="primary-btn">
+        <i class='bx bx-plus-circle'></i>
+        Add New Address
+    </a>
+
+</div>
+
+            
+
+            
+
+        
+
+        <%- include("../../partials/components/addressSection/addressList") %>
+
+    </div>
+
+</main>
+
+<script src="/js/website/address.js"></script>

@@ -1,0 +1,676 @@
+<% layout("layouts/admin") %>
+
+
+<div class="reports-page">
+
+    <!--==========================
+            HEADER
+    ===========================-->
+
+    <div class="reports-header">
+
+        <div>
+
+            <h1>
+
+                <i class='bx bx-line-chart'></i>
+
+                Reports & Analytics
+
+            </h1>
+
+            <p>
+
+                Monitor your business performance and analytics.
+
+            </p>
+
+        </div>
+
+        <div class="reports-actions">
+
+            <button>
+
+                <i class='bx bx-printer'></i>
+
+                Print
+
+            </button>
+
+            <a
+href="/admin/reports/export/pdf"
+class="export-btn">
+
+<i class='bx bxs-file-pdf'></i>
+
+Export PDF
+
+</a>
+
+            <button>
+
+                <i class='bx bx-spreadsheet'></i>
+
+                Excel
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!--==========================
+            FILTER
+    ===========================-->
+
+    <div class="report-filter">
+
+    <form action="/admin/reports" method="GET">
+
+        <select name="range" id="range">
+
+            <option value="today" <%= range==="today"?"selected":"" %>>
+
+                Today
+
+            </option>
+
+            <option value="week" <%= range==="week"?"selected":"" %>>
+
+                Last 7 Days
+
+            </option>
+
+            <option value="month" <%= range==="month"?"selected":"" %>>
+
+                This Month
+
+            </option>
+
+            <option value="year" <%= range==="year"?"selected":"" %>>
+
+                This Year
+
+            </option>
+
+            <option value="custom" <%= range==="custom"?"selected":"" %>>
+
+                Custom
+
+            </option>
+
+        </select>
+
+        <input
+
+        type="date"
+
+        name="start"
+
+        value="<%= start || '' %>"
+
+        id="startDate">
+
+        <input
+
+        type="date"
+
+        name="end"
+
+        value="<%= end || '' %>"
+
+        id="endDate">
+
+        <button>
+
+            Apply
+
+        </button>
+
+    </form>
+
+</div>
+
+
+
+    <!--==========================
+            STATS
+    ===========================-->
+
+<div class="stats-grid">
+    <div class="stats-card revenue">
+
+    <div class="icon">
+
+        <i class='bx bx-money'></i>
+
+    </div>
+
+    <div>
+
+        <span>Today's Revenue</span>
+
+        <h2>
+
+            ₹<%= todayRevenue.toLocaleString() %>
+
+        </h2>
+
+    </div>
+
+</div>
+
+
+
+<div class="stats-card orders">
+
+    <div class="icon">
+
+        <i class='bx bx-calendar'></i>
+
+    </div>
+
+    <div>
+
+        <span>Today's Orders</span>
+
+        <h2>
+
+            <%= todaysOrders %>
+
+        </h2>
+
+    </div>
+
+</div>
+
+
+
+<div class="stats-card products">
+
+    <div class="icon">
+
+        <i class='bx bx-line-chart'></i>
+
+    </div>
+
+    <div>
+
+        <span>Month Revenue</span>
+
+        <h2>
+
+            ₹<%= monthRevenue.toLocaleString() %>
+
+        </h2>
+
+    </div>
+
+</div>
+
+
+
+<div class="stats-card customers">
+
+    <div class="icon">
+
+        <i class='bx bx-calendar-check'></i>
+
+    </div>
+
+    <div>
+
+        <span>Month Orders</span>
+
+        <h2>
+
+            <%= thisMonthOrders %>
+
+        </h2>
+
+    </div>
+
+</div>
+
+<div class="stats-card revenue">
+
+    <div class="icon">
+
+        <i class='bx bx-wallet'></i>
+
+    </div>
+
+    <div>
+
+        <span>Pending COD</span>
+
+        <h2>
+
+            ₹<%= pendingCOD.toLocaleString() %>
+
+        </h2>
+
+    </div>
+
+</div>
+</div>
+
+
+
+    <!--==========================
+        CHARTS
+    ===========================-->
+
+    <div class="chart-grid">
+
+        <div class="chart-card">
+
+            <h3>
+
+                Revenue Analytics
+
+            </h3>
+
+            <canvas id="revenueChart"></canvas>
+
+        </div>
+
+
+
+        <div class="chart-card">
+
+            <h3>
+
+                Orders Analytics
+
+            </h3>
+
+            <canvas id="orderChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="chart-card">
+
+    <h3>
+
+        <i class='bx bx-pie-chart-alt-2'></i>
+
+        Order Status
+
+    </h3>
+
+    <canvas id="statusChart"></canvas>
+
+</div>
+
+        <!--=========================================
+            TOP PRODUCTS
+    ==========================================-->
+
+    <div class="report-row">
+
+        <div class="report-card">
+
+            <div class="card-header">
+
+                <h3>
+
+                    <i class='bx bxs-trophy'></i>
+
+                    Top Selling Products
+
+                </h3>
+
+            </div>
+
+            <table class="report-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Product</th>
+
+                        <th>Sold</th>
+
+                        <th>Revenue</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+<% if(topProducts.length){ %>
+
+<% topProducts.forEach(product=>{ %>
+
+<tr>
+
+<td>
+
+<div class="product-cell">
+
+<img
+
+src="<%= product.product.images[0]?.url || '/images/no-image.png' %>"
+
+class="product-thumb"
+
+alt="<%= product.product.name %>">
+
+<div>
+
+<strong>
+
+<%= product.product.name %>
+
+</strong>
+
+</div>
+
+</div>
+
+</td>
+
+<td>
+
+<%= product.totalSold %>
+
+</td>
+
+<td>
+
+₹<%= product.revenue.toLocaleString() %>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+<% } else { %>
+
+<tr>
+
+<td colspan="3" style="text-align:center;padding:40px;">
+
+No Sales Yet
+
+</td>
+
+</tr>
+
+<% } %>
+
+</tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!--=============================
+            ORDER STATUS
+        ==============================-->
+
+        <div class="report-card">
+
+            <div class="card-header">
+
+                <h3>
+
+                    <i class='bx bx-pie-chart-alt-2'></i>
+
+                    Order Status
+
+                </h3>
+
+            </div>
+
+            <div class="status-list">
+
+    <div class="status-item">
+        <span>Pending</span>
+        <strong><%= pendingOrders %></strong>
+    </div>
+
+    <div class="status-item">
+        <span>Confirmed</span>
+        <strong><%= confirmedOrders %></strong>
+    </div>
+
+    <div class="status-item">
+        <span>Packed</span>
+        <strong><%= packedOrders %></strong>
+    </div>
+
+    <div class="status-item">
+        <span>Shipped</span>
+        <strong><%= shippedOrders %></strong>
+    </div>
+
+    <div class="status-item">
+        <span>Out For Delivery</span>
+        <strong><%= outForDeliveryOrders %></strong>
+    </div>
+
+    <div class="status-item">
+        <span>Delivered</span>
+        <strong><%= deliveredOrders %></strong>
+    </div>
+
+    <div class="status-item">
+        <span>Cancelled</span>
+        <strong><%= cancelledOrders %></strong>
+    </div>
+
+    <div class="status-item">
+        <span>Return Requested</span>
+        <strong><%= returnRequestedOrders %></strong>
+    </div>
+
+</div>
+        </div>
+
+    </div>
+
+
+
+    <!--=========================================
+            RECENT ORDERS
+    ==========================================-->
+
+    <div class="report-card full-width">
+
+        <div class="card-header">
+
+            <h3>
+
+                <i class='bx bx-package'></i>
+
+                Recent Orders
+
+            </h3>
+
+        </div>
+
+        <table class="report-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Customer</th>
+
+                    <th>Status</th>
+
+                    <th>Total</th>
+
+                    <th>Date</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <% recentOrders.forEach(order=>{ %>
+
+                <tr>
+
+                    <td>
+
+                        <%= order.user?.name || order.user?.fullName || "User" %>
+
+                    </td>
+
+                    <td>
+
+                        <span class="table-status <%= order.orderStatus.toLowerCase().replace(/\s+/g,'-') %>">
+
+                            <%= order.orderStatus %>
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        ₹<%= order.grandTotal.toLocaleString() %>
+
+                    </td>
+
+                    <td>
+
+                        <%= order.createdAt.toLocaleDateString() %>
+
+                    </td>
+
+                </tr>
+
+                <% }) %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <!--=========================================
+            RECENT REVIEWS
+    ==========================================-->
+
+    <div class="report-card full-width">
+
+        <div class="card-header">
+
+            <h3>
+
+                <i class='bx bx-star'></i>
+
+                Recent Reviews
+
+            </h3>
+
+        </div>
+
+        <table class="report-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>User</th>
+
+                    <th>Product</th>
+
+                    <th>Rating</th>
+
+                    <th>Comment</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <% recentReviews.forEach(review=>{ %>
+
+                <tr>
+
+                    <td>
+
+                        <%= review.user?.name || review.user?.fullName %>
+
+                    </td>
+
+                    <td>
+
+                        <%= review.product?.name %>
+
+                    </td>
+
+                    <td>
+
+                        ⭐ <%= review.rating %>/5
+
+                    </td>
+
+                    <td>
+
+                        <%= review.comment.substring(0,60) %>...
+
+                    </td>
+
+                </tr>
+
+                <% }) %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+<script>
+
+window.statusData = {
+
+    pending: <%= pendingOrders %>,
+
+    confirmed: <%= confirmedOrders %>,
+
+    packed: <%= packedOrders %>,
+
+    shipped: <%= shippedOrders %>,
+
+    outForDelivery: <%= outForDeliveryOrders %>,
+
+    delivered: <%= deliveredOrders %>,
+
+    cancelled: <%= cancelledOrders %>,
+
+    returned: <%= returnRequestedOrders %>
+
+};
+
+</script>
+
+<script>
+
+window.revenueChartData=<%- JSON.stringify(revenueChart) %>;
+
+window.orderChartData=<%- JSON.stringify(orderChart) %>;
+
+</script>

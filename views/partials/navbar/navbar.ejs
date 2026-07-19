@@ -1,0 +1,87 @@
+<header class="site-header">
+
+    <nav class="site-nav container">
+
+        <!-- Logo -->
+
+        <a href="/" class="brand">
+
+            <div class="brand-icon">
+
+               <img src="/images/Logo/1.png" alt="Logo">
+
+            </div>
+
+            <div class="brand-text">
+
+               <img src="/images/Logo/2.png" alt="Description">
+               
+            </div>
+
+        </a>
+
+        <!-- Desktop Menu -->
+
+        <%- include("./desktopMenu") %>
+
+        <!-- Right Side -->
+    
+        <div class="nav-right">
+
+    <%- include("./searchBox") %>
+
+    
+
+    <% if(currentUser){ %>
+
+       <a href="/wishlist" class="navbar-cart icon-btn">
+
+    <i class='bx bx-heart'></i>
+
+    <% if(wishlistCount > 0){ %>
+
+        <span class="cart-badge">
+
+            <%= wishlistCount %>
+
+        </span>
+
+    <% } %>
+
+</a>
+
+        <!-- Cart -->
+
+        <a href="/cart" class="navbar-cart icon-btn">
+
+    <i class='bx bx-cart'></i>
+
+    <% if(cartCount > 0){ %>
+
+        <span class="cart-badge">
+
+            <%= cartCount %>
+
+        </span>
+
+    <% } %>
+
+</a>
+
+    <% } %>
+
+    <%- include("./desktopUser") %>
+
+    <button class="menu-toggle">
+
+        <i class='bx bx-menu'></i>
+
+    </button>
+
+</div>
+
+    </nav>
+
+    <%- include("./mobileDrawer") %>
+
+</header>

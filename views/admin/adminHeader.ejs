@@ -1,0 +1,84 @@
+<header class="admin-header">
+
+    <div class="header-left">
+        <div class="search-box">
+
+            <i class='bx bx-search'></i>
+
+            <input
+                type="text"
+                placeholder="Search products, users, orders...">
+
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <button class="header-icon">
+
+            <i class='bx bx-bell'></i>
+
+            <span class="notification-dot"></span>
+
+        </button>
+
+        <button class="header-icon">
+
+            <i class='bx bx-moon'></i>
+
+        </button>
+
+        <div class="admin-user" id="adminProfile">
+
+    <div class="admin-avatar">
+        <% if(currentUser.profileImage && currentUser.profileImage.url){ %>
+
+                    <img id="profilePreview" class="admin-user-profile" src="<%= currentUser.profileImage.url %>">
+
+                <% }else{ %>
+
+            <%= currentUser.fullName.charAt(0).toUpperCase() %>
+
+                <% } %>
+    </div>
+
+    <div class="admin-user-info">
+        <h4><%= currentUser.fullName %></h4>
+        <span>Super Admin</span>
+    </div>
+
+    <i class='bx bx-chevron-down'></i>
+
+    <div class="admin-dropdown-menu" id="adminDropdownMenu">
+
+    <a href="/profile">
+        <i class='bx bx-user'></i>
+        My Profile
+    </a>
+
+    <a href="/">
+        <i class='bx bx-home'></i>
+        Home
+    </a>
+
+    <a href="/profile">
+        <i class='bx bx-cog'></i>
+        Settings
+    </a>
+
+    <hr>
+
+    <a href="/logout" class="logout-link">
+        <i class='bx bx-log-out'></i>
+        Logout
+    </a>
+
+</div>
+
+    </div>
+
+
+    </div>
+
+</header>

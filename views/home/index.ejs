@@ -1,0 +1,13 @@
+<% layout("layouts/main") %>
+
+<%- include("../partials/announcement") %>
+
+<%- include("../website/home/hero/hero") %>
+
+<%- include("../website/home/categories/categories") %>
+
+<% if(featuredProducts && featuredProducts.length > 0){ %>
+
+<%- include("../website/home/featured/featured") %>
+
+<% } %>

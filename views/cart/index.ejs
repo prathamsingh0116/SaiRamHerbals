@@ -1,0 +1,632 @@
+<% layout("layouts/main") %>
+
+<% if(cart.length){ %>
+
+<div class="cart-v2">
+
+    <!-- =========================
+            CART HEADER
+    ========================== -->
+
+    <div class="cart-header">
+
+        <div>
+
+            <h1>
+
+                <i class='bx bx-shopping-bag'></i>
+
+                Shopping Cart
+
+                <span>
+
+                    <%= cart.length %> Item<%= cart.length > 1 ? "s" : "" %>
+
+                </span>
+
+            </h1>
+
+            <p>
+
+                Review your selected herbal wellness products before checkout.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+            ALERT
+    ========================== -->
+
+    <div class="cart-alert">
+
+        <i class='bx bxs-shield-check'></i>
+
+        Your cart items are reserved for the next
+
+        <strong>15 Minutes.</strong>
+
+    </div>
+
+    <!-- =========================
+            WRAPPER
+    ========================== -->
+
+    <div class="cart-wrapper">
+
+        <!-- LEFT -->
+
+        <div class="cart-items">
+
+<%
+
+cart.forEach(item=>{
+
+const product=item.product;
+
+const finalPrice=
+product.price-
+(product.price*product.discount)/100;
+
+const wishlisted=
+wishlistIds.includes(product._id.toString());
+
+%>
+
+<div class="cart-card">
+
+    <!-- IMAGE -->
+
+    <div class="cart-image">
+
+        <img
+
+        src="<%= product.images.length ? product.images[0].url : '/images/no-image.png' %>"
+
+        alt="<%= product.name %>">
+
+        <% if(product.discount>0){ %>
+
+        <span class="discount-badge">
+
+            -<%= product.discount %>%
+
+        </span>
+
+        <% } %>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="cart-content">
+
+        <h2>
+
+            <%= product.name %>
+
+        </h2>
+
+        <div class="cart-meta">
+
+            <span>
+
+                <strong>Brand :</strong>
+
+                <%= product.brand %>
+
+            </span>
+
+            <span>
+
+                <strong>SKU :</strong>
+
+                <%= product.sku %>
+
+            </span>
+
+            <span>
+
+                <strong>Category :</strong>
+
+                <%= product.category %>
+
+            </span>
+
+        </div>
+
+        <!-- PRICE -->
+
+        <div class="cart-price">
+
+            <h3>
+
+                ₹<%= finalPrice.toFixed(2) %>
+
+            </h3>
+
+            <% if(product.discount>0){ %>
+
+            <del>
+
+                ₹<%= product.price.toFixed(2) %>
+
+            </del>
+
+            <label>
+
+                <%= product.discount %>% OFF
+
+            </label>
+
+            <% } %>
+
+        </div>
+
+        <!-- QUANTITY -->
+
+        <div class="cart-footer">
+
+            <div class="qty-box">
+
+                <form
+
+                action="/cart/decrease/<%= product._id %>"
+
+                method="POST">
+
+                    <button>
+
+                        -
+
+                    </button>
+
+                </form>
+
+                <span>
+
+                    <%= item.quantity %>
+
+                </span>
+
+                <form
+
+                action="/cart/increase/<%= product._id %>"
+
+                method="POST">
+
+                    <button>
+
+                        +
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- ACTIONS -->
+
+            <div class="cart-actions">
+
+                <form
+
+                action="/wishlist/toggle/<%= product.slug %>"
+
+                method="POST">
+
+                    <button
+
+                    class="wishlist-btn">
+
+                        <i class='bx <%= wishlisted ? "bxs-heart" : "bx-heart" %>'></i>
+
+                        <%= wishlisted ? "Wishlisted" : "Add To Wishlist" %>
+
+                    </button>
+
+                </form>
+
+                <form
+
+                action="/cart/remove/<%= product._id %>"
+
+                method="POST">
+
+                    <button
+
+                    class="remove-btn">
+
+                        <i class='bx bx-trash'></i>
+
+                        Remove
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<% }) %>
+
+        </div>
+
+        <!-- RIGHT SIDEBAR START -->
+
+                <!-- =========================
+                ORDER SUMMARY
+        ========================== -->
+
+        <div class="cart-summary">
+
+            <div class="summary-card">
+
+                <h2>
+
+                    Order Summary
+
+                </h2>
+
+                <div class="summary-row">
+
+                    <span>
+
+                        Total Items
+
+                    </span>
+
+                    <strong>
+
+                        <%= cart.length %>
+
+                    </strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>
+
+                        Subtotal
+
+                    </span>
+
+                    <strong>
+
+                        ₹<%= subtotal.toFixed(2) %>
+
+                    </strong>
+
+                </div>
+
+                <div class="summary-row">
+
+    <span>Coupon Discount</span>
+
+    <strong class="discount-text">
+
+        <%= couponDiscount > 0 ? "- ₹" + couponDiscount.toFixed(2) : "₹0.00" %>
+
+    </strong>
+
+</div>
+
+<div class="summary-row">
+
+    <span>Shipping</span>
+
+    <strong class="<%= shippingCharge === 0 ? 'free-text' : '' %>">
+
+        <%= shippingCharge === 0 ? "FREE" : "₹25" %>
+
+    </strong>
+
+</div>
+
+
+<% if(shippingCharge > 0){ %>
+
+<div class="shipping-progress">
+
+    <p>
+
+        🚚 Add
+
+        <strong>
+
+            ₹<%= (500 - subtotal).toFixed(2) %>
+
+        </strong>
+
+        more to unlock
+
+        <span>
+
+            FREE Delivery
+
+        </span>
+
+    </p>
+
+    <div class="progress-bar">
+
+        <div
+
+        class="progress-fill"
+
+        style="width:<%= Math.min((subtotal/500)*100,100) %>%">
+
+        </div>
+
+    </div>
+
+</div>
+
+<% }else{ %>
+
+<div class="shipping-success">
+
+    🎉 Congratulations!
+
+    You've unlocked
+
+    <strong>
+
+        FREE Delivery
+
+    </strong>
+
+</div>
+
+<% } %>
+
+<div class="summary-row">
+
+    <span>
+
+        Total Savings
+
+    </span>
+
+    <strong class="save-text">
+
+        ₹<%= totalSavings.toFixed(2) %>
+
+    </strong>
+
+</div>
+
+                
+
+                <hr>
+
+                <div class="grand-total">
+
+    <span>Grand Total</span>
+
+    <strong>
+
+        ₹<%= grandTotal.toFixed(2) %>
+
+    </strong>
+
+</div>
+
+                <!-- =========================
+                        COUPON
+                ========================== -->
+
+                <div class="coupon-box">
+
+                    <h3>
+
+                        Apply Coupon
+
+                    </h3>
+
+                    <% if(!appliedCoupon){ %>
+
+                    <form
+
+                    action="/coupon/apply"
+
+                    method="POST"
+
+                    class="coupon-form">
+
+                        <input
+
+                        type="text"
+
+                        name="code"
+
+                        placeholder="Enter Coupon Code"
+
+                        required>
+
+                        <button>
+
+                            Apply
+
+                        </button>
+
+                    </form>
+
+                    <% }else{ %>
+
+                    <div class="coupon-success">
+
+    <div>
+
+        <h4>
+
+            <i class='bx bxs-badge-check'></i>
+
+            <%= appliedCoupon.code %>
+
+        </h4>
+
+        <p>
+
+            Coupon Applied Successfully
+
+        </p>
+
+    </div>
+
+    <div>
+
+        <strong>
+
+            Saved ₹<%= couponDiscount.toFixed(2) %>
+
+        </strong>
+
+
+    </div>
+
+                        <form
+
+                        action="/coupon/remove"
+
+                        method="POST">
+
+                            <button
+
+                            class="remove-coupon">
+
+                                Remove
+
+                            </button>
+
+                        </form>
+
+</div>
+
+                    <% } %>
+
+                </div>
+
+                <a
+
+href="/checkout"
+
+class="checkout-btn">
+
+<i class='bx bx-lock-alt'></i>
+
+Proceed To Checkout
+
+</a>
+
+                <a
+
+                href="/products"
+
+                class="continue-shopping">
+
+                    <i class='bx bx-left-arrow-alt'></i>
+
+                    Continue Shopping
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FEATURES -->
+
+    <div class="cart-features">
+
+        <div>
+
+            <i class='bx bx-check-shield'></i>
+
+            <span>
+
+                100% Genuine Products
+
+            </span>
+
+        </div>
+
+        <div>
+
+            <i class='bx bx-package'></i>
+
+            <span>
+
+                Fast Delivery
+
+            </span>
+
+        </div>
+
+        <div>
+
+            <i class='bx bx-credit-card'></i>
+
+            <span>
+
+                Secure Payment
+
+            </span>
+
+        </div>
+
+        <div>
+
+            <i class='bx bx-refresh'></i>
+
+            <span>
+
+                Easy Returns
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<% }else{ %>
+
+<div class="empty-cart">
+
+    <i class='bx bx-cart'></i>
+
+    <h2>
+
+        Your Cart is Empty
+
+    </h2>
+
+    <p>
+
+        Looks like you haven't added any products yet.
+
+    </p>
+
+    <a
+
+    href="/products">
+
+        Continue Shopping
+
+    </a>
+
+</div>
+
+<% } %>

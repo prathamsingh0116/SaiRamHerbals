@@ -1,0 +1,186 @@
+<head>
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+
+<% layout("layouts/main") %>
+
+<section class="error-page">
+
+    <!-- Floating Shapes -->
+
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+    <div class="shape shape4"></div>
+
+    <div class="error-container">
+
+        <!-- Logo -->
+
+        <a href="/" class="error-logo">
+
+            <i class='bx bxs-leaf'></i>
+
+            <span>SaiRam Herbals</span>
+
+        </a>
+
+        <!-- Error Number -->
+
+        <div class="error-code">
+
+            <%= status || 404 %>
+
+        </div>
+
+        <!-- Icon -->
+
+        <div class="error-icon">
+
+            <% if(status==404){ %>
+
+                <i class='bx bx-search-alt'></i>
+
+            <% } else if(status==401){ %>
+
+                <i class='bx bx-lock-alt'></i>
+
+            <% } else if(status==403){ %>
+
+                <i class='bx bx-shield-quarter'></i>
+
+            <% } else { %>
+
+                <i class='bx bx-error-circle'></i>
+
+            <% } %>
+
+        </div>
+
+        <!-- Heading -->
+
+        <h1>
+
+            <%= heading || "Oops!" %>
+
+        </h1>
+
+        <!-- Message -->
+
+        <p>
+
+            <%= message || "Something went wrong." %>
+
+        </p>
+
+        <!-- Button -->
+
+        <div class="error-buttons">
+
+            <a
+
+            href="<%= redirectTo || '/' %>"
+
+            class="home-btn">
+
+                <i class='bx bx-home'></i>
+
+                <%= redirectText || "Go Back Home" %>
+
+            </a>
+
+        </div>
+
+        <!-- Countdown -->
+
+        <div class="countdown">
+
+            Redirecting in
+
+            <span id="timer">
+
+                3
+
+            </span>
+
+            seconds...
+
+        </div>
+
+        <!-- Suggestions -->
+
+        <div class="popular-links">
+
+            <h3>
+
+                You may be looking for
+
+            </h3>
+
+            <div class="links">
+
+                <a href="/">
+
+                    <i class='bx bx-home'></i>
+
+                    Home
+
+                </a>
+
+                <a href="/products">
+
+                    <i class='bx bx-package'></i>
+
+                    Products
+
+                </a>
+
+                <a href="/categories">
+
+                    <i class='bx bx-category'></i>
+
+                    Categories
+
+                </a>
+
+                <a href="/contact">
+
+                    <i class='bx bx-phone'></i>
+
+                    Contact
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+let count = 8;
+
+const timer = document.getElementById("timer");
+
+const redirect = "<%= redirectTo || '/' %>";
+
+const interval = setInterval(()=>{
+
+count--;
+
+timer.textContent = count;
+
+if(count<=0){
+
+clearInterval(interval);
+
+window.location.href = redirect;
+
+}
+
+},1000);
+
+</script>

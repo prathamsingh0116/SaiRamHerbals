@@ -1,0 +1,104 @@
+<section class="featured-products">
+
+    <div class="container">
+
+          <%- include("../../../partials/components/sectionHeading",{
+
+badge:"PREMIUM PRODUCTS",
+
+title:"OUR BEST SELLING PRODUCTS",
+
+description:"EXPLORE OUR MOST POPULAR HERBAL PRODUCTS, CAREFULLY SELECTED TO SUPPORT YOUR HEALTH, BEAUTY, AND EVERYDAY WELLNESS."
+
+}) %>
+
+
+        <div class="featured-grid">
+
+            <% featuredProducts.forEach(product=>{ %>
+
+            <div class="featured-card">
+
+                <% if(product.discount>0){ %>
+
+                <span class="discount-badge">
+
+                    <%= product.discount %>% OFF
+
+                </span>
+
+                <% } %>
+
+                <a href="/products/<%= product.slug %>">
+
+                    <div class="featured-image">
+
+                        <img
+
+                        src="<%= product.images[0]?.url %>"
+
+                        alt="<%= product.name %>">
+
+                    </div>
+
+                </a>
+
+                <div class="featured-content">
+
+                    <h3>
+
+                        <%= product.name %>
+
+                    </h3>
+
+                    <div class="rating">
+
+                        ⭐⭐⭐⭐⭐
+
+                    </div>
+
+                    <div class="price">
+
+                        <% if(product.discount>0){ %>
+
+                        <span class="old-price">
+
+                            ₹<%= product.price %>
+
+                        </span>
+
+                        <% } %>
+
+                        <span class="new-price">
+
+                            ₹<%= product.finalPrice || product.price %>
+
+                        </span>
+
+                    </div>
+
+                    <div class="product-actions">
+
+                        <a
+
+                        href="/products/<%= product.slug %>"
+
+                        class="view-btn">
+
+                            View Product
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <% }) %>
+
+        </div>
+
+    </div>
+
+</section>

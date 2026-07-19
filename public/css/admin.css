@@ -1,0 +1,963 @@
+/* ===================================================
+   SAIRAM HERBALS ADMIN PANEL
+=================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+
+    --primary: #16A34A;
+    --primary-dark: #15803D;
+
+    --sidebar: #0F172A;
+    --sidebar-light: #1E293B;
+
+    --background: #F1F5F9;
+
+    --white: #ffffff;
+
+    --text: #1E293B;
+    --text-light: #64748B;
+
+    --border: #E2E8F0;
+
+    --danger: #EF4444;
+    --warning: #F59E0B;
+    --success: #22C55E;
+
+    --radius: 18px;
+
+    --shadow: 0 12px 35px rgba(0, 0, 0, .06);
+
+}
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Poppins', sans-serif;
+
+}
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+body {
+
+    background: var(--background);
+
+    color: var(--text);
+
+    overflow-x: hidden;
+
+}
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+button {
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    border: none;
+
+    outline: none;
+
+}
+
+input {
+
+    font-family: inherit;
+
+    outline: none;
+
+}
+
+ul {
+
+    list-style: none;
+
+}
+
+
+/* =========================================
+            MAIN LAYOUT
+========================================= */
+
+.admin-layout {
+
+    display: flex;
+
+    min-height: 100vh;
+
+}
+
+.main-wrapper {
+
+    flex: 1;
+
+    margin-left: 280px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 100vh;
+
+    background: var(--background);
+
+}
+
+.main-content {
+
+    padding: 35px;
+
+}
+
+
+
+/* ==========================================
+            SIDEBAR
+========================================== */
+
+:root {
+
+    --sidebar: #0F172A;
+    --sidebar-light: #1E293B;
+    --primary: #16A34A;
+    --text: #CBD5E1;
+    --white: #fff;
+    --border: rgba(255, 255, 255, .08);
+
+}
+
+.sidebar {
+
+
+    height: 100vh;
+    width: 280px;
+
+    transition: all .35s ease;
+
+    overflow: hidden;
+
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    background: var(--sidebar);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+
+    border-right: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+                LOGO
+========================================== */
+
+.sidebar-logo {
+
+    padding: 30px 25px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.sidebar-logo a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    text-decoration: none;
+
+}
+
+.logo-circle {
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 28px;
+
+    color: white;
+
+}
+
+.sidebar-logo h2 {
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    margin: 0;
+
+}
+
+.sidebar-logo span {
+
+    color: #94A3B8;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+}
+
+/* ==========================================
+            NAVIGATION
+========================================== */
+
+.sidebar-nav {
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 25px 18px;
+
+    gap: 8px;
+
+}
+
+.sidebar-nav a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 18px;
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    transition: .35s;
+
+}
+
+.sidebar-nav a i {
+
+    font-size: 23px;
+
+    min-width: 24px;
+
+}
+
+/* Active */
+
+.sidebar-nav a.active {
+
+    background: linear-gradient(90deg, #22C55E, #16A34A);
+
+    color: white;
+
+}
+
+/* Hover */
+
+.sidebar-nav a:hover {
+
+    background: var(--sidebar-light);
+
+    color: white;
+
+    transform: translateX(8px);
+
+}
+
+/* ==========================================
+            BOTTOM
+========================================== */
+
+.sidebar-bottom {
+
+    padding: 22px;
+
+    border-top: 1px solid var(--border);
+
+}
+
+/* ==========================================
+        PROFILE
+========================================== */
+
+.admin-profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+
+}
+
+.admin-avatar {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+
+.admin-user-profile {
+    width: 52px;
+
+    height: 52px;
+    border-radius: 50%;
+}
+
+.admin-profile h4 {
+
+    color: white;
+
+    font-size: 15px;
+
+    margin: 0;
+
+}
+
+.admin-profile span {
+
+    color: #94A3B8;
+
+    font-size: 13px;
+
+}
+
+/* ==========================================
+            LOGOUT
+========================================== */
+
+.logout-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    background: #EF4444;
+
+    color: white;
+
+    font-weight: 600;
+
+    transition: .35s;
+
+}
+
+.logout-btn:hover {
+
+    background: #DC2626;
+
+    color: white;
+
+    transform: translateY(-2px);
+
+}
+
+/* ===============================
+        HEADER
+=============================== */
+
+.admin-header {
+
+    height: 80px;
+
+    background: #fff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    border-bottom: 1px solid #E5E7EB;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 50;
+
+}
+
+.header-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+.menu-btn {
+
+    width: 46px;
+
+    height: 46px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #F8FAFC;
+
+    font-size: 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.menu-btn:hover {
+
+    background: #16A34A;
+
+    color: #fff;
+
+}
+
+.search-box {
+
+    width: 450px;
+
+    height: 48px;
+
+    background: #F8FAFC;
+
+    border: 1px solid #E2E8F0;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 18px;
+
+    gap: 12px;
+
+}
+
+.search-box input {
+
+    border: none;
+
+    background: none;
+
+    width: 100%;
+
+    font-size: 15px;
+
+}
+
+.search-box i {
+
+    font-size: 20px;
+
+    color: #64748B;
+
+}
+
+.header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+.header-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 12px;
+
+    border: none;
+
+    background: #F8FAFC;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 22px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.header-icon:hover {
+
+    background: #16A34A;
+
+    color: #fff;
+
+}
+
+.notification-dot {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 10px;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: red;
+
+}
+
+.admin-user {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 8px 15px;
+
+    background: #F8FAFC;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+}
+
+.admin-user-info h4 {
+
+    font-size: 15px;
+
+    margin: 0;
+
+}
+
+.admin-user-info span {
+
+    font-size: 12px;
+
+    color: #64748B;
+
+}
+
+
+/* ==================================
+        PAGE HEADER
+================================== */
+
+.page-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 35px;
+
+}
+
+.page-header h1 {
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+}
+
+.page-header p {
+
+    margin-top: 8px;
+
+    color: #64748B;
+
+}
+
+.primary-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 14px 22px;
+
+    background: #16A34A;
+
+    color: #fff;
+
+    border-radius: 14px;
+
+    font-weight: 600;
+
+    transition: .3s;
+
+}
+
+.primary-btn:hover {
+
+    background: #15803D;
+
+    color: #fff;
+
+}
+
+.admin-user{
+
+    position:relative;
+
+}
+
+.admin-dropdown-menu{
+
+position:absolute;
+
+top:110%;
+
+right:0;
+
+min-width:220px;
+
+background:#fff;
+
+border-radius:16px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+opacity:0;
+
+visibility:hidden;
+
+transform:translateY(10px);
+
+transition:.25s;
+
+z-index:1999;
+
+}
+
+.admin-dropdown-menu.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+.admin-dropdown-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 18px;
+
+    color:#334155;
+
+    transition:.25s;
+
+}
+
+.admin-dropdown-menu a:hover{
+
+    background:#F1F5F9;
+
+    color:#16A34A;
+
+}
+
+.admin-dropdown-menu hr{
+
+    border:none;
+
+    border-top:1px solid #E5E7EB;
+
+}
+
+.logout-link{
+
+    color:#DC2626 !important;
+
+}
+
+
+
+/* ==================================
+        STATS
+================================== */
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+
+    margin-bottom: 35px;
+
+}
+
+.stat-card {
+
+    background: #fff;
+
+    border-radius: 22px;
+
+    padding: 28px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .05);
+
+    transition: .35s;
+
+}
+
+.stat-card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+.stat-card p {
+
+    font-size: 14px;
+
+    color: #64748B;
+
+}
+
+.stat-card h2 {
+
+    margin: 10px 0;
+
+    font-size: 34px;
+
+}
+
+.stat-card span {
+
+    font-size: 13px;
+
+    color: #16A34A;
+
+}
+
+.stat-icon {
+
+    width: 70px;
+
+    height: 70px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 34px;
+
+    color: #fff;
+
+}
+
+.products .stat-icon {
+
+    background: #3B82F6;
+
+}
+
+.users .stat-icon {
+
+    background: #10B981;
+
+}
+
+.orders .stat-icon {
+
+    background: #F59E0B;
+
+}
+
+.announce .stat-icon {
+
+    background: #8B5CF6;
+
+}
+
+/* ===========================
+        HAMBURGER BUTTON
+=========================== */
+
+.menu-toggle {
+
+    display: block;
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    background: #16A34A;
+
+    color: #fff;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 24px;
+
+    transition: .3s;
+
+}
+
+.menu-toggle:hover {
+
+    background: #15803D;
+
+    transform: scale(1.05);
+
+}
+
+/* ===== PROFESSIONAL SIDEBAR ENHANCEMENTS ===== */
+.sidebar{transition:width .35s ease, box-shadow .35s ease;}
+.sidebar-nav a{position:relative;overflow:hidden;transition:all .28s ease;border:1px solid transparent;}
+.sidebar-nav a::before{content:'';position:absolute;left:-120%;top:0;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transition:left .55s ease;}
+.sidebar-nav a:hover::before{left:120%;}
+.sidebar-nav a:hover{box-shadow:0 12px 24px rgba(22,163,74,.28);border-color:rgba(255,255,255,.08);}
+.sidebar-nav a.active{box-shadow:0 12px 24px rgba(22,163,74,.30);}
+.sidebar-nav a i{transition:transform .25s ease;}
+.sidebar-nav a:hover i{transform:scale(1.15) rotate(-8deg);}
+.sidebar.collapsed .sidebar-logo h2,.sidebar.collapsed .sidebar-logo span,.sidebar.collapsed .sidebar-nav a span,.sidebar.collapsed .admin-profile div,.sidebar.collapsed .logout-btn span{opacity:0;width:0;overflow:hidden;pointer-events:none;}
+.sidebar.collapsed .sidebar-logo{padding:22px 0;}
+.sidebar.collapsed .sidebar-logo a,.sidebar.collapsed .admin-profile,.sidebar.collapsed .logout-btn,.sidebar.collapsed .sidebar-nav a{justify-content:center;}
+.sidebar.collapsed .logout-btn{padding:14px 0;}
+.sidebar.collapsed .admin-avatar{margin:0 auto;}

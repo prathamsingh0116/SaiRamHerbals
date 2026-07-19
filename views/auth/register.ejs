@@ -1,0 +1,720 @@
+<% layout("layouts/auth") %>
+<div class="back-home">
+
+    <a href="/">
+
+        <i class='bx bx-arrow-back'></i>
+
+        Back to Home
+
+    </a>
+
+</div>
+
+<section class="auth-page">
+
+    <!--==========================
+            LEFT PANEL
+    ===========================-->
+
+    <div class="auth-left">
+
+        <div class="auth-overlay"></div>
+        
+
+        <div class="auth-content">
+            
+            
+            <div class="brand-chip">
+
+                <i class='bx bxs-leaf'></i>
+
+                Join India's Trusted Ayurvedic Brand
+
+            </div>
+
+            <h1>
+
+                Begin Your Wellness Journey
+
+                <span>
+
+                    Naturally & Securely
+
+                </span>
+
+            </h1>
+
+            <p>
+
+                Create your SaiRam Herbals account to access
+                premium Ayurvedic products, exclusive offers,
+                faster checkout and personalized wellness
+                recommendations.
+
+            </p>
+
+            <div class="auth-features">
+
+                <div class="feature-item">
+
+                    <i class='bx bx-check-circle'></i>
+
+                    <span>100% Natural Products</span>
+
+                </div>
+
+                <div class="feature-item">
+
+                    <i class='bx bx-check-circle'></i>
+
+                    <span>Secure Online Shopping</span>
+
+                </div>
+
+                <div class="feature-item">
+
+                    <i class='bx bx-check-circle'></i>
+
+                    <span>Fast Delivery Across India</span>
+
+                </div>
+
+                <div class="feature-item">
+
+                    <i class='bx bx-check-circle'></i>
+
+                    <span>Trusted By 50,000+ Customers</span>
+
+                </div>
+
+            </div>
+
+            <!-- <div class="auth-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class='bx bx-leaf'></i>
+
+                    </div>
+
+                    <h3>100%</h3>
+
+                    <span>Natural Ingredients</span>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class='bx bx-user-check'></i>
+
+                    </div>
+
+                    <h3>50K+</h3>
+
+                    <span>Happy Customers</span>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class='bx bxs-star'></i>
+
+                    </div>
+
+                    <h3>4.9★</h3>
+
+                    <span>Customer Rating</span>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class='bx bx-package'></i>
+
+                    </div>
+
+                    <h3>500+</h3>
+
+                    <span>Herbal Products</span>
+
+                </div>
+
+            </div> -->
+
+            <div class="hero-image">
+
+                <img
+
+                src="images/Banner.png"
+
+                alt="SaiRam Herbals">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--==========================
+            RIGHT PANEL
+    ===========================-->
+
+    <div class="auth-right">
+
+        <div class="login-card">
+
+            <a href="/" class="brand-logo">
+
+                <i class='bx bxs-leaf'></i>
+
+                SaiRam Herbals
+
+            </a>
+
+            <h2>
+
+                Create Account 🌿
+
+            </h2>
+
+            <p>
+
+                Join our herbal wellness family today.
+
+            </p>
+
+            <form
+
+            action="/register"
+
+            method="POST"
+
+            id="registerForm"
+
+            novalidate>
+
+                <!-- NAME -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Full Name
+
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class='bx bx-user'></i>
+
+                        <input
+
+                        type="text"
+
+                        name="fullName"
+
+                        id="fullName"
+
+                        placeholder="Enter Full Name"
+
+                        autocomplete="name"
+
+                        required>
+
+                    </div>
+
+                    <small class="error-text"></small>
+
+                </div>
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Email Address
+
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class='bx bx-envelope'></i>
+
+                        <input
+
+                        type="email"
+
+                        name="email"
+
+                        id="email"
+
+                        placeholder="Enter Email Address"
+
+                        autocomplete="email"
+
+                        required>
+
+                    </div>
+
+                    <small class="error-text"></small>
+
+                </div>
+
+                <!-- PHONE -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Mobile Number
+
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class='bx bx-phone'></i>
+
+                        <input
+
+                        type="tel"
+
+                        name="phone"
+
+                        id="phone"
+
+                        placeholder="Enter Mobile Number"
+
+                        maxlength="10"
+
+                        autocomplete="tel"
+
+                        required>
+
+                    </div>
+
+                    <small class="error-text"></small>
+
+                </div>
+
+                                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Password
+
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class='bx bx-lock-alt'></i>
+
+                        <input
+
+                        type="password"
+
+                        id="password"
+
+                        name="password"
+
+                        placeholder="Create Password"
+
+                        autocomplete="new-password"
+
+                        required>
+
+                        <span
+
+                        class="toggle-password"
+
+                        data-target="password">
+
+                            <i class='bx bx-show'></i>
+
+                        </span>
+
+                    </div>
+
+                    <small class="caps-lock-warning">
+
+                        ⚠ Caps Lock is ON
+
+                    </small>
+
+                    <small class="error-text"></small>
+
+                </div>
+
+
+
+                <!-- PASSWORD STRENGTH -->
+
+                <div class="password-strength">
+
+                    <div class="strength-bar">
+
+                        <div class="strength-fill"></div>
+
+                    </div>
+
+                    <span class="strength-text">
+
+                        Password Strength
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- PASSWORD RULES -->
+
+                <div class="password-rules">
+
+                    <div class="rule length">
+
+                        <i class='bx bx-x-circle'></i>
+
+                        Minimum 8 Characters
+
+                    </div>
+
+                    <div class="rule uppercase">
+
+                        <i class='bx bx-x-circle'></i>
+
+                        One Uppercase Letter
+
+                    </div>
+
+                    <div class="rule number">
+
+                        <i class='bx bx-x-circle'></i>
+
+                        One Number
+
+                    </div>
+
+                    <div class="rule special">
+
+                        <i class='bx bx-x-circle'></i>
+
+                        One Special Character
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Confirm Password
+
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class='bx bx-lock'></i>
+
+                        <input
+
+                        type="password"
+
+                        id="confirmPassword"
+
+                        name="confirmPassword"
+
+                        placeholder="Confirm Password"
+
+                        autocomplete="new-password"
+
+                        required>
+
+                        <span
+
+                        class="toggle-password"
+
+                        data-target="confirmPassword">
+
+                            <i class='bx bx-show'></i>
+
+                        </span>
+
+                    </div>
+
+                    <small class="password-match"></small>
+
+                </div>
+
+
+
+                <!-- REFERRAL -->
+
+                <!-- <div class="input-group">
+
+                    <label>
+
+                        Referral Code
+
+                        <small>(Optional)</small>
+
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class='bx bx-gift'></i>
+
+                        <input
+
+                        type="text"
+
+                        name="referral"
+
+                        placeholder="Enter Referral Code">
+
+                    </div>
+
+                </div> -->
+
+
+
+                <!-- TERMS -->
+
+                <label class="terms-check">
+
+                    <input
+
+                    type="checkbox"
+
+                    id="terms"
+
+                    required>
+
+                    <span>
+
+                        I agree to the
+
+                        <a href="/terms">
+
+                            Terms of Service
+
+                        </a>
+
+                        ,
+
+                        <a href="/privacy">
+
+                            Privacy Policy
+
+                        </a>
+
+                        and
+
+                        <a href="/refund-policy">
+
+                            Refund Policy
+
+                        </a>
+
+                    </span>
+
+                </label>
+
+
+
+                <!-- NEWSLETTER -->
+
+                <label class="newsletter-check">
+
+                    <input
+
+                    type="checkbox"
+
+                    name="newsletter"
+
+                    checked>
+
+                    <span>
+
+                        Send me exclusive offers,
+
+                        wellness tips & product updates.
+
+                    </span>
+
+                </label>
+
+
+
+                <!-- REGISTER BUTTON -->
+
+                <button
+
+                class="login-btn"
+
+                id="registerBtn"
+
+                type="submit">
+
+                    <i class='bx bx-user-plus'></i>
+
+                    <span>
+
+                        Create My Account
+
+                    </span>
+
+                </button>
+
+            </form>
+
+
+
+            <!-- Divider -->
+
+            <div class="divider">
+
+                <span>
+
+                    OR CONTINUE WITH
+
+                </span>
+
+            </div>
+
+
+
+            <!-- GOOGLE -->
+
+            <a href="/auth/google" class="google-btn"><button
+
+            type="button"
+
+            class="google-btn">
+
+                <img
+
+                src="https://www.svgrepo.com/show/475656/google-color.svg"
+
+                alt="Google">
+
+                Sign up with Google
+
+            </button></a>
+
+
+
+            <!-- SECURITY -->
+
+            <div class="security-box">
+
+                <div class="security-item">
+
+                    <i class='bx bx-shield-quarter'></i>
+
+                    <div>
+
+                        <h4>
+
+                            Your Account Is Secure
+
+                        </h4>
+
+                        <p>
+
+                            We use industry-standard encryption
+                            to keep your information safe and secure.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LOGIN LINK -->
+
+            <div class="register-box">
+
+                <span>
+
+                    Already have an account?
+
+                </span>
+
+                <a href="/login">
+
+                    Login Here
+
+                </a>
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+
+            <div class="trust-footer">
+
+                <div>
+
+                    <i class='bx bx-lock-alt'></i>
+
+                    SSL Secured
+
+                </div>
+
+                <div>
+
+                    <i class='bx bx-check-shield'></i>
+
+                    Encrypted Data
+
+                </div>
+
+                <div>
+
+                    <i class='bx bx-certification'></i>
+
+                    Trusted Platform
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FLOATING SHAPES -->
+
+    <div class="shape shape-1"></div>
+
+    <div class="shape shape-2"></div>
+
+    <div class="shape shape-3"></div>
+
+    <div class="shape shape-4"></div>
+
+</section>

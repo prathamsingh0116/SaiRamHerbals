@@ -1,0 +1,203 @@
+<div class="edit-profile-card">
+
+    <h2>Edit Profile</h2>
+
+    <form
+        action="/profile?_method=PUT"
+        method="POST"
+        enctype="multipart/form-data"
+        class="profile-form"
+    >
+
+        <div class="profile-image-section">
+
+            <div class="profile-avatar">
+
+    <img
+        id="editProfilePreview"
+        src="<%= user.profileImage?.url || ('https://ui-avatars.com/api/?name=' + encodeURIComponent(user.fullName) + '&background=2E7D32&color=fff') %>"
+        alt="<%= user.fullName %>"
+    >
+
+</div>
+
+            <input
+                type="file"
+                name="profileImage"
+                accept="image/*"
+            >
+
+            <!-- Crop Modal -->
+
+<div class="cropper-modal" id="cropperModal">
+
+    <div class="cropper-content">
+
+        <div class="cropper-header">
+
+            <h3>Crop Profile Photo</h3>
+
+            <button
+                type="button"
+                id="closeCropper"
+            >
+                ✕
+
+            </button>
+
+        </div>
+
+        <div class="cropper-body">
+
+            <img
+                id="cropperImage"
+                src=""
+            >
+
+        </div>
+
+        <div class="cropper-toolbar">
+
+    <button type="button" id="zoomIn">
+        <i class='bx bx-zoom-in'></i>
+    </button>
+
+    <button type="button" id="zoomOut">
+        <i class='bx bx-zoom-out'></i>
+    </button>
+
+    <button type="button" id="rotateLeft">
+        <i class='bx bx-rotate-left'></i>
+    </button>
+
+    <button type="button" id="rotateRight">
+        <i class='bx bx-rotate-right'></i>
+    </button>
+
+    <button type="button" id="resetCrop">
+        <i class='bx bx-reset'></i>
+    </button>
+
+</div>
+
+        <div class="cropper-footer">
+
+            <button
+                type="button"
+                id="cancelCrop"
+            >
+
+                Cancel
+
+            </button>
+
+            <button
+                type="button"
+                id="cropImageBtn"
+            >
+
+                Apply Crop
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                name="fullName"
+                value="<%= user.fullName %>"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Email Address</label>
+
+            <input
+                type="email"
+                value="<%= user.email %>"
+                disabled
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Phone Number</label>
+
+            <input
+                type="text"
+                name="phone"
+                value="<%= user.phone %>"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+    <label>Gender</label>
+
+    <select name="gender">
+
+        <option value="">Select Gender</option>
+
+        <option value="Male"
+        <%= user.gender==="Male"?"selected":"" %>>
+        Male
+        </option>
+
+        <option value="Female"
+        <%= user.gender==="Female"?"selected":"" %>>
+        Female
+        </option>
+
+        <option value="Other"
+        <%= user.gender==="Other"?"selected":"" %>>
+        Other
+        </option>
+
+    </select>
+
+</div>
+
+<div class="form-group">
+
+    <label>Date of Birth</label>
+
+    <input
+
+        type="date"
+
+        name="dateOfBirth"
+
+        value="<%= user.dateOfBirth ? user.dateOfBirth.toISOString().split('T')[0] : '' %>"
+
+    >
+
+</div>
+
+        <button
+            type="submit"
+            class="save-profile-btn"
+        >
+
+            Save Changes
+
+        </button>
+
+    </form>
+
+</div>

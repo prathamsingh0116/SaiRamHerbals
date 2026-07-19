@@ -1,0 +1,614 @@
+
+
+<% layout("layouts/admin") %>
+           
+<div class="admin-product-form-page">
+
+    <!-- =========================
+            HEADER
+    ========================== -->
+
+    <section class="admin-product-form-header">
+
+        <div>
+
+            <h1>
+
+                Add New Product
+
+            </h1>
+
+            <p>
+
+                Create a new herbal product for your store.
+
+            </p>
+
+        </div>
+
+        <a
+            href="/admin/products"
+            class="admin-product-form-back-btn">
+
+            <i class='bx bx-arrow-back'></i>
+
+            Back to Products
+
+        </a>
+
+    </section>
+
+   <form
+    action="/admin/products"
+    method="POST"
+    enctype="multipart/form-data"
+    class="admin-product-form"
+    id="productForm">
+
+
+        <!-- =====================================
+                    GENERAL
+        ====================================== -->
+
+        <section class="admin-product-form-card">
+
+            <div class="admin-product-form-card-title">
+
+                <i class='bx bx-package'></i>
+
+                <div>
+
+                    <h3>
+
+                        General Information
+
+                    </h3>
+
+                    <p>
+
+                        Basic product details.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="admin-product-form-grid">
+
+                <div class="admin-product-form-group">
+
+                    <label>
+
+                        Product Name
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Ashwagandha Capsules"
+                        required>
+
+                </div>
+
+                <div class="admin-product-form-group">
+
+                    <label>
+
+                        Brand
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="brand"
+                        placeholder="SaiRam Herbals">
+
+                </div>
+
+                <div class="admin-product-form-group">
+
+                    <label>
+
+                        SKU
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="sku"
+                        name="sku"
+                        placeholder="SRH-001"
+                        required>
+
+                    <small id="skuStatus"></small>
+
+                </div>
+
+                <div class="admin-product-form-group">
+
+                    <label>
+
+                        Category
+
+                    </label>
+
+                    <select name="category">
+
+                        <option>Skin Care</option>
+
+                        <option>Hair Care</option>
+                        <option>Beauty</option>
+
+                        <option>Personal Care</option>
+
+                        <option>Immunity</option>
+
+                        <option>Pain Relief</option>
+
+                        <option>Body Detox</option>
+
+                        <option>Diabetic Care</option>
+
+                        <option>Weight Loss</option>
+
+                        <option>Sexual Wellness</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+                    PRICING
+        ====================================== -->
+
+        <section class="admin-product-form-card">
+
+            <div class="admin-product-form-card-title">
+
+                <i class='bx bx-rupee'></i>
+
+                <div>
+
+                    <h3>
+
+                        Pricing
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <div class="admin-product-form-grid">
+
+                <div class="admin-product-form-group">
+
+                    <label>
+
+                        Price
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        name="price">
+
+                </div>
+
+                
+
+                <div class="admin-product-form-group">
+
+                    <label>
+
+                        Discount %
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="discount"
+                        name="discount">
+
+                </div>
+
+                <div class="admin-product-form-group">
+
+                    <label>
+
+                        Final Price
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="finalPrice"
+                        readonly
+                        placeholder="Auto Calculated">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+                    INVENTORY
+        ====================================== -->
+
+        <!-- ===================================
+        PRODUCT IMAGE
+==================================== -->
+
+<section class="admin-product-form-card">
+
+    <div class="admin-product-form-card-title">
+
+        <i class='bx bx-image'></i>
+
+        <div>
+
+            <h3>
+
+                Product Image
+
+            </h3>
+
+            <p>
+
+                Upload the main image of your product.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="admin-product-image-upload-wrapper">
+
+        <div class="admin-product-image-preview">
+
+            <img
+                id="productPreview"
+                src=""
+                alt="Preview"
+                style="display:none;">
+
+            <div
+                class="admin-product-image-placeholder"
+                id="imagePlaceholder">
+
+                <i class='bx bx-image-add'></i>
+
+                <p>
+
+                    No Image Selected
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="admin-product-upload-actions">
+
+            <input
+    type="file"
+    name="productImages"
+    multiple
+    accept="image/*">
+
+            <small>
+
+                JPG, PNG, WEBP (Max 3MB)
+
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===================================
+                DESCRIPTION
+        ==================================== -->
+
+        <section class="admin-product-form-card">
+
+            <div class="admin-product-form-card-title">
+
+                <i class='bx bx-detail'></i>
+
+                <div>
+
+                    <h3>
+
+                        Product Description
+
+                    </h3>
+
+                    <p>
+
+                        Detailed information about the product.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="admin-product-form-group">
+
+                <label>
+
+                    Description
+
+                </label>
+
+                <textarea
+    id="description"
+    rows="8"
+    name="description"
+    placeholder="Write detailed product description..."></textarea>
+
+            </div>
+
+        </section>
+
+       <section class="admin-product-form-card">
+
+    <div class="admin-product-form-card-title">
+
+        <i class='bx bx-box'></i>
+
+        <div>
+
+            <h3>Inventory</h3>
+
+            <p>Manage product inventory and stock alerts</p>
+
+        </div>
+
+    </div>
+
+    <div class="admin-product-form-grid">
+
+        <div class="admin-product-form-group">
+
+            <label for="stock">
+
+                Stock Quantity
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="number"
+                id="stock"
+                name="stock"
+                min="0"
+                value="0"
+                placeholder="Enter available stock"
+                required
+            >
+
+            <small>
+
+                Available quantity for sale.
+
+            </small>
+
+        </div>
+
+        <div class="admin-product-form-group">
+
+            <label for="lowStockLimit">
+
+                Low Stock Alert
+
+            </label>
+
+            <input
+                type="number"
+                id="lowStockLimit"
+                name="lowStockLimit"
+                min="1"
+                value="10"
+                placeholder="Alert limit"
+            >
+
+            <small>
+
+                Notify admin when stock goes below this quantity.
+
+            </small>
+
+        </div>
+
+        <div class="admin-product-form-checkbox-group">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    name="isFeatured"
+                >
+
+                Featured Product
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    name="isActive"
+                    checked
+                >
+
+                Active Product
+
+            </label>
+
+        </div>
+
+    </div>
+
+</section>
+
+  <!-- ===================================
+                ACTION BUTTONS
+        ==================================== -->
+
+        <div class="admin-product-form-actions">
+
+            <a
+                href="/admin/products"
+                class="admin-product-form-cancel-btn">
+
+                Cancel
+
+            </a>
+
+            <button
+                type="submit"
+                class="admin-product-form-save-btn">
+
+                <i class='bx bx-save'></i>
+
+                Add Product
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<script src="https://cdn.tiny.cloud/1/plr4xjp2rfq032usv8hezcpm6x2tlgp656c5iayrthepchlb/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+<script>
+
+tinymce.init({
+
+selector:"#description",
+
+height:550,
+
+branding:false,
+
+promotion:false,
+
+menubar:"file edit view insert format table tools help",
+
+plugins:[
+
+"advlist",
+
+"autolink",
+
+"lists",
+
+"link",
+
+"image",
+
+"charmap",
+
+"preview",
+
+"anchor",
+
+"searchreplace",
+
+"visualblocks",
+
+"code",
+
+"fullscreen",
+
+"insertdatetime",
+
+"media",
+
+"table",
+
+"wordcount"
+
+],
+
+toolbar:
+
+"undo redo | styles blocks fontfamily fontsize | bold italic underline strikethrough | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | table image media link | removeformat | code preview fullscreen",
+
+content_style:`
+
+body{
+
+font-family:Poppins,sans-serif;
+
+font-size:16px;
+
+line-height:1.8;
+
+padding:20px;
+
+}
+
+h1,h2,h3,h4{
+
+color:#15803d;
+
+margin-top:20px;
+
+}
+
+ul{
+
+list-style:disc;
+
+padding-left:25px;
+
+}
+
+ol{
+
+list-style:decimal;
+
+padding-left:25px;
+
+}
+
+table{
+
+border-collapse:collapse;
+
+width:100%;
+
+}
+
+table td,
+
+table th{
+
+border:1px solid #ddd;
+
+padding:10px;
+
+}
+
+`
+
+});
+
+</script>

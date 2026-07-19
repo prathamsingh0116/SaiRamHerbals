@@ -1,0 +1,32 @@
+<% layout("/layouts/admin") %>
+
+<div class="admin-dashboard-page">
+
+    <%- include("../../partials/components/admin/welcomeBanner") %>
+
+    <%- include("../../partials/components/admin/statsCard") %>
+
+    <div class="admin-dashboard-main-grid">
+
+        <div class="admin-dashboard-left-column">
+            <%- include("../../partials/components/admin/lowStock") %>
+
+            <%- include("../../partials/components/admin/recentProducts") %>
+
+            <%- include("../../partials/components/admin/quickActions") %>
+
+        </div>
+
+        <div class="admin-dashboard-right-column">
+
+            <%- include("../../partials/components/admin/recentUsers") %>
+
+            <%- include("../../partials/components/admin/salesOverview") %>
+
+            <%- include("../../partials/components/admin/announcementCard") %>
+
+        </div>
+
+    </div>
+
+</div>

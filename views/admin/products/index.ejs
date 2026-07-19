@@ -1,0 +1,318 @@
+<% layout("/layouts/admin") %>
+
+    <div class="admin-products-page">
+
+        <!-- ===========================
+            PAGE HEADER
+    ============================ -->
+
+        <section class="admin-products-header">
+
+            <div class="admin-products-header-left">
+
+                <h1>
+
+                    Products
+
+                </h1>
+
+                <p>
+
+                    Manage all herbal products from one place.
+
+                </p>
+
+            </div>
+
+            <div class="admin-products-header-right">
+
+                <a href="/admin/products/new" class="admin-products-add-btn">
+
+                    <i class='bx bx-plus'></i>
+
+                    Add Product
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- ===========================
+            TOOLBAR
+    ============================ -->
+
+        <section class="admin-products-toolbar">
+
+            <form action="/admin/products" method="GET" class="admin-products-search-form">
+
+                <i class='bx bx-search'></i>
+
+                <input type="text" name="search" placeholder="Search product, brand or SKU..."
+                    value="<%= search || '' %>">
+
+                <button type="submit">
+
+                    Search
+
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- ===========================
+            TABLE
+    ============================ -->
+
+        <% if(products.length){ %>
+
+            <div class="admin-products-table-wrapper">
+
+                <table class="admin-products-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Image</th>
+                            <th>Product</th>
+
+                            <th>Brand</th>
+
+                            <th>Category</th>
+
+                            <th>SKU</th>
+
+                            <th>Price</th>
+                            <th>Featured</th>
+
+                            <th>Discount</th>
+
+                            <th>Stock</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <% products.forEach((product,index)=>{ %>
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="admin-products-thumbnail">
+
+                                        <% if(product.images && product.images.length){ %>
+
+                                            <img src="<%= product.images[0].url %>" alt="<%= product.name %>">
+
+                                            <% }else{ %>
+
+                                                <div class="admin-products-no-image">
+
+                                                    <i class='bx bx-image'></i>
+
+                                                </div>
+
+                                                <% } %>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="admin-products-name-box">
+
+                                        <strong>
+
+                                            <%= product.name %>
+
+                                        </strong>
+
+                                        <small>
+
+                                            <%= product.slug %>
+
+                                        </small>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <%= product.brand || "-" %>
+
+                                </td>
+
+                                <td>
+
+                                    <span class="admin-products-category">
+
+                                        <%= product.category %>
+
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <%= product.sku %>
+
+                                </td>
+
+                                <td>
+
+                                    ₹<%= product.price %>
+
+                                </td>
+
+                                <td>
+
+                                    <% if(product.isFeatured){ %>
+
+                                        <span class="admin-products-featured">
+
+                                            Featured
+
+                                        </span>
+
+                                        <% }else{ %>
+
+                                            <span class="admin-products-not-featured">
+
+                                                No
+
+                                            </span>
+
+                                            <% } %>
+
+                                </td>
+
+                                <td>
+
+                                    <% if(product.discount>0){ %>
+
+                                        <span class="admin-products-discount">
+
+                                            <%= product.discount %>%
+
+                                        </span>
+
+                                        <% }else{ %>
+
+                                            -
+
+                                            <% } %>
+
+                                </td>
+
+                                <td>
+
+                                    <% if(product.stock>10){ %>
+
+                                        <span class="admin-products-stock in">
+
+                                            <%= product.stock %>
+
+                                        </span>
+
+                                        <% }else if(product.stock>0){ %>
+
+                                            <span class="admin-products-stock low">
+
+                                                <%= product.stock %>
+
+                                            </span>
+
+                                            <% }else{ %>
+
+                                                <span class="admin-products-stock out">
+
+                                                    Out
+
+                                                </span>
+
+                                                <% } %>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="admin-products-actions">
+
+                                        <a href="/admin/products/<%= product._id %>/edit" class="admin-products-edit">
+
+                                            <i class='bx bx-edit'>Edit</i>
+
+                                        </a>
+
+                                        <form action="/admin/products/<%= product._id %>?_method=DELETE" method="POST">
+
+                                            <button class="admin-products-delete">
+
+                                                <i class='bx bx-trash'>Delete</i>
+
+                                            </button>
+
+                                        </form>
+
+                                        <a href="/admin/products/<%= product._id %>" class="admin-products-view">
+
+                                            <i class='bx bx-show'>Show</i>
+
+                                        </a>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <% }) %>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <% }else{ %>
+
+                <!-- ===========================
+            EMPTY STATE
+    ============================ -->
+
+                <section class="admin-products-empty">
+
+                    <i class='bx bx-package'></i>
+
+                    <h2>
+
+                        No Products Found
+
+                    </h2>
+
+                    <p>
+
+                        Start by adding your first product.
+
+                    </p>
+
+                    <a href="/admin/products/new" class="admin-products-add-btn">
+
+                        Add Product
+
+                    </a>
+
+                </section>
+
+                <% } %>
+
+    </div>
