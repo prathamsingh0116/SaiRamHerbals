@@ -91,21 +91,16 @@ app.use(session({
     saveUninitialized: false,
 
     store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI,
-    touchAfter: 24 * 3600
-}),
+        mongoUrl: process.env.MONGO_URI
+    }),
 
     cookie: {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: 7 * 24 * 60 * 60 * 1000
-}
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true
+    }
 }));
 app.use(flash());
 
-
-app.set("trust proxy", 1);
 
 app.use(passport.initialize());
 
@@ -130,7 +125,7 @@ app.use(async (req, res, next) => {
 
     try{
 
-        const Announcement = require("./models/Announcement");
+        const Announcement = require("./models/announcement");
 
         res.locals.announcements = await Announcement.find({
             isActive: true
@@ -183,24 +178,28 @@ app.use((req, res, next) => {
 // });
 
 app.use(async (req, res, next) => {
-    try {
-        if (req.session.userId) {
-            const User = require("./models/User");
-            const currentUser = await User.findById(req.session.userId);
 
-            req.user = currentUser;
-            res.locals.currentUser = currentUser;
-        } else {
-            req.user = null;
-            res.locals.currentUser = null;
-        }
+    if (req.session.userId) {
 
-        next();
-    } catch (err) {
-        next(err);
+        const User = require("./models/User");
+
+        const currentUser = await User.findById(req.session.userId);
+
+        req.user = currentUser;
+
+        res.locals.currentUser = currentUser;
+
+    } else {
+
+        req.user = null;
+
+        res.locals.currentUser = null;
+
     }
-});
 
+    next();
+
+});
 app.use(localsMiddleware);
 
 
