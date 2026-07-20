@@ -22,7 +22,7 @@ router.get("/check-sku", adminProductController.checkSKU);
 router.get("/new", adminProductController.renderNewForm);
 router.post(
     "/",
-    uploadProductImage.array("images",5),
+    uploadProductImage.array("productImages",5),
     adminProductController.createProduct
 );
 
@@ -30,7 +30,7 @@ router.post(
 router.get("/:id/edit", adminProductController.renderEditForm);
 router.put(
     "/:id",
-    uploadProductImage.array("images",5),
+    uploadProductImage.array("productImages",5),
     adminProductController.updateProduct
 );
 

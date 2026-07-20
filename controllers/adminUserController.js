@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 const User = require("../models/User");
 const Order = require("../models/Order");
 const Review = require("../models/Review");
 const Wishlist = require("../models/Wishlist");
 const Cart = require("../models/Cart");
+=======
+const User = require("../models/User.js");
+const Order = require("../models/Order.js");
+const Review = require("../models/Review.js");
+const Wishlist = require("../models/Wishlist.js");
+const Cart = require("../models/Cart.js");
+>>>>>>> b19c3d2 (Some important Changes)
 const Address = require("../models/Address.js");
 
 // =========================
