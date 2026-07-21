@@ -138,6 +138,9 @@
 
     user-select:none;
 
+    mix-blend-mode: multiply;
+  filter: contrast(1); /* Optional: Sharpens edges for a cleaner cut */
+
 }
 
 /* ========================= */

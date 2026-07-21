@@ -1,5 +1,5 @@
-const Product = require("../models/product");
-const Announcement = require("../models/announcement");
+const Product = require("../models/Product");
+const Announcement = require("../models/Announcement");
 const Wishlist = require("../models/Wishlist");
 
 // ======================================

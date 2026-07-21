@@ -1,0 +1,116 @@
+<head>
+    <link rel="stylesheet" href="/css/website/promoBanner.css">
+</head>
+
+<%
+const promoBanners = [
+    {
+        image: "/images/promoBanner/1.jpg",
+        badge: "100% Ayurvedic",
+        title: "Pure Herbal Wellness",
+        subtitle: "Crafted From Nature",
+        description: "Premium herbal and Ayurvedic products made with carefully selected natural ingredients.",
+        button: "Shop Now",
+        link: "/products"
+    },
+    {
+        image: "/images/promoBanner/2.jpg",
+        badge: "Trusted Since Years",
+        title: "Experience Natural Care",
+        subtitle: "Healthy Living Everyday",
+        description: "Discover authentic herbal solutions inspired by Ayurveda for your family's wellness.",
+        button: "Explore Collection",
+        link: "/products"
+    }
+];
+%>
+
+<section class="promo-banner">
+
+    <div class="promo-slider">
+
+        <div class="promo-track">
+
+            <% promoBanners.forEach((banner,index)=>{ %>
+
+            <div class="promo-slide <%= index===0 ? 'active' : '' %>">
+
+                <img
+                    src="<%= banner.image %>"
+                    alt="<%= banner.title %>"
+                    draggable="false"
+                    loading="<%= index===0 ? 'eager':'lazy' %>"
+                >
+
+                <div class="promo-overlay"></div>
+
+                <div class="promo-content">
+
+                    <span class="promo-badge">
+
+                        <i class='bx bxs-leaf'></i>
+
+                        <%= banner.badge %>
+
+                    </span>
+
+                    <h2>
+
+                        <%= banner.title %>
+
+                    </h2>
+
+                    <h3>
+
+                        <%= banner.subtitle %>
+
+                    </h3>
+
+                    <p>
+
+                        <%= banner.description %>
+
+                    </p>
+
+                    <a
+                        href="<%= banner.link %>"
+                        class="promo-btn"
+                    >
+
+                        <span>
+
+                            <%= banner.button %>
+
+                        </span>
+
+                        <i class='bx bx-right-arrow-alt'></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <% }) %>
+
+        </div>
+
+        <button class="promo-nav promo-prev">
+
+            <i class='bx bx-chevron-left'></i>
+
+        </button>
+
+        <button class="promo-nav promo-next">
+
+            <i class='bx bx-chevron-right'></i>
+
+        </button>
+
+        <div class="promo-pagination"></div>
+
+    </div>
+
+</section>
+
+<script src="/js/website/promoBanner.js"></script>

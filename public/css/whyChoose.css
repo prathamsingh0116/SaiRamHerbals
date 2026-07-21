@@ -1,84 +1,191 @@
-/* ===========================
-   WHY CHOOSE US
-=========================== */
+/*=========================================
+        WHY CHOOSE SAIRAM HERBALS
+=========================================*/
 
-.why-choose{
+.why-choose-section{
     padding:100px 0;
-    background:#F8FFF8;
+    background:#FCF9F4;
+    position:relative;
+    overflow:hidden;
 }
 
-.why-grid{
+.why-choose-section::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    background:rgba(22,163,74,.06);
+    border-radius:50%;
+    top:-180px;
+    left:-180px;
+    filter:blur(30px);
+}
+
+.why-choose-section::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:rgba(34,197,94,.05);
+    border-radius:50%;
+    right:-150px;
+    bottom:-150px;
+    filter:blur(30px);
+}
+
+.section-header{
+    text-align:center;
+    max-width:720px;
+    margin:0 auto 70px;
+    position:relative;
+    z-index:2;
+}
+
+.section-tag{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:30px;
+    background:#E8F8EE;
+    color:#166534;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+.section-header h2{
+    font-size:42px;
+    color:#1F2937;
+    margin-bottom:18px;
+}
+
+.section-header h2 span{
+    color:#166534;
+}
+
+.section-header p{
+    font-size:17px;
+    line-height:1.8;
+    color:#6B7280;
+}
+
+.why-choose-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:30px;
-    margin-top:60px;
+    position:relative;
+    z-index:2;
 }
 
 .why-card{
     background:#fff;
-    border-radius:20px;
-    padding:35px 25px;
+    padding:40px 30px;
+    border-radius:24px;
     text-align:center;
-    transition:.35s;
-    border:1px solid #e8ece8;
-    box-shadow:0 10px 30px rgba(0,0,0,.05);
+    border:1px solid #EEF2E8;
+    transition:.4s ease;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+}
+
+.why-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,#16A34A,#4ADE80);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:.4s;
 }
 
 .why-card:hover{
     transform:translateY(-10px);
-    box-shadow:0 20px 40px rgba(46,125,50,.15);
+    box-shadow:0 20px 45px rgba(22,163,74,.12);
 }
 
-.icon{
-    width:80px;
-    height:80px;
-    margin:0 auto 20px;
+.why-card:hover::before{
+    transform:scaleX(1);
+}
+
+.why-icon{
+    width:82px;
+    height:82px;
+    margin:0 auto 25px;
     border-radius:50%;
-    background:#EAF7EA;
+    background:#F0FDF4;
+    color:#166534;
     display:flex;
     align-items:center;
     justify-content:center;
-}
-
-.icon i{
     font-size:38px;
-    color:#2E7D32;
-    transition:.35s;
+    transition:.4s;
 }
 
-.why-card:hover .icon i{
-    transform:rotate(10deg) scale(1.15);
+.why-card:hover .why-icon{
+    background:#166534;
+    color:#fff;
+    transform:rotate(10deg) scale(1.08);
 }
 
 .why-card h3{
+    font-size:24px;
+    color:#1F2937;
     margin-bottom:15px;
-    font-size:22px;
+    transition:.3s;
+}
+
+.why-card:hover h3{
+    color:#166534;
 }
 
 .why-card p{
-    color:#64748B;
-    line-height:1.7;
+    color:#6B7280;
     font-size:15px;
+    line-height:1.8;
 }
-
-/* Responsive */
 
 @media(max-width:992px){
 
-.why-grid{
-grid-template-columns:repeat(2,1fr);
+.why-choose-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.section-header h2{
+    font-size:34px;
 }
 
 }
 
 @media(max-width:576px){
 
-.why-grid{
-grid-template-columns:1fr;
+.why-choose-grid{
+    grid-template-columns:1fr;
 }
 
-.why-choose{
-padding:70px 0;
+.why-card{
+    padding:30px 22px;
 }
 
+.section-header h2{
+    font-size:28px;
+}
+
+.section-header p{
+    font-size:15px;
+}
+
+.why-icon{
+    width:70px;
+    height:70px;
+    font-size:32px;
+}
+
+}
+
+.why-card:hover .why-icon{
+    box-shadow:0 0 30px rgba(22,163,74,.25);
 }

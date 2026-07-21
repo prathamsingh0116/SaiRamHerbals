@@ -2,62 +2,69 @@
 
     <div class="container">
 
-          <%- include("../../../partials/components/sectionHeading",{
-
-badge:"PREMIUM PRODUCTS",
-
-title:"OUR BEST SELLING PRODUCTS",
-
-description:"EXPLORE OUR MOST POPULAR HERBAL PRODUCTS, CAREFULLY SELECTED TO SUPPORT YOUR HEALTH, BEAUTY, AND EVERYDAY WELLNESS."
-
-}) %>
-
+        <%- include("../../../partials/components/sectionHeading",{
+            badge:"Premium Collection",
+            title:"Our Best Selling Products",
+            description:"Discover our most loved Ayurvedic products, crafted with natural ingredients for everyday wellness."
+        }) %>
 
         <div class="featured-grid">
 
-            <% featuredProducts.forEach(product=>{ %>
+            <% featuredProducts.forEach(product => { %>
 
             <div class="featured-card">
 
-                <% if(product.discount>0){ %>
-
+                <% if(product.discount > 0){ %>
                 <span class="discount-badge">
-
-                    <%= product.discount %>% OFF
-
+                    -<%= product.discount %>%
                 </span>
-
                 <% } %>
 
-                <a href="/products/<%= product.slug %>">
+                <button class="wishlist-btn">
+                    <i class='bx bx-heart'></i>
+                </button>
 
-                    <div class="featured-image">
+                <a href="/products/<%= product.slug %>" class="featured-image">
 
-                        <img
-
+                    <img
                         src="<%= product.images[0]?.url %>"
-
                         alt="<%= product.name %>">
-
-                    </div>
 
                 </a>
 
                 <div class="featured-content">
 
+                    <span class="product-chip">
+                        🌿 Herbal Product
+                    </span>
+
                     <h3>
 
-                        <%= product.name %>
+                        <a href="/products/<%= product.slug %>">
+
+                            <%= product.name %>
+
+                        </a>
 
                     </h3>
 
-                    <div class="rating">
+                    <div class="featured-rating">
 
-                        ⭐⭐⭐⭐⭐
+                        <div class="stars">
+
+                            ★★★★★
+
+                        </div>
+
+                        <span>
+
+                            4.9
+
+                        </span>
 
                     </div>
 
-                    <div class="price">
+                    <div class="featured-price">
 
                         <% if(product.discount>0){ %>
 
@@ -77,19 +84,15 @@ description:"EXPLORE OUR MOST POPULAR HERBAL PRODUCTS, CAREFULLY SELECTED TO SUP
 
                     </div>
 
-                    <div class="product-actions">
-
-                        <a
-
+                    <a
                         href="/products/<%= product.slug %>"
+                        class="view-product-btn">
 
-                        class="view-btn">
+                        View Details
 
-                            View Product
+                        <i class='bx bx-right-arrow-alt'></i>
 
-                        </a>
-
-                    </div>
+                    </a>
 
                 </div>
 
